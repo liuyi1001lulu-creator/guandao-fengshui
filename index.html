@@ -70,9 +70,9 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
  <div class="stats">
   <div class="stat"><small>课程档案 COURSES</small><strong>08</strong></div>
   <div class="stat"><small>知识条目 NOTES</small><strong id="noteCount">00</strong></div>
-  <div class="stat"><small>专题方法 METHODS</small><strong>08</strong></div>
+  <div class="stat"><small>知识模块 MODULES</small><strong>05</strong></div>
  </div>
- <div class="section-head"><div><div class="kicker">KNOWLEDGE MAP</div><h2>从基础到应用</h2><p>先建立易理与干支基础，再进入七星八宅和阳宅实操。</p></div></div>
+ <div class="section-head"><div><div class="kicker">KNOWLEDGE MAP</div><h2>从基础到应用</h2><p>从易理根基、干支与历法，到卦象方位、风水门派与阳宅实操，形成清晰的学习路径。</p></div></div>
  <div class="grid3" id="homeCards"></div>
  <div class="section-head"><div><div class="kicker">RECENTLY ADDED</div><h2>本次新增资料</h2><p>易理基础知识卡、十二地支图解、地支关系图解与阳宅实操专题。</p></div></div>
  <div class="grid2" id="recentCards"></div>
@@ -81,12 +81,12 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 
 
 <section class="view" id="view-foundation">
- <div class="section-head"><div><div class="kicker">FOUNDATION · YI LI</div><h2>易理基础</h2><p>从无极、太极、两仪、四象到八卦与五行，建立基础概念索引。</p></div><label class="searchbar"><span>⌕</span><input id="searchFoundation" placeholder="搜索太极、八卦、河图、五行……"></label></div>
+ <div class="section-head"><div><div class="kicker">FOUNDATION · YI LI</div><h2>易理根基</h2><p>从无极、太极、两仪、四象到八卦与五行，建立基础概念索引。</p></div><label class="searchbar"><span>⌕</span><input id="searchFoundation" placeholder="搜索太极、八卦、河图、五行……"></label></div>
  <div class="filters" id="foundationFilters"></div><div class="grid2" id="foundationCards"></div><div class="empty" id="foundationEmpty" hidden>没有找到相关知识。</div>
 </section>
 
 <section class="view" id="view-branches">
- <div class="section-head"><div><div class="kicker">HEAVENLY STEMS & EARTHLY BRANCHES</div><h2>干支知识</h2><p>天干、地支、藏干、合会冲刑害破与长生十二态。</p></div><label class="searchbar"><span>⌕</span><input id="searchBranches" placeholder="搜索子午冲、三合、藏干……"></label></div>
+ <div class="section-head"><div><div class="kicker">HEAVENLY STEMS & EARTHLY BRANCHES</div><h2>干支与历法</h2><p>天干、地支、藏干、合会冲刑害破与长生十二态。</p></div><label class="searchbar"><span>⌕</span><input id="searchBranches" placeholder="搜索子午冲、三合、藏干……"></label></div>
  <div class="filters" id="branchesFilters"></div><div class="grid2" id="branchesCards"></div><div class="empty" id="branchesEmpty" hidden>没有找到相关知识。</div>
 </section>
 
@@ -106,9 +106,9 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 </section>
 
 <section class="view" id="view-courses">
- <div class="section-head"><div><div class="kicker">COURSE ARCHIVE</div><h2>课程档案</h2><p>按课程顺序阅读已经转化的课堂笔记；不展示原始思维导图，知识点可继续跳转到知识体系。</p></div></div>
+ <div class="section-head"><div><div class="kicker">COURSE ARCHIVE</div><h2>课程笔记</h2><p>按课程顺序阅读已经转化的课堂笔记；不展示原始思维导图，知识点可继续跳转到知识体系。</p></div></div>
  <div class="timeline" id="courseList"></div>
- <div class="callout" style="margin-top:18px">课程档案展示的是整理后的可阅读内容，不再保留原始思维导图展示。第一课、第四课目前尚未录入可核实的课堂笔记；其余课程按现有资料逐步补充，资料不足处明确标记。</div>
+ <div class="callout" style="margin-top:18px">课程笔记展示的是整理后的可阅读内容，不再保留原始思维导图展示。第一课、第四课目前尚未录入可核实的课堂笔记；其余课程按现有资料逐步补充，资料不足处明确标记。</div>
 </section>
 
 <section class="view" id="view-glossary">

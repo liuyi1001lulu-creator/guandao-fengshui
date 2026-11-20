@@ -1,68 +1,309 @@
 <!doctype html>
-<html lang="zh-CN"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173e37"><meta name="description" content="观道·个人风水知识库">
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173e37">
+<meta name="description" content="观道·个人风水知识库，以课程为线索，以知识体系为纲。">
 <title>观道 · 风水知识库</title>
 <style>
-:root{--jade:#173e37;--jade2:#2c5d4e;--gold:#b99b62;--paper:#f5f0e5;--ink:#29332d;--muted:#817e70;--line:#e4dac6;--white:#fffdf7;--serif:"Noto Serif SC","Songti SC","STSong",serif;--sans:"Microsoft YaHei","PingFang SC",sans-serif}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 90% 0%,#e9dfc8 0,transparent 30%),var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh}
-header{height:70px;padding:0 max(22px,calc((100vw - 1360px)/2));display:flex;align-items:center;justify-content:space-between;background:#faf7efdd;border-bottom:1px solid #d9caa9;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
-.brand{display:flex;align-items:center;gap:12px;color:var(--jade)}.mark{width:39px;height:39px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;font:21px var(--serif)}.brand strong{font:700 21px var(--serif);letter-spacing:5px}.brand small{display:block;color:#9a8b6b;font-size:10px;letter-spacing:2px;margin-top:2px}.topnote{font-size:11px;color:#8d846f;letter-spacing:1px}
-.layout{max-width:1360px;margin:auto;padding:24px 22px 55px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:27px}
-aside{padding:14px 13px;border-right:1px solid var(--line);min-height:calc(100vh - 115px);position:sticky;top:92px;align-self:start}
-.sidehead{font-size:12px;color:#727568;letter-spacing:2px;margin:7px 4px 13px}.sidehead span{float:right;color:#b5a57e;font:10px Georgia}
-nav{display:grid;gap:5px}.navbtn{border:0;background:transparent;text-align:left;padding:11px 10px;border-radius:7px;color:#666b61;cursor:pointer;font-size:12px;display:flex;gap:10px;align-items:center}.navbtn:hover{background:#eee9dc}.navbtn.active{background:var(--jade);color:#fff8e9}.navicon{color:var(--gold);font:16px var(--serif);width:17px}.navcount{margin-left:auto;color:#b6a985;font:11px Georgia}
-.course{margin-top:25px;border-top:1px solid var(--line);padding-top:20px}.course button{width:100%;border:0;background:#e9eee7;color:var(--jade);padding:11px;border-radius:7px;text-align:left;font-size:12px;cursor:pointer}.course small{display:block;color:#8c917f;font-size:10px;margin-top:5px}.sidequote{margin:30px 4px 0;padding:14px 12px;border:1px solid #e0d4bc;background:#faf7ee;border-radius:8px;color:#817863;font:11px/1.9 var(--serif)}
-main{min-width:0}.hero{min-height:290px;background:linear-gradient(112deg,#173e37,#2e5c4e);color:#f7f0e2;border-radius:13px;padding:39px 44px;position:relative;overflow:hidden;box-shadow:0 14px 36px #3d49351a}
+:root{--jade:#173e37;--jade2:#2d5b4d;--gold:#b99b62;--paper:#f5f0e5;--ink:#29332d;--muted:#817e70;--line:#e4dac6;--white:#fffdf7;--serif:"Noto Serif SC","Songti SC","STSong",serif;--sans:"Microsoft YaHei","PingFang SC",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 90% 0%,#e9dfc8 0,transparent 30%),var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh}
+header{height:72px;padding:0 max(22px,calc((100vw - 1380px)/2));display:flex;align-items:center;justify-content:space-between;background:#faf7efed;border-bottom:1px solid #d9caa9;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:12px;color:var(--jade)}.mark{width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;font:22px var(--serif)}.brand strong{font:700 21px var(--serif);letter-spacing:5px}.brand small{display:block;color:#9a8b6b;font-size:10px;letter-spacing:2px;margin-top:3px}.topnote{font-size:11px;color:#8d846f;letter-spacing:1px}
+.layout{max-width:1380px;margin:auto;padding:24px 22px 55px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}
+aside{padding:12px 13px;border-right:1px solid var(--line);min-height:calc(100vh - 120px);position:sticky;top:94px;align-self:start}
+.sidehead{font-size:11px;color:#9b8a68;letter-spacing:2px;margin:8px 8px 13px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;text-align:left;padding:12px 11px;border-radius:7px;color:#666b61;cursor:pointer;font-size:12px;display:flex;gap:11px;align-items:center}.nav button:hover{background:#eee9dc}.nav button.active{background:var(--jade);color:#fff8e9}.navicon{color:var(--gold);font:17px var(--serif);width:18px;text-align:center}.nav small{margin-left:auto;color:#b6a985;font:10px Georgia}
+.side-note{margin:28px 5px 0;padding:14px 12px;border:1px solid #e0d4bc;background:#faf7ee;border-radius:8px;color:#817863;font:11px/1.9 var(--serif)}
+main{min-width:0}.view{display:none}.view.active{display:block}
+.hero{min-height:270px;background:linear-gradient(112deg,#173e37,#2e5c4e);color:#f7f0e2;border-radius:13px;padding:38px 43px;position:relative;overflow:hidden;box-shadow:0 14px 36px #3d49351a}
 .hero:before,.hero:after{content:"";position:absolute;border:1px solid #d8c18c38;border-radius:50%;width:290px;height:290px;right:7%;top:-120px}.hero:after{width:220px;height:220px;right:10%;top:-85px}
 .eyebrow{font:10px Georgia;letter-spacing:2.4px;color:#d2bd8e}.eyebrow:before{content:"";display:inline-block;width:20px;height:1px;background:#d2bd8e;vertical-align:middle;margin-right:9px}
-h1{font:800 55px/1.15 var(--serif);letter-spacing:10px;margin:20px 0 6px}h1 i{font-style:normal;color:#d7b878}.sub{font:19px var(--serif);letter-spacing:4px;color:#e2d5b9}.desc{font-size:12px;color:#c4d0c5;margin-top:16px;line-height:1.9}.hero button{margin-top:20px;background:#d8c18f;border:0;color:#24483d;padding:10px 16px;border-radius:4px;font-size:12px;cursor:pointer}
-.hero-art{position:absolute;right:10%;top:50px;width:155px;height:155px;border:1px solid #d8c18c77;border-radius:50%;display:grid;place-items:center;color:#ddc58f;font:27px var(--serif)}.hero-art:before{content:"";position:absolute;inset:18px;border:1px dashed #d8c18c66;border-radius:50%}.hero-art:after{content:"";position:absolute;width:1px;height:130px;background:#d8c18c66}.hero-art b{position:relative;z-index:1;font-weight:400}
-.sectionbar{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:32px 0 15px}.kicker{font:10px Georgia;color:#a58c5c;letter-spacing:2px}.sectionbar h2{font:600 21px var(--serif);letter-spacing:2px;margin:5px 0;color:#304338}.sectionbar p{font-size:11px;color:#8a8779;margin:6px 0 0}
-.search{width:min(420px,50%);height:42px;border:1px solid var(--line);border-radius:7px;background:#fffdf7cc;display:flex;align-items:center;padding:0 12px;gap:9px}.search span{color:var(--gold);font-size:20px}.search input{border:0;outline:0;background:transparent;flex:1;min-width:0;font-size:12px;color:var(--ink)}.search input::placeholder{color:#aaa391}
-.stats{display:grid;grid-template-columns:repeat(3,1fr) 1.5fr;gap:10px}.stat,.quote{background:#fffdf7bb;border:1px solid var(--line);border-radius:8px;padding:13px 15px;min-height:83px}.stat small{font-size:10px;color:#898475}.stat strong{display:block;color:var(--jade);font:600 25px Georgia;margin-top:4px}.quote{background:#eee9dc;display:flex;align-items:center;gap:12px}.quote em{font:40px Georgia;color:var(--gold)}.quote p{font:12px/1.9 var(--serif);margin:0;color:#566052}
-.filters{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}.chip{border:1px solid var(--line);border-radius:20px;background:#fffdf780;color:#777466;padding:7px 11px;font-size:11px;cursor:pointer}.chip.active,.chip:hover{background:var(--jade);border-color:var(--jade);color:#fff8e9}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:#fffdf7c9;border:1px solid var(--line);border-radius:9px;padding:17px 18px;min-height:158px;cursor:pointer;transition:.18s;position:relative}.card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #443c2812;border-color:#c8b386}.cardtop{display:flex;justify-content:space-between;color:#a28b5d;font-size:10px;letter-spacing:1px}.cardtop b{font:12px Georgia;color:#c4b58e}.card h3{font:600 16px var(--serif);color:#2e493b;margin:16px 0 8px}.card p{font-size:11px;line-height:1.8;color:#838174;margin:0}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px}.tag{background:#f0ede4;color:#8b8475;border-radius:3px;padding:3px 6px;font-size:9px}
-.empty{text-align:center;padding:40px;color:#8b8678;font-size:12px}.quick{margin-top:35px;padding:21px 23px;background:#efeadf;border:1px solid var(--line);border-radius:9px}.quick h2{font:600 17px var(--serif);color:#304338;margin:5px 0 14px}.quicktags{display:flex;gap:7px;flex-wrap:wrap}.quicktags button{border:1px solid #dbd0ba;background:#faf7ef;color:#777365;padding:7px 10px;border-radius:4px;font:11px var(--serif);cursor:pointer}.quicktags button:hover{border-color:var(--gold);color:var(--jade)}
-footer{border-top:1px solid var(--line);margin-top:28px;padding-top:14px;display:flex;justify-content:space-between;color:#a79d88;font:10px var(--serif)}
-.overlay{position:fixed;inset:0;background:#17241e77;z-index:30;display:flex;justify-content:flex-end}.overlay[hidden]{display:none}.detail{background:#f8f4ea;width:min(740px,100%);height:100%;overflow:auto;padding:25px 38px 50px;box-shadow:-12px 0 35px #0002}.detailtop{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:14px}.back{border:0;background:none;color:var(--jade);cursor:pointer;font-size:12px}.detailtop span{font:10px Georgia;color:#ac9565;letter-spacing:1px}.detailcat{font-size:11px;color:#a58b59;letter-spacing:1px;margin-top:29px}.detail h1{font:700 28px/1.5 var(--serif);letter-spacing:1px;color:#2d4639;margin:8px 0}.summary{border-left:2px solid var(--gold);padding:4px 0 4px 13px;color:#79786c;font:13px/2 var(--serif);margin:12px 0 20px}.detailtags{display:flex;gap:6px;flex-wrap:wrap}.detailtags span{background:#eee8d9;color:#847b68;padding:5px 8px;font-size:10px;border-radius:3px}.detail section{margin-top:25px}.detail h2{font:600 17px var(--serif);color:#315345;border-bottom:1px solid var(--line);padding-bottom:9px}.detail p,.detail li{font:13px/2.1 var(--serif);color:#55584f}.detail ul{padding-left:22px}.callout{background:#eee9dc;border-left:3px solid var(--gold);padding:12px 15px;font:12px/2 var(--serif);color:#5e6256}.source{border-top:1px solid var(--line);margin-top:30px;padding-top:13px;font-size:10px;line-height:1.8;color:#a49a85}
-@media(max-width:980px){.layout{grid-template-columns:190px 1fr;gap:17px}.stats{grid-template-columns:repeat(3,1fr)}.quote{grid-column:1/-1}.hero-art{right:3%;opacity:.55}}
-@media(max-width:700px){header{height:62px;padding:0 15px}.topnote{display:none}.layout{display:block;padding:13px 12px 35px}aside{display:none;position:fixed;top:62px;bottom:0;left:0;width:260px;background:#f5f0e5;z-index:25;overflow:auto;box-shadow:10px 0 28px #0002;padding:20px}.asideopen aside{display:block}.menubtn{display:block!important}.hero{padding:30px 23px;min-height:285px}.hero h1{font-size:46px}.hero-art{right:-55px;opacity:.25}.desc{max-width:270px}.sectionbar{display:block}.search{width:100%;margin-top:14px}.stats{gap:6px}.stat{padding:10px;min-height:75px}.stat strong{font-size:22px}.cards{grid-template-columns:1fr}.detail{padding:20px 18px}.detail h1{font-size:24px}footer{flex-direction:column;gap:7px}}
-.menubtn{display:none;border:1px solid var(--line);background:#fffdf7;color:var(--jade);border-radius:5px;padding:7px 10px}
-</style></head>
+h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1 i{font-style:normal;color:#d7b878}.sub{font:18px var(--serif);letter-spacing:4px;color:#e2d5b9}.desc{font-size:12px;color:#c4d0c5;margin-top:15px;line-height:1.9;max-width:560px}.hero .actions{display:flex;gap:9px;margin-top:19px}.hero button{background:#d8c18f;border:0;color:#24483d;padding:10px 15px;border-radius:4px;font-size:12px;cursor:pointer}.hero button.secondary{background:transparent;border:1px solid #d8c18f88;color:#f6edda}
+.hero-art{position:absolute;right:10%;top:48px;width:155px;height:155px;border:1px solid #d8c18c77;border-radius:50%;display:grid;place-items:center;color:#ddc58f;font:27px var(--serif)}.hero-art:before{content:"";position:absolute;inset:18px;border:1px dashed #d8c18c66;border-radius:50%}.hero-art:after{content:"";position:absolute;width:1px;height:130px;background:#d8c18c66}.hero-art b{position:relative;z-index:1;font-weight:400}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:30px 0 14px}.kicker{font:10px Georgia;color:#a58c5c;letter-spacing:2px}.section-head h2{font:600 21px var(--serif);letter-spacing:2px;margin:5px 0;color:#304338}.section-head p{font-size:11px;color:#8a8779;margin:6px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:17px}.stat{background:#fffdf7bb;border:1px solid var(--line);border-radius:8px;padding:13px 15px;min-height:80px}.stat small{font-size:10px;color:#898475}.stat strong{display:block;color:var(--jade);font:600 25px Georgia;margin-top:5px}
+.searchbar{width:min(420px,52%);height:42px;border:1px solid var(--line);border-radius:7px;background:#fffdf7cc;display:flex;align-items:center;padding:0 12px;gap:9px}.searchbar span{color:var(--gold);font-size:20px}.searchbar input{border:0;outline:0;background:transparent;flex:1;min-width:0;font-size:12px;color:var(--ink)}.searchbar input::placeholder{color:#aaa391}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:#fffdf7c9;border:1px solid var(--line);border-radius:9px;padding:17px 18px;min-height:145px;cursor:pointer;transition:.18s;position:relative}.card:hover{transform:translateY(-2px);box-shadow:0 10px 25px #443c2812;border-color:#c8b386}.cardtop{display:flex;justify-content:space-between;align-items:center;color:#a28b5d;font-size:10px;letter-spacing:1px}.cardtop b{font:12px Georgia;color:#c4b58e}.card h3{font:600 16px var(--serif);color:#2e493b;margin:14px 0 7px}.card p{font-size:11px;line-height:1.9;color:#838174;margin:0}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}.tag{background:#f0ede4;color:#8b8475;border-radius:3px;padding:3px 6px;font-size:9px}
+.callout{background:#eee9dc;border-left:3px solid var(--gold);padding:12px 15px;font:12px/2 var(--serif);color:#5e6256;border-radius:0 5px 5px 0}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--line);border-radius:20px;background:#fffdf780;color:#777466;padding:7px 11px;font-size:11px;cursor:pointer}.chip.active,.chip:hover{background:var(--jade);border-color:var(--jade);color:#fff8e9}
+.timeline{display:grid;gap:10px}.lesson{display:grid;grid-template-columns:66px minmax(0,1fr) auto;gap:15px;align-items:center;background:#fffdf7c9;border:1px solid var(--line);border-radius:8px;padding:14px 17px;cursor:pointer}.lesson:hover{border-color:#c8b386;background:#fffdf0}.lesson-num{font:24px Georgia;color:#b99b62}.lesson h3{font:600 15px var(--serif);color:#30483a;margin:0 0 5px}.lesson p{font-size:11px;color:#858173;line-height:1.8;margin:0}
+.status{font-size:9px;padding:4px 7px;border-radius:3px;background:#e9eee7;color:#466455}.status.pending{background:#f1e9d9;color:#9b7941}.status.partial{background:#eee9dc;color:#82745a}
+.method{background:#fffdf7c9;border:1px solid var(--line);border-radius:9px;padding:19px}.method h3{font:600 16px var(--serif);color:#30483a;margin:5px 0 8px}.method p{font-size:11px;line-height:1.9;color:#858173;margin:0}.steps{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:14px}.steps span{background:#eee9dc;color:#566052;padding:7px 9px;border-radius:4px;font:11px var(--serif)}.steps i{color:#b99b62;font-style:normal}
+.term-cloud{display:flex;flex-wrap:wrap;gap:9px}.term-cloud button{border:1px solid #dbd0ba;background:#faf7ef;color:#777365;padding:9px 12px;border-radius:5px;font:12px var(--serif);cursor:pointer}.term-cloud button:hover{border-color:var(--gold);color:var(--jade);background:#fffdf7}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12px;background:#fffdf7b8}.data-table th,.data-table td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.data-table th{color:#92784b;font-weight:500;background:#f0ebdf}.data-table td{color:#55584f}.diagram{margin:15px 0;padding:15px;background:#fbf8f0;border:1px solid var(--line);border-radius:8px}.diagram-title{font:13px var(--serif);color:#365347;margin:0 0 12px}.trigram-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.trigram{border:1px solid var(--line);border-radius:5px;padding:9px 5px;text-align:center;background:#fffdf7}.trigram b{display:block;font:23px var(--serif);color:var(--jade)}.trigram strong{display:block;font:12px var(--serif);margin-top:4px}.trigram small{font-size:10px;color:#938a76}
+.relation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.relation{border:1px solid var(--line);border-radius:6px;padding:10px;background:#fffdf7}.relation b{font:13px var(--serif);color:#315345}.relation p{font-size:11px;line-height:1.8;color:#777365;margin:5px 0 0}
+.branch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.branch{border:1px solid var(--line);border-radius:6px;background:#fffdf7;padding:9px 6px;text-align:center}.branch b{display:block;color:#315345;font:21px var(--serif)}.branch span{display:block;font-size:10px;color:#877e6d;margin-top:3px}
+.bagua-map{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:390px;margin:10px auto}.bagua-map div{background:#f0eadc;border:1px solid #e1d5bf;text-align:center;padding:10px 3px;font:13px var(--serif);color:#3c5145}.bagua-map .center{background:#e6ddc8;color:#967b4c}
+.detail-overlay{position:fixed;inset:0;background:#17241e77;z-index:30;display:flex;justify-content:flex-end}.detail-overlay[hidden]{display:none}.detail{background:#f8f4ea;width:min(790px,100%);height:100%;overflow:auto;padding:25px 38px 50px;box-shadow:-12px 0 35px #0002}.detailtop{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:14px}.back{border:0;background:none;color:var(--jade);cursor:pointer;font-size:12px}.detailtop span{font:10px Georgia;color:#ac9565;letter-spacing:1px}.detailcat{font-size:11px;color:#a58b59;letter-spacing:1px;margin-top:27px}.detail h1{font:700 29px/1.5 var(--serif);letter-spacing:1px;color:#2d4639;margin:8px 0}.summary{border-left:2px solid var(--gold);padding:4px 0 4px 13px;color:#79786c;font:13px/2 var(--serif);margin:12px 0 20px}.detailtags{display:flex;gap:6px;flex-wrap:wrap}.detailtags span{background:#eee8d9;color:#847b68;padding:5px 8px;font-size:10px;border-radius:3px}.detail section{margin-top:24px}.detail h2{font:600 17px var(--serif);color:#315345;border-bottom:1px solid var(--line);padding-bottom:9px}.detail p,.detail li{font:13px/2.1 var(--serif);color:#55584f}.detail ul{padding-left:22px}.detail .source{border-top:1px solid var(--line);margin-top:28px;padding-top:13px;font-size:10px;line-height:1.8;color:#a49a85}
+.empty{text-align:center;padding:35px;color:#8b8678;font-size:12px}footer{border-top:1px solid var(--line);margin-top:30px;padding-top:14px;display:flex;justify-content:space-between;color:#a79d88;font:10px var(--serif)}
+.menu-mobile{display:none;border:1px solid var(--line);background:#fffdf7;color:var(--jade);border-radius:5px;padding:7px 10px}
+@media(max-width:980px){.layout{grid-template-columns:190px 1fr;gap:17px}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{right:3%;opacity:.55}}
+@media(max-width:700px){header{height:62px;padding:0 15px}.topnote{display:none}.menu-mobile{display:block}.layout{display:block;padding:13px 12px 35px}aside{display:none;position:fixed;top:62px;bottom:0;left:0;width:260px;background:#f5f0e5;z-index:25;overflow:auto;box-shadow:10px 0 28px #0002;padding:20px}.layout.menu-open aside{display:block}.hero{padding:29px 22px;min-height:270px}.hero h1{font-size:43px}.hero-art{right:-60px;opacity:.22}.desc{max-width:265px}.stats{gap:6px}.stat{padding:10px;min-height:72px}.stat strong{font-size:22px}.grid3,.grid2{grid-template-columns:1fr}.section-head{display:block}.searchbar{width:100%;margin-top:13px}.lesson{grid-template-columns:42px minmax(0,1fr);gap:10px}.lesson .status{grid-column:2;justify-self:start}.detail{padding:20px 18px}.detail h1{font-size:24px}.relation-grid{grid-template-columns:repeat(2,1fr)}.branch-grid{grid-template-columns:repeat(3,1fr)}.trigram-grid{grid-template-columns:repeat(2,1fr)}footer{flex-direction:column;gap:7px}}
+</style>
+</head>
 <body>
-<header><div class="brand"><div class="mark">觀</div><div><strong>观道</strong><small>风水知识库 · PERSONAL ARCHIVE</small></div></div><div class="topnote">● 个人学习档案　　<button class="menubtn" id="menuBtn">目录</button></div></header>
+<header>
+ <div class="brand"><div class="mark">觀</div><div><strong>观道</strong><small>风水知识库 · PERSONAL ARCHIVE</small></div></div>
+ <div class="topnote">● 个人学习档案　　<button class="menu-mobile" id="menuBtn">知识目录</button></div>
+</header>
 <div class="layout" id="layout">
-<aside><div class="sidehead">知识目录 <span>INDEX</span></div><nav id="nav"></nav><div class="course"><div class="sidehead">课程归档 <span>COURSES</span></div><button id="courseBtn">第八课 <small>当前整理 · 课程大纲与知识条目</small></button></div><div class="sidequote">以课程为线索，<br>把零散知识慢慢连成体系。</div></aside>
+<aside>
+ <div class="sidehead">知识目录 · INDEX</div>
+ <nav class="nav" id="nav"></nav>
+ <div class="side-note">以课程为线索，<br>以知识体系为纲。<br><br>先记录，再理解；<br>逐步建立自己的知识脉络。</div>
+</aside>
 <main>
-<section class="hero"><div class="eyebrow">TRADITIONAL KNOWLEDGE · FENG SHUI</div><h1>观道<i>。</i></h1><div class="sub">以空间为卷，以理路为纲。</div><div class="desc">个人风水学习档案。按课程整理、按知识检索，逐步建立自己的理解体系。</div><button onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">浏览知识　→</button><div class="hero-art"><b>道</b></div></section>
-<div class="sectionbar"><div><div class="kicker">EXPLORE</div><h2>检索知识</h2></div><label class="search"><span>⌕</span><input id="search" placeholder="搜索太极点、天心位、拱合论……"></label></div>
-<div class="stats"><div class="stat"><small>课程 COURSES</small><strong>01</strong></div><div class="stat"><small>知识条目 NOTES</small><strong id="noteCount">07</strong></div><div class="stat"><small>主题 TOPICS</small><strong>06</strong></div><div class="quote"><em>“</em><p>先立其主，再察其势；<br>由整体入手，逐层理解。</p></div></div>
-<section id="library"><div class="sectionbar"><div><div class="kicker">YOUR LIBRARY</div><h2 id="listTitle">风水知识</h2><p id="listSub">从课程笔记出发，建立可检索的知识索引。</p></div><span id="resultCount" style="font-size:11px;color:#a79b82"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div><div class="empty" id="empty" hidden>没有找到相关内容，请更换关键词或分类。</div></section>
-<section class="quick"><div class="kicker">QUICK INDEX</div><h2>常用知识索引</h2><div class="quicktags" id="quicktags"></div></section>
+<section class="view active" id="view-home">
+ <div class="hero">
+  <div class="eyebrow">TRADITIONAL KNOWLEDGE · FENG SHUI</div>
+  <h1>观道<i>。</i></h1><div class="sub">以空间为卷，以理路为纲。</div>
+  <div class="desc">个人风水学习档案。课程有出处，知识有归属，方法可检索，让零散的课堂内容逐渐形成自己的理解体系。</div>
+  <div class="actions"><button data-go="foundation">进入知识体系　→</button><button class="secondary" data-go="courses">查看课程档案</button></div>
+  <div class="hero-art"><b>道</b></div>
+ </div>
+ <div class="stats">
+  <div class="stat"><small>课程档案 COURSES</small><strong>08</strong></div>
+  <div class="stat"><small>知识条目 NOTES</small><strong id="noteCount">00</strong></div>
+  <div class="stat"><small>专题方法 METHODS</small><strong>08</strong></div>
+ </div>
+ <div class="section-head"><div><div class="kicker">KNOWLEDGE MAP</div><h2>从基础到应用</h2><p>先建立易理与干支基础，再进入七星八宅和阳宅实操。</p></div></div>
+ <div class="grid3" id="homeCards"></div>
+ <div class="section-head"><div><div class="kicker">RECENTLY ADDED</div><h2>本次新增资料</h2><p>易理基础知识卡、十二地支图解、地支关系图解与阳宅实操专题。</p></div></div>
+ <div class="grid2" id="recentCards"></div>
+ <div class="callout" style="margin-top:18px">整理原则：课程原始记录、知识体系索引、操作方法分开管理；课堂观点与后续辨析分开标注。资料不完整时明确标记，不用推测内容填空。</div>
+</section>
+
+<section class="view" id="view-foundation">
+ <div class="section-head"><div><div class="kicker">FOUNDATION · YI LI</div><h2>易理基础</h2><p>从无极、太极、两仪、四象到八卦与五行，建立基础概念索引。</p></div><label class="searchbar"><span>⌕</span><input id="searchFoundation" placeholder="搜索太极、八卦、河图、五行……"></label></div>
+ <div class="filters" id="foundationFilters"></div><div class="grid2" id="foundationCards"></div><div class="empty" id="foundationEmpty" hidden>没有找到相关知识。</div>
+</section>
+
+<section class="view" id="view-branches">
+ <div class="section-head"><div><div class="kicker">HEAVENLY STEMS & EARTHLY BRANCHES</div><h2>干支知识</h2><p>天干、地支、藏干、合会冲刑害破与长生十二态。</p></div><label class="searchbar"><span>⌕</span><input id="searchBranches" placeholder="搜索子午冲、三合、藏干……"></label></div>
+ <div class="filters" id="branchFilters"></div><div class="grid2" id="branchCards"></div><div class="empty" id="branchEmpty" hidden>没有找到相关知识。</div>
+</section>
+
+<section class="view" id="view-eight">
+ <div class="section-head"><div><div class="kicker">SEVEN STARS · EIGHT MANSIONS</div><h2>七星与八宅</h2><p>七星蕴含、八宅磁场、八宫大游年、数字磁场与学习路线。</p></div><label class="searchbar"><span>⌕</span><input id="searchEight" placeholder="搜索贪狼、生气、伏位、数字磁场……"></label></div>
+ <div class="filters" id="eightFilters"></div><div class="grid2" id="eightCards"></div><div class="empty" id="eightEmpty" hidden>没有找到相关知识。</div>
+</section>
+
+<section class="view" id="view-yangzhai">
+ <div class="section-head"><div><div class="kicker">YANGZHAI · PRACTICE</div><h2>阳宅实操</h2><p>从立极、天心位到测方位、定磁场，按实际操作顺序组织。</p></div><label class="searchbar"><span>⌕</span><input id="searchYangzhai" placeholder="搜索立主、天心位、CAD、补角……"></label></div>
+ <div class="filters" id="yangzhaiFilters"></div><div class="grid2" id="yangzhaiCards"></div><div class="empty" id="yangzhaiEmpty" hidden>没有找到相关知识。</div>
+</section>
+
+<section class="view" id="view-courses">
+ <div class="section-head"><div><div class="kicker">COURSE ARCHIVE</div><h2>课程档案</h2><p>按课程顺序保留学习来源，知识体系则从不同课程中提取关联。</p></div></div>
+ <div class="timeline" id="courseList"></div>
+ <div class="callout" style="margin-top:18px">第一课、第四课目前尚未录入可核实的原始内容；第五课只有部分作业记录。后续补充课件或笔记后再完善。</div>
+</section>
+
+<section class="view" id="view-glossary">
+ <div class="section-head"><div><div class="kicker">QUICK INDEX</div><h2>术语索引</h2><p>输入术语，直接定位相关知识条目。</p></div><label class="searchbar"><span>⌕</span><input id="searchGlossary" placeholder="输入术语搜索……"></label></div>
+ <div class="term-cloud" id="termCloud"></div><div class="section-head"><div><div class="kicker">RELATED NOTES</div><h2>检索结果</h2></div></div><div class="grid2" id="glossaryCards"></div>
+</section>
+
 <footer><span>观道 · 风水知识库</span><span>个人学习整理 · 持续更新</span></footer>
-</main></div>
-<div class="overlay" id="overlay" hidden><article class="detail"><div class="detailtop"><button class="back" id="back">← 返回知识库</button><span>COURSE NOTE · 第八课</span></div><div id="detailbody"></div></article></div>
+</main>
+</div>
+<div class="detail-overlay" id="overlay" hidden><article class="detail"><div class="detailtop"><button class="back" id="back">← 返回知识库</button><span id="detailType">KNOWLEDGE NOTE</span></div><div id="detailBody"></div></article></div>
+
 <script>
-const CATS=[["all","全部知识","☯"],["course","课程总览","册"],["taiji","太极与立主","极"],["earth","房气与地气","气"],["gonghe","拱合论","合"],["method","定门与磁场","门"],["tianxin","补角与天心位","心"],["direction","方位与四正卦","方"]];
-const TAGS=["太极点","大太极","中太极","小太极","天心位","三边论","立主","定门","3:3:3","拱合论","角力","中力","四正卦","补角"];
-const NOTES=[
-{id:"overview",cat:"course",cn:"课程总览",no:"01",title:"第八课｜课程大纲",summary:"本课围绕太极点、房气与地气、拱合论，以及三边论的操作方法展开。",tags:["第八课","课程大纲","三边论"],sections:[["本课四个主题",["太极点是什么？大、中、小三太极分别适用哪些场景？","房气与地球自西向东转有什么关系？墙在其中扮演什么角色？进一步讨论补角与天心位。","根据房气运转中墙的作用，描述拱合论的三个大点。","构建三边论知识树，包含立主的三步操作方法。"]]],source:"根据本次提供的第八课课程大纲图片整理。"},
-{id:"taiji",cat:"taiji",cn:"太极与立主",no:"02",title:"太极点与大、中、小三太极",summary:"立主先确定太极点，再根据研究范围区分不同层级的太极。",tags:["太极点","大太极","中太极","小太极","立主"],sections:[["太极点",["立主：太极点。通过确定研究范围，找到对应空间的中心点，作为后续分析的起点。"]],["大、中、小三太极",["大太极：对应家族气运。","中太极：对应20年当下气运。课件以带院子的住宅示意中太极层级。","小太极：对应个人气运，即某一个人所在的房间。"]],["理解要点",["同一处住宅可以从不同范围观察：整体住宅、带院住宅中的内外空间，以及个人所在的房间。范围不同，所立的太极点也不同。"]]],source:"根据本次提供的第八课课件图片整理。"},
-{id:"earth",cat:"earth",cn:"房气与地气",no:"03",title:"房气、地气与空间运行",summary:"课堂从地球自转、青龙白虎和墙体分界等角度解释空间运行。",tags:["房气","地气","青龙","白虎","墙体"],sections:[["地气与运行方向",["课堂观点：地球自西向东转，因此北半球的能量运转符合逆时针原理。"]],["青龙与白虎",["左边为青龙，右边为白虎。","左边青龙要高一点，右边白虎要低一点。","办公室布局举例：左边靠墙，右边出入。"]],["墙与房气",["墙、缺角、缺宫会使能量受到阻碍。","补角的目的，是让能量能够运转。","墙也承担空间分界的作用，影响室内空间的组织方式。"]],["课堂记录提示",["本条保留课堂理论原意，作为个人学习记录，不将传统理论表述直接等同于现代物理学结论。"]]],source:"根据本次提供的课堂文字笔记整理。"},
-{id:"gonghe",cat:"gonghe",cn:"拱合论",no:"04",title:"拱合论：墙与空间力量关系",summary:"墙是分界线和中转站；课堂提出角力、中力及功能区划分三个判断原则。",tags:["拱合论","墙","角力","中力","功能区"],sections:[["拱合论的基本认识",["墙是分界线，也是中转站。课堂提出：一个室内只能有一个大磁场，墙承担分隔空间的作用。"]],["三个判断原则",["角力大于边力：角指墙角，边指墙的边线。","中力大于侧力：中间位置的力量大于两侧。","明显功能区划分：功能区域需要有清晰的区分，课堂记录的比例为75%。"]],["功能区划分",["课堂举例提到可以通过铺地毯等方式，形成明显的功能区域划分。"]]],callout:"记忆关键词：角力 ＞ 边力；中力 ＞ 侧力；功能区划分。",source:"根据本次提供的第八课课件图片及课堂文字笔记整理。"},
-{id:"method",cat:"method",cn:"定门与磁场",no:"05",title:"三边论：立主、定门、划定磁场",summary:"先立主划定范围，再测方位、定门、划定磁场，最后分析和调整。",tags:["三边论","立主","定门","3:4:3","2:6:2","3:3:3"],sections:[["三边论的整体步骤",["立主：划定范围。","分析论断：找出问题，验证合理性。","化解做局：解决问题。","趋吉做局：官、财、桃花、健康。"]],["立主的三个操作步骤",["① 找几何中心点：确定太极点、天心位，并观察缺角。","② 测方位：课堂提到可结合地砖线测量方位。","③ 矫正大四方：校正住宅正向。"]],["定门",["方法一：3:4:3。","方法二：2:6:2。","方法三：反推法。"]],["划定磁场",["采用3:3:3的方式划定磁场。"]]],callout:"操作顺序：立主 → 定门 → 划定磁场 → 分析论断 → 化解做局 → 趋吉做局。",source:"根据本次提供的课堂笔记及第八课课件图片整理。"},
-{id:"tianxin",cat:"tianxin",cn:"补角与天心位",no:"06",title:"天心位、补角与补房气",summary:"天心位是立主时需要关注的中心区域；补角、补房气与化煞属于后续调整方向。",tags:["天心位","1/18","1/100","补角","补房气","化煞"],sections:[["天心位",["天心位：课堂记录以房屋面积的1/18作为相关区域范围。","1/100：课堂笔记标注为需要操作的点。","天心位必须保持干净、整洁，避免堆放重物。"]],["补角与补房气",["补角：补房气、化煞。","课堂观点：缺角、缺宫会影响空间中的能量运行；补角是为了让能量能够运转。"]],["操作提醒",["先确定太极点和天心位，再判断缺角、缺宫及其范围，不要脱离整体空间单独判断。"]]],source:"根据本次提供的课堂文字笔记整理。"},
-{id:"direction",cat:"direction",cn:"方位与四正卦",no:"07",title:"四正卦与方位范围",summary:"课堂记录四正卦的角度范围，以及四隅位的能量判断。",tags:["四正卦","45度","7.5度","四隅位"],sections:[["四正卦的范围",["课堂记录：四正卦的实际影响范围为45°上下各7.5°，合计15°。"]],["四隅位",["课堂记录：四隅位的能量较小，不能压。"]]],callout:"45° ± 7.5°；两侧各7.5°，合计15°。",source:"根据本次提供的课堂文字笔记整理。"}
+const navItems=[
+ {id:"home",name:"总览",icon:"觀"},
+ {id:"foundation",name:"易理基础",icon:"易"},
+ {id:"branches",name:"干支知识",icon:"支"},
+ {id:"eight",name:"七星与八宅",icon:"星"},
+ {id:"yangzhai",name:"阳宅实操",icon:"宅"},
+ {id:"courses",name:"课程档案",icon:"册"},
+ {id:"glossary",name:"术语索引",icon:"索"}
 ];
-const $=s=>document.querySelector(s);let cat="all",query="";
+const notes=[
+{id:"f1",view:"foundation",group:"基础理论",title:"无极、太极、两仪、四象与八卦",summary:"无极生太极，太极生两仪，两仪生四象，四象生八卦。",tags:["无极","太极","两仪","四象","八卦"],source:"《2026-09易理基础知识卡修订版》PPT第3页；第二课课堂笔记。",sections:[
+["易理演化顺序",["无极生太极。","太极生两仪。","两仪生四象。","四象生八卦。"]],
+["八卦歌诀",["乾三连：☰","坤六断：☷","震仰盂：☳","艮覆碗：☶","离中虚：☲","坎中满：☵","兑上缺：☱","巽下断：☴"]],
+["学习提示",["先记住八卦的基本卦象，再结合方位、五行、季节、家庭角色等象意学习。"]]
+],visual:"bagua"},
+{id:"f2",view:"foundation",group:"基础理论",title:"河图洛书与先天、后天八卦",summary:"认识河图、洛书的点数布局，以及先天八卦与后天八卦的方位排列。",tags:["河图","洛书","先天八卦","后天八卦","方位"],source:"《2026-09易理基础知识卡修订版》PPT第4页。",sections:[
+["河图与洛书",["课件以黑白点表示阴阳数，分别展示河图与洛书的点数布局。","本条先作为图卡索引保存，后续可补充各方位数理的逐项讲解。"]],
+["先天八卦",["课件排列：上兑、上中乾、上右巽；中左离、中右坎；下左震、下中坤、下右艮。"]],
+["后天八卦",["课件排列：上左巽、上中离、上右坤；中左震、中右兑；下左艮、下中坎、下右乾。"]],
+["相关学习",["先天八卦与后天八卦的排列、方位和用途，结合课程图示复习。"]]
+],visual:"bagua"},
+{id:"f3",view:"foundation",group:"基础理论",title:"五行生克与八卦太极",summary:"从太极到五行是能量的运转，从五行到八卦则体现了生灭。",tags:["五行","相生","相克","八卦","太极"],source:"《2026-09易理基础知识卡修订版》PPT第5页；第二课课堂笔记。",sections:[
+["五行象意",["木曰曲直：生发、舒展、条达。","火曰炎上：温暖、升腾、发散、光明。","土爰稼穑：承载、包容、生化、转化。","金曰从革：收敛、肃降、变革、决断。","水曰润下：滋润、下行、闭藏、涵养。"]],
+["五行相生",["水生木、木生火、火生土、土生金、金生水。"]],
+["五行相克",["金克木、木克土、土克水、水克火、火克金。"]],
+["课堂理解",["相生是滋养，相克是约束。生而有制，制而有生，万物才能各成其物。","五行不是简单的五种物质，而是对事物不同性质与运动方式的归纳。"]]
+],visual:"five"},
+{id:"f4",view:"foundation",group:"基础理论",title:"八卦象意",summary:"把八卦与方位、季节、五行、九宫数字等象意联系起来。",tags:["八卦象意","方位","季节","五行","九宫数字"],source:"《2026-09易理基础知识卡修订版》PPT第6页图卡。",sections:[
+["课件图卡涉及的象意维度",["方位与季节：以八卦对应方位、春夏秋冬等信息。","家庭角色：课件列出长女、二女儿、老母亲、男主、老父亲等家庭关系象意。","五行属性：阴木、阳木、阴土、阳土、火、水等分类。","九宫数字：课件以4、9、2、3、5、7、8、1、6标示九宫数字。","身体与脏腑：课件列有肝、心、小肠、胃、胆、脾、肾、膀胱、肺、大肠等对应。"]],
+["使用说明",["这里先按课件的象意类别建立索引，不把图卡中的传统对应关系表述为现代医学结论。","如需逐项背诵，可对照原PPT第6页图卡复习。"]]
+]},
+{id:"f5",view:"foundation",group:"基础理论",title:"先后天八卦与二十四山",summary:"从八卦方位延伸到二十四山，是后续罗盘与阳宅方位学习的基础。",tags:["先天八卦","后天八卦","二十四山","罗盘","方位"],source:"《2026-09易理基础知识卡修订版》PPT第5页；用户提供的罗盘图。",sections:[
+["学习范围",["课件将先后天八卦与二十四山放在同一知识板块。","用户另提供罗盘图，作为二十四山与罗盘层次的辅助图示。"]],
+["学习顺序",["先熟悉八卦方位。","再理解二十四山的分布。","最后结合罗盘与住宅实测方向使用。"]],
+["待补充",["二十四山的具体分度、每山边界及罗盘各圈层，后续根据课堂课件逐项补录。"]]
+],visual:"compass"},
+{id:"b1",view:"branches",group:"十二地支",title:"十二地支：月份、时辰与生肖",summary:"子丑寅卯辰巳午未申酉戌亥，分别对应时辰、月份与十二生肖。",tags:["十二地支","时辰","月份","生肖","地支方位"],source:"用户提供的《十二地支》图；《2026-09易理基础知识卡修订版》PPT第7页。",sections:[
+["十二地支顺序",["子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥。"]],
+["地支、生肖、月份与时辰",["子：鼠；十一月；23—1点。","丑：牛；十二月；1—3点。","寅：虎；一月；3—5点。","卯：兔；二月；5—7点。","辰：龙；三月；7—9点。","巳：蛇；四月；9—11点。","午：马；五月；11—13点。","未：羊；六月；13—15点。","申：猴；七月；15—17点。","酉：鸡；八月；17—19点。","戌：狗；九月；19—21点。","亥：猪；十月；21—23点。"]],
+["记忆提示",["地支顺序、生肖、月份和时辰可以放在同一张表里记忆。"]]
+],visual:"branches"},
+{id:"b2",view:"branches",group:"干支关系",title:"天干五合与天干四冲",summary:"记录十天干的五组合化关系，以及课堂笔记中的四组天干相冲。",tags:["天干","五合","四冲"],source:"《2026-09易理基础知识卡修订版》PPT第14页；第五课作业记录。",sections:[
+["天干五合",["甲己合土。","乙庚合金。","丙辛合水。","丁壬合木。","戊癸合火。"]],
+["天干四冲",["甲庚。","乙辛。","丙壬。","丁癸。"]],
+["辨析提醒",["相合不等于一定合化成功，还要结合季节、气势和其他条件。"]]
+]},
+{id:"b3",view:"branches",group:"干支关系",title:"地支三合、三会与六合",summary:"三合看生旺墓，三会看方局，六合看两两相合。",tags:["三合","生旺墓","三会","方局","六合"],source:"《2026-09易理基础知识卡修订版》PPT第8、11、12页；用户提供的地支关系图。",sections:[
+["地支三合（生、旺、墓）",["申子辰合水局。","亥卯未合木局。","寅午戌合火局。","巳酉丑合金局。"]],
+["地支三会（方局）",["寅卯辰三会东方木局。","巳午未三会南方火局。","申酉戌三会西方金局。","亥子丑三会北方水局。"]],
+["地支六合",["子丑合。","寅亥合。","卯戌合。","辰酉合。","巳申合。","午未合。"]],
+["课堂理解",["三会：同一季节、同一方位的力量汇聚。","三合：以生、旺、墓形成组合。","六合：两个地支之间建立联系。"]]
+],visual:"relations"},
+{id:"b4",view:"branches",group:"干支关系",title:"地支六冲、相害、相刑与相破",summary:"按六组相冲、六组相害、相刑分类和相破记录整理。",tags:["六冲","相害","六穿","相刑","相破"],source:"《2026-09易理基础知识卡修订版》PPT第13、14页；第三课笔记。",sections:[
+["地支六冲",["子午冲。","丑未冲。","寅申冲。","卯酉冲。","辰戌冲。","巳亥冲。"]],
+["地支六害（六穿）",["丑午害：自古白马怕青牛。","子未害：羊鼠相交一旦休。","寅巳害：蛇虎婚配如刀锉。","卯辰害：兔见龙王泪交流。","酉戌害：金鸡玉犬难躲避。","申亥害：猪与猿猴不到头。"]],
+["地支相刑",["子卯刑：无礼之刑。","丑、戌、未：持势之刑（课件用语）。","寅、巳、申：无恩之刑。","辰、午、酉、亥：自刑。"]],
+["地支相破",["课件第14页列有地支六冲、相破图示；第三课笔记记录：子酉破、丑辰破、寅亥破、卯午破、巳申破、未戌破。"]],
+["理解提醒",["冲、刑、害、破描述不同关系，不应只凭一个关系名称直接断定吉凶。"]]
+],visual:"relations"},
+{id:"b5",view:"branches",group:"地支基础",title:"地支藏干",summary:"地支内部包含不同天干之气，可按本气、中气、余气理解。",tags:["地支藏干","本气","中气","余气"],source:"第三课完整课堂笔记；《2026-09易理基础知识卡修订版》PPT第18页。",sections:[
+["十二地支藏干",["子：癸。","丑：己、癸、辛。","寅：甲、丙、戊。","卯：乙。","辰：戊、乙、癸。","巳：丙、戊、庚。","午：丁、己。","未：己、丁、乙。","申：庚、壬、戊。","酉：辛。","戌：戊、辛、丁。","亥：壬、甲。"]],
+["三个层次",["本气：该地支最主要的五行力量。","中气：次一级的力量。","余气：保留或残余的力量。"]],
+["学习提示",["地支不能只看表面一个五行，还要看其内部所藏的不同力量。"]]
+]},
+{id:"b6",view:"branches",group:"地支基础",title:"长生十二态：阳干与阴干",summary:"基础知识卡分别收录阳干、阴干的长生十二态地支图。",tags:["长生十二态","阳干","阴干","十二长生"],source:"《2026-09易理基础知识卡修订版》PPT第9、10页。",sections:[
+["资料范围",["课件第9页为阳干长生十二态地支图。","课件第10页为阴干长生十二态地支图。","图中以不同天干和地支位置标示长生、沐浴、冠带、临官、帝旺、衰、病、死、墓、绝、胎、养等阶段。"]],
+["整理说明",["当前先建立图卡索引，具体每个天干对应的十二态起点和地支顺序，后续逐项对照原图录入，避免仅凭记忆填错。"]]
+]},
+{id:"e1",view:"eight",group:"七星八宅",title:"北斗七星与八宫磁场",summary:"天上星曜与地上八宫磁场对应，整理四吉方、四凶方与五行属性。",tags:["北斗七星","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼"],source:"第六课七星对应图；《2026-09易理基础知识卡修订版》PPT第16页。",sections:[
+["七星与磁场对应",["天枢—贪狼—生气（吉）—阳木。","天璇—巨门—天医（吉）—阳土。","天玑—禄存—祸害（凶）—阴土。","天权—文曲—六煞（凶）—阴水。","玉衡—廉贞—五鬼（凶）—阴火。","开阳—武曲—延年（吉）—阳金。","摇光—破军—绝命（凶）—阴金。","辅弼—伏位（吉）—阴木。"]],
+["吉方与凶方",["四吉方：生气、天医、延年、伏位。","四凶方：祸害、六煞、五鬼、绝命。"]],
+["备注",["辅弼是传统术数中补充的星曜，不属于实际北斗七星。"]]
+]},
+{id:"e2",view:"eight",group:"八宅磁场",title:"八宫磁场大游年歌",summary:"保存八宫磁场口诀，并与乾卦爻变速记图建立关联。",tags:["大游年歌","一祸二绝","爻变","伏位","延年"],source:"《2026-09易理基础知识卡修订版》PPT第16页；用户提供的乾卦爻变速记图。",sections:[
+["PPT记忆卡口诀",["一祸二绝三生气。","上下六煞初二医。","二三爻变成五鬼。","全变之后延年吉。"]],
+["用户课堂笔记补充版本",["一祸二绝三生气。","上下六煞初二医。","二三爻变为五鬼。","三爻全变延年吉。"]],
+["乾卦爻变速记",["以乾卦为起点：乾三爻皆阳。","初爻变化：乾变巽，对应祸害。","二爻变化：乾变离，对应绝命。","三爻变化：乾变兑，对应生气。","三爻全部变化：乾变坤，对应延年。","不变：乾仍为乾，对应伏位。"]],
+["其他爻变组合",["初爻、三爻变化：六煞。","初爻、二爻变化：天医。","二爻、三爻变化：五鬼。"]]
+],visual:"yaobian"},
+{id:"e3",view:"eight",group:"数字磁场",title:"数字磁场与三元命速查",summary:"基础知识卡包含数字磁场强弱表和男女出生年份三元命速查表。",tags:["数字磁场","三元命","速查表","延年","天医","生气"],source:"《2026-09易理基础知识卡修订版》PPT第17页。",sections:[
+["数字磁场强弱表",["延年：最强19、91；强78、87；较弱34、43；最弱26、62。","天医：最强13、31；强68、86；较弱49、94；最弱27、72。","生气：最强14、41；强67、76；较弱39、93；最弱28、82。","伏位：最强11、22；强88、99；较弱66、77；最弱33、44。","六煞：最强16、61；强47、74；较弱38、83；最弱29、92。","祸害：最强17、71；强89、98；较弱46、64；最弱23、32。","五鬼：最强18、81；强79、97；较弱36、63；最弱24、42。","绝命：最强12、21；强69、96；较弱84、48；最弱37、73。"]],
+["三元命速查表",["PPT同时收录男女两行命卦顺序，以及1945—2034年出生年份速查表。","完整年份对应关系保留在原PPT第17页，当前网站先建立索引，避免从缩略图误抄年份。"]]
+]},
+{id:"e4",view:"eight",group:"学习路线",title:"风水派别学习纲要",summary:"按骨架、肌肉、穴位、气血、法器、外挂六个层次整理课程学习路线。",tags:["七星蕴含","金锁玉关","玄空飞星","形家风水","奇门风水","三吉六秀"],source:"《2026-09易理基础知识卡修订版》PPT第19页。",sections:[
+["1. 骨架：七星蕴含",["框架性、基础型入门风水学科，用以确定房屋宏观格局，规划内部功能区。","学习后用于判断房屋吉位、凶位，并对房屋缺陷提出调解方案。","课件称其也是数字能量学科（手机号码、门牌号、车牌号等）的理论基础。"]],
+["2. 肌肉：金锁玉关",["课件又称“过路阴阳”。","侧重判断房屋吉凶能量分布，并进行方向性调整。"]],
+["3. 穴位：玄空飞星",["课件描述为将风水能量与天运结合的技法，对学习者周易素养有较高要求。"]],
+["4. 气血：形家风水",["贯穿各风水门派的学习过程，重视大环境形势观察。"]],
+["5. 法器：奇门风水",["以奇门遁甲预测为基础，结合盘面信息讨论风水布局。"]],
+["6. 外挂：三吉六秀",["课件以杨公风水为代表，提到四十九宫实战技法；课件注明属秘法范畴，不详述。"]]
+]},
+{id:"y1",view:"yangzhai",group:"阳宅基础",title:"阳宅风水的两种体系",summary:"七星蕴含以门为依据，八宅明镜以住宅坐向为根本。",tags:["七星蕴含","北派","八宅明镜","南派","定门","坐向"],source:"用户提供的专题笔记《阳宅风水｜立极、天心位与磁场判断》。",sections:[
+["七星蕴含（北派）",["以大门为依据判断磁场，重视纳气方向。"]],
+["八宅明镜（南派）",["以住宅坐向为根本，判断各宫位磁场。"]],
+["课堂观点",["常年开窗的住宅，更适合参考八宅理论。"]],
+["核心区别",["北派重门，以门定磁场；南派重坐，以宅定磁场。"]]
+]},
+{id:"y2",view:"yangzhai",group:"阳宅基础",title:"阳宅三要：门、主、灶",summary:"门为气之入口，主为气之所归，灶为气之运化。",tags:["阳宅三要","门","主","灶","赵九峰","地理五诀"],source:"用户提供的专题笔记；课堂引用清代赵九峰《阳宅三要》《地理五诀》。",sections:[
+["相关著作",["清代赵九峰《阳宅三要》，核心为门、主、灶。","《地理五诀》以龙、砂、穴、水、向为主要内容。"]],
+["门——纳气",["住宅大门、公司大门，是能量进入的主要通道。"]],
+["主——受气",["住宅卧室、老板办公室，是人长期停留、吸收能量的场所。"]],
+["灶——化气",["住宅厨房、公司财务区域，负责运化、转化能量。"]],
+["核心理解",["门为气之入口，主为气之所归，灶为气之运化。"]]
+]},
+{id:"y3",view:"yangzhai",group:"藏风聚气",title:"藏风聚气与开窗原则",summary:"传统风水强调藏风聚气，实际居住仍需保证必要通风。",tags:["藏风聚气","开窗","门窗","新风系统","通风"],source:"用户提供的专题笔记。",sections:[
+["核心",["不要散气，注重气场稳定。"]],
+["开窗原则",["避免四面八方同时开窗，注意门窗之间的气流路径。","有新风系统的住宅，可利用新风系统交换空气。"]],
+["实际居住提醒",["传统风水强调藏风聚气，但实际居住仍需保证必要通风。"]]
+]},
+{id:"y4",view:"yangzhai",group:"立极与测量",title:"三边论与立主：寻找几何中心",summary:"先找几何中心点，再测方位，最后矫正大四方。",tags:["三边论","立主","几何中心","CAD","面积形心","户型"],source:"用户提供的专题笔记；此前CAD几何中心点学习内容。",sections:[
+["三边论的三个步骤",["① 找几何中心点：确定天心位、判断缺角。","② 测方位：利用地砖线辅助测量，进行方位校正。","③ 矫正大四方：确定住宅正向，为定磁场、定门提供依据。"]],
+["寻找几何中心的三种方法",["方法一：多退少补。适当调整不规则轮廓，便于计算。","方法二：特殊房型公式。适用于L形、组合形户型。","方法三：CAD直接计算。绘制完整封闭轮廓，利用面积形心功能确定中心。"]],
+["L形户型面积加权法",["① 将L形户型拆分成矩形A、矩形B。","② 分别连接对角线，得到A、B各自的几何中心。","③ 计算面积：P_A为A面积，P_B为B面积，P_(A+B)为总面积。","④ 连接A、B两个中心点，测量AB距离。","⑤ 公式：P_AB＝P_B÷P_(A+B)×AB。","⑥ 从A中心向B中心移动P_AB距离，即得到整体几何中心。"]],
+["原理",["面积加权平均，中心向面积较大的一侧偏移；拆分区域不能重复计算。"]]
+]},
+{id:"y5",view:"yangzhai",group:"立极与测量",title:"天心位：范围、比例与布置",summary:"以房屋几何中心点为天心位中心，课堂规则记录为整屋面积的1/18。",tags:["天心位","1/18","64.92㎡","3.61㎡","几何中心"],source:"用户提供的专题笔记。",sections:[
+["天心位范围",["房屋几何中心点为天心位的中心。","课堂规则：天心位区域＝整屋面积×1/18。"]],
+["当前户型计算记录",["估算面积64.92㎡。","64.92÷18≈3.61㎡。","若用等面积圆表示：半径约1.07米，直径约2.14米；具体取界形状以课堂方法为准。"]],
+["天心位布置",["宜：干净、整洁、通畅。","忌：大型家具、重物、承重墙压占，尤其忌讳卫生间。"]],
+["传统象义的记录方式",["课堂将重物压占天心位与腰部、心脏方面的问题作象义联系。此为传统课堂说法，不代表医学因果关系。"]]
+]},
+{id:"y6",view:"yangzhai",group:"缺角与补气",title:"房屋缺角、缺宫与多退少补",summary:"先确定完整轮廓、找中心、划九宫，再判断缺角与缺宫。",tags:["缺角","缺宫","多退少补","补角","2/27"],source:"用户提供的专题笔记。",sections:[
+["概念区别",["缺角：住宅整体轮廓不完整。","缺宫：九宫中某一宫位面积缺失。"]],
+["判断顺序",["确定完整轮廓 → 找中心 → 划分九宫 → 判断缺角、缺宫。"]],
+["多退少补",["退：删除部分非必要区域，使轮廓便于判断。","补：对缺失宫位或气场进行补充、调整。","核心理解：调磁场就是补气。"]],
+["退的原则",["只有非必要区域才能考虑删除。","厨房、卧室、大门不能随意删除。","删除面积应小于九宫之一面积的三分之二，即整屋面积的2/27。"]],
+["特殊户型",["手枪房，重点判断突出、凹陷以及宫位缺失。"]]
+]},
+{id:"y7",view:"yangzhai",group:"方位与磁场",title:"测方位与校正大四方",summary:"用罗盘判断实际方向，进行东西、南北、门外门里三次校准。",tags:["罗盘","方位","三次校正","大四方","四正位","四隅位"],source:"用户提供的专题笔记；用户上传罗盘图。",sections:[
+["测方位",["使用罗盘判断实际方向，可参考地砖线，不能只凭户型图判断。"]],
+["三次校正",["① 东西校准。","② 南北校准。","③ 门外、门内校准。","目的：减少磁场干扰和测量偏差。"]],
+["校正大四方",["一周360°，八卦每卦45°。","课堂标注：45°、135°、225°、315°，各上下7.5°。","课堂强调：避开所讲的中间15°区域，否则影响论断准确性。"]],
+["四正位",["正北0°/360°。","正东90°。","正南180°。","正西270°。","课堂观点：四正位的卦象能量较为纯净。"]],
+["四隅位",["东北45°。","东南135°。","西南225°。","西北315°。","注意区分四正与四隅。"]],
+["核心",["先确定中心，再测实际方位，最后校正大四方。"]]
+],visual:"compass"},
+{id:"y8",view:"yangzhai",group:"方位与磁场",title:"定磁场与定门",summary:"定磁场采用3:3:3；定门记录2:6:2、3:4:3与反推法。",tags:["定磁场","定门","3:3:3","2:6:2","3:4:3","反推法"],source:"用户提供的专题笔记。",sections:[
+["定磁场",["课堂记录：3:3:3，配合九宫格示意图理解。"]],
+["定门",["课堂记录：2:6:2，配合门位示意图理解。"]],
+["其他记录",["262：适合地气足的环境。","343：适合楼房。","数字具体含义按课堂原始记录保留。"]],
+["判断顺序",["定中心 → 测方位 → 校正大四方 → 定磁场 → 定门 → 分析门主灶。"]]
+]},
+{id:"y9",view:"yangzhai",group:"空间力量",title:"拱合论：墙与空间力量关系",summary:"墙是分界线和中转站，课堂提出角力、中力与功能区划分三个判断原则。",tags:["拱合论","墙","角力","中力","功能区"],source:"第八课课堂笔记及用户提供的专题资料。",sections:[
+["基本认识",["墙是分界线和中转站；课堂提出一个室内只能有一个大磁场。"]],
+["三个判断原则",["角力大于边力：角指墙角，边指边线。","中力大于侧力：中间位置的力量大于两侧。","明显功能区划分：课堂记录比例为75%，举例提到铺地毯等方式。"]],
+["补充待核对",["此前笔记中另有“博骨架”一词，具体术语待回看原课件核对。"]]
+]},
+{id:"y10",view:"yangzhai",group:"口诀与补充",title:"八宫磁场口诀与大紫薇令",summary:"保存用户补充的八宫磁场口诀及大紫薇令原始记录。",tags:["八宫磁场","大紫薇令","口诀","贪巨禄文廉武破"],source:"用户本次补充的文字记录；易理基础知识卡PPT第16页。",sections:[
+["八宫磁场口诀",["一祸二绝三生气，上下六煞初二医，二三爻变为五鬼，三爻全变延年吉。","PPT记忆卡另记为：一祸二绝三生气；上下六煞初二医；二三爻变成五鬼；全变之后延年吉。"]],
+["大紫薇令：原始记录",["东方青雷公，南方赤雷公，西方白雷公，北方黑雷公，中央黄雷公。","天蓬、天猷、翊圣、佑圣；上元天官、中元地官、下元水官。","贪、巨、禄、文、廉、武、破。","鬼*（离、旨、火、天、尊、勝）。","道法本无多，南辰贯北河，全凭一道令，全凭一道令，全凭一道令，降尽世间魔。"]],
+["整理备注",["保留用户提供的文字，不擅自校改其中不确定的字词；后续如有老师原始版本，可再对照修订。"]]
+]}
+];
+const lessons=[
+{n:"01",title:"第一课｜待补录",status:"pending",summary:"当前资料库尚未录入可核实的第一课原始笔记。"},
+{n:"02",title:"第二课｜阴阳之本",status:"ready",summary:"阴阳、太极三特性、三才、四象与五行。"},
+{n:"03",title:"第三课｜天干地支与五行运行规律",status:"ready",summary:"十天干、十二地支、藏干、五合、三会三合六合及冲刑害破。"},
+{n:"04",title:"第四课｜待补录",status:"pending",summary:"当前资料库尚未录入可核实的第四课原始笔记。"},
+{n:"05",title:"第五课｜干支关系、子位与二十四山",status:"partial",summary:"已找回部分作业记录；二十四山分度和完整课件待补。"},
+{n:"06",title:"第六课｜藏风得气、七星与八宅磁场",status:"ready",summary:"《葬经》、四象形势、北斗七星与八宫磁场对应。"},
+{n:"07",title:"第七课｜七星蕴含、八宅明镜与阳宅三要",status:"ready",summary:"北派与南派、门主灶、立主、天心位和补角。"},
+{n:"08",title:"第八课｜三边论、立主与空间磁场",status:"ready",summary:"太极点、房气地气、拱合论、定门与划定磁场。"}
+];
+const glossary=["无极","太极","两仪","四象","八卦","河图","洛书","先天八卦","后天八卦","五行","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
+const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function drawNav(){ $("#nav").innerHTML=CATS.map(([id,name,icon])=>`<button class="navbtn ${cat===id?"active":""}" data-cat="${id}"><span class="navicon">${icon}</span>${name}<span class="navcount">${String(id==="all"?NOTES.length:NOTES.filter(n=>n.cat===id).length).padStart(2,"0")}</span></button>`).join("");document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{cat=b.dataset.cat;draw();$("#layout").classList.remove("asideopen")})}
-function filtered(){let q=query.trim().toLowerCase();return NOTES.filter(n=>(cat==="all"||n.cat===cat)&&(!q||[n.title,n.summary,n.cn,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q)))}
-function draw(){drawNav();let current=CATS.find(c=>c[0]===cat);$("#listTitle").textContent=cat==="all"?"风水知识":current[1];$("#listSub").textContent=cat==="all"?"从课程笔记出发，建立可检索的知识索引。":`围绕「${current[1]}」整理的课堂知识与方法记录。`;let arr=filtered();$("#resultCount").textContent=`共 ${arr.length} 条`;$("#cards").innerHTML=arr.map(n=>`<article class="card" data-note="${n.id}"><div class="cardtop"><span>${n.cn}</span><b>${n.no}</b></div><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p><div class="tags">${n.tags.slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></article>`).join("");$("#empty").hidden=arr.length>0;$("#cards").hidden=arr.length===0;document.querySelectorAll("[data-note]").forEach(el=>el.onclick=()=>openNote(el.dataset.note));$("#filters").innerHTML=CATS.filter(c=>c[0]!=="course").map(c=>`<button class="chip ${cat===c[0]?"active":""}" data-filter="${c[0]}">${c[1]}</button>`).join("");document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{cat=b.dataset.filter;draw()})}
-function openNote(id){let n=NOTES.find(x=>x.id===id);if(!n)return;let sections=n.sections.map(s=>`<section><h2>${esc(s[0])}</h2><ul>${s[1].map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`).join("");$("#detailbody").innerHTML=`<div class="detailcat">${n.cn} · ${n.no}</div><h1>${esc(n.title)}</h1><div class="summary">${esc(n.summary)}</div><div class="detailtags">${n.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>${sections}${n.callout?`<div class="callout">${esc(n.callout)}</div>`:""}<div class="source">资料来源：${esc(n.source)}<br>归档说明：个人学习笔记，保留课堂表述，后续可继续补充和修订。</div>`;$("#overlay").hidden=false;document.body.style.overflow="hidden"}
-function closeNote(){$("#overlay").hidden=true;document.body.style.overflow=""}
-$("#search").addEventListener("input",e=>{query=e.target.value;cat="all";draw()});$("#back").onclick=closeNote;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))closeNote()};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeNote()});$("#courseBtn").onclick=()=>{cat="course";draw();$("#library").scrollIntoView({behavior:"smooth"})};$("#menuBtn").onclick=()=>$("#layout").classList.toggle("asideopen");
-$("#quicktags").innerHTML=TAGS.map(t=>`<button data-tag="${esc(t)}">${esc(t)}</button>`).join("");document.querySelectorAll("[data-tag]").forEach(b=>b.onclick=()=>{$("#search").value=b.dataset.tag;query=b.dataset.tag;cat="all";draw();$("#library").scrollIntoView({behavior:"smooth"})});
-$("#noteCount").textContent=String(NOTES.length).padStart(2,"0");draw();
-</script></body></html>
+let activeView="home",filters={foundation:"全部",branches:"全部",eight:"全部",yangzhai:"全部"},queries={foundation:"",branches:"",eight:"",yangzhai:"",glossary:""};
+function setView(id){activeView=id;document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$("#view-"+id).classList.add("active");document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$("#layout").classList.remove("menu-open");window.scrollTo({top:0,behavior:"smooth"});}
+function cardHtml(n){return '<article class="card" data-note="'+n.id+'"><div class="cardtop"><span>'+esc(n.group)+'</span><b>'+esc(n.source.split("；")[0].split("。")[0].slice(0,25))+'</b></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary)+'</p><div class="tags">'+n.tags.slice(0,4).map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div></article>';}
+function bindNoteCards(){document.querySelectorAll("[data-note]").forEach(el=>el.onclick=()=>openNote(el.dataset.note));}
+function renderNav(){let counts={foundation:notes.filter(n=>n.view==="foundation").length,branches:notes.filter(n=>n.view==="branches").length,eight:notes.filter(n=>n.view==="eight").length,yangzhai:notes.filter(n=>n.view==="yangzhai").length};$("#nav").innerHTML=navItems.map(n=>'<button data-view="'+n.id+'" class="'+(activeView===n.id?"active":"")+'"><span class="navicon">'+n.icon+'</span>'+n.name+(counts[n.id]!==undefined?'<small>'+String(counts[n.id]).padStart(2,"0")+'</small>':'')+'</button>').join("");document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));}
+function renderHome(){let groups=[["foundation","易理基础","从无极、太极、两仪、四象到八卦五行，先搭建基础概念。"],["branches","干支知识","十二地支、生肖时辰、藏干，以及合会冲刑害破。"],["eight","七星与八宅","北斗七星、八宫磁场、大游年歌与数字磁场。"],["yangzhai","阳宅实操","门主灶、立极、天心位、缺角、测方位与定门。"]];$("#homeCards").innerHTML=groups.map(g=>'<article class="card" data-home="'+g[0]+'"><div class="cardtop"><span>KNOWLEDGE SYSTEM</span><b>→</b></div><h3>'+g[1]+'</h3><p>'+g[2]+'</p></article>').join("");document.querySelectorAll("[data-home]").forEach(el=>el.onclick=()=>setView(el.dataset.home));let recent=["b1","b3","e2","y4","y5","y7"].map(id=>notes.find(n=>n.id===id));$("#recentCards").innerHTML=recent.map(cardHtml).join("");bindNoteCards();$("#noteCount").textContent=String(notes.length).padStart(2,"0");}
+function renderCategory(view){let arr=notes.filter(n=>n.view===view);let groups=["全部",...new Set(arr.map(n=>n.group))];let filterEl=$("#"+view+"Filters");filterEl.innerHTML=groups.map(g=>'<button class="chip '+(filters[view]===g?"active":"")+'" data-filter="'+esc(g)+'">'+esc(g)+'</button>').join("");let q=queries[view].toLowerCase().trim();let shown=arr.filter(n=>(filters[view]==="全部"||n.group===filters[view])&&(!q||[n.title,n.summary,n.group,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q)));$("#"+view+"Cards").innerHTML=shown.map(cardHtml).join("");$("#"+view+"Empty").hidden=shown.length>0;bindNoteCards();document.querySelectorAll("#"+view+"Filters [data-filter]").forEach(b=>b.onclick=()=>{filters[view]=b.dataset.filter;renderCategory(view);});}
+function renderCourses(){$("#courseList").innerHTML=lessons.map(l=>'<article class="lesson"><div class="lesson-num">'+l.n+'</div><div><h3>'+esc(l.title)+'</h3><p>'+esc(l.summary)+'</p></div><span class="status '+(l.status==="pending"?"pending":l.status==="partial"?"partial":"")+'">'+(l.status==="ready"?"已整理":l.status==="partial"?"部分整理":"待补资料")+'</span></article>').join("");}
+function renderGlossary(){let q=queries.glossary.toLowerCase().trim();let terms=glossary.filter(t=>!q||t.toLowerCase().includes(q));$("#termCloud").innerHTML=terms.map(t=>'<button data-term="'+esc(t)+'">'+esc(t)+'</button>').join("");let related=notes.filter(n=>!q||[n.title,n.summary,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q));$("#glossaryCards").innerHTML=related.map(cardHtml).join("");bindNoteCards();document.querySelectorAll("[data-term]").forEach(b=>b.onclick=()=>{queries.glossary=b.dataset.term;$("#searchGlossary").value=b.dataset.term;renderGlossary();});}
+function visualHtml(type){if(type==="bagua")return '<div class="diagram"><div class="diagram-title">八卦卦象速记</div><div class="trigram-grid"><div class="trigram"><b>☰</b><strong>乾三连</strong><small>天</small></div><div class="trigram"><b>☷</b><strong>坤六断</strong><small>地</small></div><div class="trigram"><b>☳</b><strong>震仰盂</strong><small>雷</small></div><div class="trigram"><b>☶</b><strong>艮覆碗</strong><small>山</small></div><div class="trigram"><b>☲</b><strong>离中虚</strong><small>火</small></div><div class="trigram"><b>☵</b><strong>坎中满</strong><small>水</small></div><div class="trigram"><b>☱</b><strong>兑上缺</strong><small>泽</small></div><div class="trigram"><b>☴</b><strong>巽下断</strong><small>风</small></div></div><div class="diagram-title" style="margin-top:14px">后天八卦方位图（按课件布局）</div><div class="bagua-map"><div>巽 · 东南</div><div>离 · 南</div><div>坤 · 西南</div><div>震 · 东</div><div class="center">中宫</div><div>兑 · 西</div><div>艮 · 东北</div><div>坎 · 北</div><div>乾 · 西北</div></div></div>';
+if(type==="five")return '<div class="diagram"><div class="diagram-title">五行相生与相克</div><table class="data-table"><tr><th>关系</th><th>顺序</th></tr><tr><td>相生</td><td>水 → 木 → 火 → 土 → 金 → 水</td></tr><tr><td>相克</td><td>金 → 木 → 土 → 水 → 火 → 金</td></tr></table></div>';
+if(type==="branches"){let rows=[["子","鼠","十一月","23—1点"],["丑","牛","十二月","1—3点"],["寅","虎","一月","3—5点"],["卯","兔","二月","5—7点"],["辰","龙","三月","7—9点"],["巳","蛇","四月","9—11点"],["午","马","五月","11—13点"],["未","羊","六月","13—15点"],["申","猴","七月","15—17点"],["酉","鸡","八月","17—19点"],["戌","狗","九月","19—21点"],["亥","猪","十月","21—23点"]];return '<div class="diagram"><div class="diagram-title">十二地支 · 生肖 · 月份 · 时辰</div><div class="branch-grid">'+rows.map(r=>'<div class="branch"><b>'+r[0]+'</b><span>'+r[1]+' · '+r[2]+'</span><span>'+r[3]+'</span></div>').join("")+'</div></div>';}
+if(type==="relations")return '<div class="diagram"><div class="diagram-title">地支关系 · 六种关系</div><div class="relation-grid"><div class="relation"><b>三合 · 生旺墓</b><p>申子辰（水）<br>亥卯未（木）<br>寅午戌（火）<br>巳酉丑（金）</p></div><div class="relation"><b>三会 · 方局</b><p>寅卯辰（东方木）<br>巳午未（南方火）<br>申酉戌（西方金）<br>亥子丑（北方水）</p></div><div class="relation"><b>六合 · 化气</b><p>子丑、寅亥、卯戌<br>辰酉、巳申、午未</p></div><div class="relation"><b>六冲</b><p>子午、丑未、寅申<br>卯酉、辰戌、巳亥</p></div><div class="relation"><b>六害 · 六穿</b><p>丑午、子未、寅巳<br>卯辰、酉戌、申亥</p></div><div class="relation"><b>相刑</b><p>子卯；丑戌未<br>寅巳申；辰午酉亥自刑</p></div></div><p style="font-size:10px;color:#938a76;margin:12px 0 0">相破另列：子酉、丑辰、寅亥、卯午、巳申、未戌。</p></div>';
+if(type==="compass")return '<div class="diagram"><div class="diagram-title">二十四山 · 方位索引</div><div class="relation-grid"><div class="relation"><b>北方</b><p>壬 · 子 · 癸</p></div><div class="relation"><b>东北</b><p>丑 · 艮 · 寅</p></div><div class="relation"><b>东方</b><p>甲 · 卯 · 乙</p></div><div class="relation"><b>东南</b><p>辰 · 巽 · 巳</p></div><div class="relation"><b>南方</b><p>丙 · 午 · 丁</p></div><div class="relation"><b>西南</b><p>未 · 坤 · 申</p></div><div class="relation"><b>西方</b><p>庚 · 酉 · 辛</p></div><div class="relation"><b>西北</b><p>戌 · 乾 · 亥</p></div></div><p style="font-size:10px;color:#938a76;margin:12px 0 0">按八方分组展示二十四山名称，实际罗盘测量与分度以课程罗盘图和现场校准为准。</p></div>';
+if(type==="yaobian")return '<div class="diagram"><div class="diagram-title">乾卦爻变速记（以乾卦为起点）</div><table class="data-table"><tr><th>变化情况</th><th>变卦</th><th>磁场</th></tr><tr><td>初爻变</td><td>巽</td><td>祸害</td></tr><tr><td>二爻变</td><td>离</td><td>绝命</td></tr><tr><td>三爻变</td><td>兑</td><td>生气</td></tr><tr><td>初、三爻变</td><td>坎</td><td>六煞</td></tr><tr><td>初、二爻变</td><td>艮</td><td>天医</td></tr><tr><td>二、三爻变</td><td>震</td><td>五鬼</td></tr><tr><td>三爻全变</td><td>坤</td><td>延年</td></tr><tr><td>三爻均不变</td><td>乾</td><td>伏位</td></tr></table></div>';
+return "";}
+function openNote(id){let n=notes.find(x=>x.id===id);if(!n)return;let sections=n.sections.map(s=>'<section><h2>'+esc(s[0])+'</h2><ul>'+s[1].map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></section>').join("");$("#detailType").textContent=n.view.toUpperCase()+" · "+n.group;$("#detailBody").innerHTML='<div class="detailcat">'+esc(n.group)+'</div><h1>'+esc(n.title)+'</h1><div class="summary">'+esc(n.summary)+'</div><div class="detailtags">'+n.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div>'+visualHtml(n.visual)+sections+'<div class="source">资料来源：'+esc(n.source)+'<br>归档说明：按课堂资料和用户提供的笔记整理；课堂观点、图卡索引和待核对内容分开标注，后续可以继续补充。</div>';$("#overlay").hidden=false;document.body.style.overflow="hidden";}
+function closeNote(){$("#overlay").hidden=true;document.body.style.overflow="";}
+function setupSearch(view,input){$(input).addEventListener("input",e=>{queries[view]=e.target.value;renderCategory(view);});}
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setView(b.dataset.go));
+$("#menuBtn").onclick=()=>$("#layout").classList.toggle("menu-open");
+$("#back").onclick=closeNote;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))closeNote();};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeNote();});
+setupSearch("foundation","#searchFoundation");setupSearch("branches","#searchBranches");setupSearch("eight","#searchEight");setupSearch("yangzhai","#searchYangzhai");
+$("#searchGlossary").addEventListener("input",e=>{queries.glossary=e.target.value;renderGlossary();});
+function renderAll(){renderNav();renderHome();renderCategory("foundation");renderCategory("branches");renderCategory("eight");renderCategory("yangzhai");renderCourses();renderGlossary();}
+renderAll();
+</script>
+</body>
+</html>

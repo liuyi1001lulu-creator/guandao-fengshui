@@ -75,6 +75,31 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 .original-extract section{margin-top:10px}
 @media(max-width:700px){.module-reading{align-items:flex-start;flex-direction:column}.module-reading button{width:100%}.reader-table th,.reader-table td{padding:8px 10px}.chapter-toc{display:grid;grid-template-columns:1fr 1fr}}
 
+
+/* 原始PPT校核后：长生十二态与八卦九宫表 */
+.gd-visuals{margin:25px 0 15px;padding:14px 16px;background:#fdfaf3;border:1px solid #ddd1bb;border-radius:9px}
+.gd-visuals h2{font:600 17px/1.6 var(--serif);margin:3px 0 6px;color:var(--jade)}
+.gd-note{font:11px/1.9 var(--serif);color:#827862;margin:4px 0 15px}
+.gd-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gd-chart{background:#fffcf5;border:1px solid #e4d7c0;border-radius:8px;padding:12px;min-width:0}
+.gd-chart-title{font:600 14px/1.6 var(--serif);color:#355143;margin:0 0 10px;text-align:center}
+.gd-nine-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.gd-nine-cell{min-width:0;min-height:76px;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;padding:8px 4px;background:#f2eee2;border:1px solid #e0d7c5;border-radius:4px;overflow-wrap:anywhere}
+.gd-nine-cell small{font:10px/1.4 var(--sans);color:#887d66;text-align:center}
+.gd-nine-cell strong{font:600 12px/1.5 var(--serif);color:#3c5246;text-align:center;white-space:normal}
+.gd-nine-cell.gd-center{background:#e7deca}.gd-nine-cell.gd-center strong{color:#947640}
+.gd-life-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.gd-detail{margin:9px 0;background:#fcf9f2;border:1px solid #e4d7c0;border-radius:7px;overflow:hidden}
+.gd-detail summary{padding:12px;color:#395545;font:600 12px/1.6 var(--sans);cursor:pointer;list-style-position:inside}
+.gd-detail summary span{float:right;font:10px/1.8 var(--sans);color:#a18e6b}
+.gd-detail[open] summary{border-bottom:1px solid #e4d7c0;background:#f2ecdf}
+.gd-table-scroll{width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.gd-table{border-collapse:collapse;width:100%;white-space:nowrap}
+.gd-table th,.gd-table td{padding:8px 12px;border:1px solid #e7dece;font:12px/1.6 var(--serif);text-align:center;color:#51594c}
+.gd-table th{background:#eee9dc;color:#325044;font-weight:600}
+.gd-table tr:nth-child(even){background:#f7f2e9}
+@media(max-width:700px){.gd-visuals{padding:12px 9px}.gd-two,.gd-life-grid{grid-template-columns:1fr}.gd-nine-cell{min-height:66px;padding:7px 3px}.gd-nine-cell strong{font-size:11px}.gd-detail summary span{float:none;display:block;margin-left:15px}.gd-table th,.gd-table td{padding:8px}}
+
 </style>
 </head>
 <body>
@@ -157,6 +182,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <div class="detail-overlay" id="overlay" hidden><article class="detail"><div class="detailtop"><button class="back" id="back">← 返回知识库</button><span id="detailType">KNOWLEDGE NOTE</span></div><div id="detailBody"></div></article></div>
 
 <script src="knowledge-content.js"></script>
+<script src="knowledge-diagrams.js"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
@@ -419,9 +445,10 @@ function openNote(id){
  const caution=(n.view==="yangzhai"||n.id==="y1")?"本条主要依据旧网站笔记重组，完整原始专题课件尚待核实；请勿把本页写作已核验的老师课堂定论。":"以下内容依据课程整理稿和已检视的PPT核对，存在异文或未核细节时会直接在正文标注。";
  const complete=article?.html?'<div class="reader-status">'+caution+' 知识资料审校不等于风水结论获得科学验证。</div><div class="reader-text">'+article.html+'</div><details class="original-extract"><summary>展开旧版知识卡提要（便于对照）</summary>'+legacy+'</details>':legacy;
  // 十二地支旧速查图使用另一种月份标法，避免与课件原图月份标法混淆。
- const graphic=n.visual==="branches"&&article?"":visualHtml(n.visual);
+ const diagram=window.GUANDAO_DIAGRAMS?.byId?.[id]?.()||"";
+ const graphic=diagram?"":(n.visual==="branches"&&article?"":visualHtml(n.visual));
  $("#detailType").textContent=n.view.toUpperCase()+" · "+n.group;
- $("#detailBody").innerHTML='<div class="detailcat">'+esc(n.group)+'</div><h1>'+esc(n.title)+'</h1><div class="summary">'+esc(n.summary)+'</div><div class="detailtags">'+n.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div>'+graphic+imageHtml(n.image)+complete+relatedHtml(n)+'<div class="source">资料来源：'+esc(n.source)+'<br>完整正文来自已审校的知识库专题文稿；不同资料的表述差异保留在正文与审校记录中。旧版提要仅供对照。</div>';
+ $("#detailBody").innerHTML='<div class="detailcat">'+esc(n.group)+'</div><h1>'+esc(n.title)+'</h1><div class="summary">'+esc(n.summary)+'</div><div class="detailtags">'+n.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div>'+diagram+graphic+(diagram||id==="e2"?"":imageHtml(n.image))+complete+relatedHtml(n)+'<div class="source">资料来源：'+esc(n.source)+'<br>完整正文来自已审校的知识库专题文稿；不同资料的表述差异保留在正文与审校记录中。旧版提要仅供对照。</div>';
  bindNoteCards();showDetail();
 }
 
@@ -431,7 +458,9 @@ function openModule(view){
  $("#detailType").textContent="FULL KNOWLEDGE GUIDE · "+view.toUpperCase();
  if(!data){$("#detailBody").innerHTML='<h1>'+esc(label)+'</h1><p>完整讲义尚未加载。请刷新页面；原有知识卡仍可阅读。</p>';showDetail();return;}
  const toc=(data.toc||[]).map((title,i)=>'<button type="button" data-chapter="'+i+'">'+esc(title)+'</button>').join("");
- $("#detailBody").innerHTML='<div class="detailcat">完整专题讲义</div><h1>'+esc(label)+'</h1><div class="reader-status">本专题根据课程笔记与PPT整合；老师原话、个人感悟及待核事项按资料来源区分。尚未核实的部分明确标注。</div><nav class="chapter-toc" aria-label="专题章节目录">'+toc+'</nav><div class="reader-text">'+data.html+'</div><div class="source">章节来源：'+esc(data.path||"课程整理稿")+'。如需核对原始材料，可参照重建工作区的审校记录。</div>';
+ const diagramSelection=view==="branches"?[["长生十二态 · 96格速查","life"]]:view==="bagua"?[["河图洛书","river"],["先后天八卦","bagua"],["八卦象意九宫","imagery"],["二十四山","mountain"]]:[];
+ const chartBlocks=diagramSelection.map(([label,key])=>'<details class="gd-detail"><summary>'+label+' · 已核PPT图表</summary>'+(window.GUANDAO_DIAGRAMS?.[key]?.()||"")+'</details>').join('');
+ $("#detailBody").innerHTML='<div class="detailcat">完整专题讲义</div><h1>'+esc(label)+'</h1><div class="reader-status">本专题根据课程笔记与PPT整合；老师原话、个人感悟及待核事项按资料来源区分。尚未核实的部分明确标注。</div>'+(chartBlocks?'<section><h2>知识图表速查（点击展开）</h2>'+chartBlocks+'</section>':"")+'<nav class="chapter-toc" aria-label="专题章节目录">'+toc+'</nav><div class="reader-text">'+data.html+'</div><div class="source">章节来源：'+esc(data.path||"课程整理稿")+'。如需核对原始材料，可参照重建工作区的审校记录。</div>';
  showDetail();
  const headings=[...document.querySelectorAll("#detailBody .reader-text h3")];
  document.querySelectorAll("[data-chapter]").forEach(button=>{

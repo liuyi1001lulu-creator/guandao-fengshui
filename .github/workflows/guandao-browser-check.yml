@@ -1,0 +1,41 @@
+name: 观道知识库 · 浏览器验收
+
+on:
+  push:
+    branches:
+      - rebuild/gan-zhi-v1
+    paths:
+      - index.html
+      - knowledge-content.js
+      - knowledge-diagrams.js
+      - tests/site-check.cjs
+      - .github/workflows/guandao-browser-check.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Check desktop and mobile
+        run: node tests/site-check.cjs
+      - name: Upload screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: guandao-browser-check
+          path: artifacts/
+          if-no-files-found: ignore

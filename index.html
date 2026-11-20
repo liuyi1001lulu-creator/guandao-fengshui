@@ -64,7 +64,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
   <div class="eyebrow">TRADITIONAL KNOWLEDGE · FENG SHUI</div>
   <h1>观道<i>。</i></h1><div class="sub">以空间为卷，以理路为纲。</div>
   <div class="desc">个人风水学习档案。课程有出处，知识有归属，方法可检索，让零散的课堂内容逐渐形成自己的理解体系。</div>
-  <div class="actions"><button data-go="system">进入知识体系　→</button><button class="secondary" data-go="courses">查看课程档案</button></div>
+  <div class="actions"><button data-go="foundation">开始学习　→</button><button class="secondary" data-go="courses">查看课程档案</button></div>
   <div class="hero-art"><b>道</b></div>
  </div>
  <div class="stats">
@@ -79,19 +79,6 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
  <div class="callout" style="margin-top:18px">整理原则：课程原始记录、知识体系索引、操作方法分开管理；课堂观点与后续辨析分开标注。资料不完整时明确标记，不用推测内容填空。</div>
 </section>
 
-<section class="view" id="view-system">
- <div class="section-head"><div><div class="kicker">KNOWLEDGE STRUCTURE · LEARNING PATH</div><h2>知识体系</h2><p>从根本原理到时空关系，再到空间应用；跨课程的同一知识点在这里汇总。</p></div></div>
- <div class="callout">知识体系不是按课堂顺序简单堆叠，而是把不同课程中反复出现、彼此关联的概念整理到同一条学习脉络中。课程档案保留出处，知识条目负责解释与关联。</div>
- <div class="learning-path">
-  <article class="path-step"><small>01 · ROOT</small><h3>根本原理</h3><p>先理解阴阳、太极与三才，认识事物的对立统一、相互依存和动态变化。</p><button class="chip" data-note="f6">阴阳之本</button><button class="chip" data-note="f7">太极三特性</button></article>
-  <article class="path-step"><small>02 · CHANGE</small><h3>变化规律</h3><p>从四象、四时与五行，理解生发、升腾、转化、收敛、闭藏的变化过程。</p><button class="chip" data-note="f9">四象与四季</button><button class="chip" data-note="f10">五行象意</button></article>
-  <article class="path-step"><small>03 · TIME & SPACE</small><h3>时空表达</h3><p>以八卦、天干、地支表达方位、时间、属性及其组合关系。</p><button class="chip" data-note="f13">二十四山</button><button class="chip" data-note="b10">地支关系总览</button></article>
-  <article class="path-step"><small>04 · APPLICATION</small><h3>空间应用</h3><p>把基础概念带入七星八宅、阳宅判断与实际户型分析，按课程方法逐步练习。</p><button class="chip" data-note="e1">七星与八宫</button><button class="chip" data-note="y4">立极与几何中心</button></article>
- </div>
- <div class="section-head"><div><div class="kicker">CROSS-COURSE CONNECTIONS</div><h2>跨课程关联</h2><p>这些条目把不同课程中的相关知识放在一起理解。</p></div></div>
- <div class="grid2" id="systemCards"></div>
- <div class="callout" style="margin-top:16px">整理边界：课堂明确讲过的内容按课堂脉络呈现；为便于学习所作的归纳会标注为“知识关联”或“整理提示”；没有资料支持的内容不自行补齐。</div>
-</section>
 
 <section class="view" id="view-foundation">
  <div class="section-head"><div><div class="kicker">FOUNDATION · YI LI</div><h2>易理基础</h2><p>从无极、太极、两仪、四象到八卦与五行，建立基础概念索引。</p></div><label class="searchbar"><span>⌕</span><input id="searchFoundation" placeholder="搜索太极、八卦、河图、五行……"></label></div>
@@ -100,12 +87,17 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 
 <section class="view" id="view-branches">
  <div class="section-head"><div><div class="kicker">HEAVENLY STEMS & EARTHLY BRANCHES</div><h2>干支知识</h2><p>天干、地支、藏干、合会冲刑害破与长生十二态。</p></div><label class="searchbar"><span>⌕</span><input id="searchBranches" placeholder="搜索子午冲、三合、藏干……"></label></div>
- <div class="filters" id="branchFilters"></div><div class="grid2" id="branchCards"></div><div class="empty" id="branchEmpty" hidden>没有找到相关知识。</div>
+ <div class="filters" id="branchesFilters"></div><div class="grid2" id="branchesCards"></div><div class="empty" id="branchesEmpty" hidden>没有找到相关知识。</div>
 </section>
 
-<section class="view" id="view-eight">
- <div class="section-head"><div><div class="kicker">SEVEN STARS · EIGHT MANSIONS</div><h2>七星与八宅</h2><p>七星蕴含、八宅磁场、八宫大游年、数字磁场与学习路线。</p></div><label class="searchbar"><span>⌕</span><input id="searchEight" placeholder="搜索贪狼、生气、伏位、数字磁场……"></label></div>
- <div class="filters" id="eightFilters"></div><div class="grid2" id="eightCards"></div><div class="empty" id="eightEmpty" hidden>没有找到相关知识。</div>
+<section class="view" id="view-bagua">
+ <div class="section-head"><div><div class="kicker">TRIGRAMS · DIRECTIONS</div><h2>卦象与方位</h2><p>河图洛书、先后天八卦、八卦象意、九宫与二十四山。</p></div><label class="searchbar"><span>⌕</span><input id="searchBagua" placeholder="搜索河图、洛书、巽宫、二十四山……"></label></div>
+ <div class="filters" id="baguaFilters"></div><div class="grid2" id="baguaCards"></div><div class="empty" id="baguaEmpty" hidden>没有找到相关知识。</div>
+</section>
+
+<section class="view" id="view-schools">
+ <div class="section-head"><div><div class="kicker">FENG SHUI SCHOOLS</div><h2>风水门派</h2><p>七星蕴含、八宅、金锁玉关、玄空飞星、形家与奇门等课程体系。</p></div><label class="searchbar"><span>⌕</span><input id="searchSchools" placeholder="搜索七星蕴含、八宅、金锁玉关、玄空……"></label></div>
+ <div class="filters" id="schoolsFilters"></div><div class="grid2" id="schoolsCards"></div><div class="empty" id="schoolsEmpty" hidden>没有找到相关知识。</div>
 </section>
 
 <section class="view" id="view-yangzhai">
@@ -132,12 +124,12 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
- {id:"system",name:"知识体系",icon:"纲"},
- {id:"foundation",name:"易理基础",icon:"易"},
- {id:"branches",name:"干支知识",icon:"支"},
- {id:"eight",name:"七星与八宅",icon:"星"},
+ {id:"foundation",name:"易理根基",icon:"易"},
+ {id:"branches",name:"干支与历法",icon:"支"},
+ {id:"bagua",name:"卦象与方位",icon:"卦"},
+ {id:"schools",name:"风水门派",icon:"派"},
  {id:"yangzhai",name:"阳宅实操",icon:"宅"},
- {id:"courses",name:"课程档案",icon:"册"},
+ {id:"courses",name:"课程笔记",icon:"册"},
  {id:"glossary",name:"术语索引",icon:"索"}
 ];
 const notes=[
@@ -146,7 +138,7 @@ const notes=[
 ["八卦歌诀",["乾三连：☰","坤六断：☷","震仰盂：☳","艮覆碗：☶","离中虚：☲","坎中满：☵","兑上缺：☱","巽下断：☴"]],
 ["学习提示",["先记住八卦的基本卦象，再结合方位、五行、季节、家庭角色等象意学习。"]]
 ],visual:"bagua"},
-{id:"f2",view:"foundation",group:"基础理论",title:"河图洛书与先天、后天八卦",summary:"认识河图、洛书的点数布局，以及先天八卦与后天八卦的方位排列。",tags:["河图","洛书","先天八卦","后天八卦","方位"],source:"《2026-09易理基础知识卡修订版》PPT第4页。",sections:[
+{id:"f2",view:"bagua",group:"基础理论",title:"河图洛书与先天、后天八卦",summary:"认识河图、洛书的点数布局，以及先天八卦与后天八卦的方位排列。",tags:["河图","洛书","先天八卦","后天八卦","方位"],source:"《2026-09易理基础知识卡修订版》PPT第4页。",sections:[
 ["河图与洛书",["课件以黑白点表示阴阳数，分别展示河图与洛书的点数布局。","本条先作为图卡索引保存，后续可补充各方位数理的逐项讲解。"]],
 ["先天八卦",["课件排列：上兑、上中乾、上右巽；中左离、中右坎；下左震、下中坤、下右艮。"]],
 ["后天八卦",["课件排列：上左巽、上中离、上右坤；中左震、中右兑；下左艮、下中坎、下右乾。"]],
@@ -158,11 +150,11 @@ const notes=[
 ["五行相克",["金克木、木克土、土克水、水克火、火克金。"]],
 ["课堂理解",["相生是滋养，相克是约束。生而有制，制而有生，万物才能各成其物。","五行不是简单的五种物质，而是对事物不同性质与运动方式的归纳。"]]
 ],visual:"five"},
-{id:"f4",view:"foundation",group:"基础理论",title:"八卦象意",summary:"把八卦与方位、季节、五行、九宫数字等象意联系起来。",tags:["八卦象意","方位","季节","五行","九宫数字"],source:"《2026-09易理基础知识卡修订版》PPT第6页图卡。",sections:[
+{id:"f4",view:"bagua",group:"基础理论",title:"八卦象意",summary:"把八卦与方位、季节、五行、九宫数字等象意联系起来。",tags:["八卦象意","方位","季节","五行","九宫数字"],source:"《2026-09易理基础知识卡修订版》PPT第6页图卡。",sections:[
 ["课件图卡涉及的象意维度",["方位与季节：以八卦对应方位、春夏秋冬等信息。","家庭角色：课件列出长女、二女儿、老母亲、男主、老父亲等家庭关系象意。","五行属性：阴木、阳木、阴土、阳土、火、水等分类。","九宫数字：课件以4、9、2、3、5、7、8、1、6标示九宫数字。","身体与脏腑：课件列有肝、心、小肠、胃、胆、脾、肾、膀胱、肺、大肠等对应。"]],
 ["使用说明",["这里先按课件的象意类别建立索引，不把图卡中的传统对应关系表述为现代医学结论。","如需逐项背诵，可对照原PPT第6页图卡复习。"]]
 ],image:"baguaOriginal"},
-{id:"f5",view:"foundation",group:"基础理论",title:"先后天八卦与二十四山",summary:"从八卦方位延伸到二十四山，是后续罗盘与阳宅方位学习的基础。",tags:["先天八卦","后天八卦","二十四山","罗盘","方位"],source:"《2026-09易理基础知识卡修订版》PPT第5页；用户提供的罗盘图。",sections:[
+{id:"f5",view:"bagua",group:"基础理论",title:"先后天八卦与二十四山",summary:"从八卦方位延伸到二十四山，是后续罗盘与阳宅方位学习的基础。",tags:["先天八卦","后天八卦","二十四山","罗盘","方位"],source:"《2026-09易理基础知识卡修订版》PPT第5页；用户提供的罗盘图。",sections:[
 ["学习范围",["课件将先后天八卦与二十四山放在同一知识板块。","用户另提供罗盘图，作为二十四山与罗盘层次的辅助图示。"]],
 ["学习顺序",["先熟悉八卦方位。","再理解二十四山的分布。","最后结合罗盘与住宅实测方向使用。"]],
 ["待补充",["二十四山的具体分度、每山边界及罗盘各圈层，后续根据课堂课件逐项补录。"]]
@@ -199,22 +191,22 @@ const notes=[
 ["资料范围",["课件第9页为阳干长生十二态地支图。","课件第10页为阴干长生十二态地支图。","图中以不同天干和地支位置标示长生、沐浴、冠带、临官、帝旺、衰、病、死、墓、绝、胎、养等阶段。"]],
 ["整理说明",["当前先建立图卡索引，具体每个天干对应的十二态起点和地支顺序，后续逐项对照原图录入，避免仅凭记忆填错。"]]
 ]},
-{id:"e1",view:"eight",group:"七星八宅",title:"北斗七星与八宫磁场",summary:"天上星曜与地上八宫磁场对应，整理四吉方、四凶方与五行属性。",tags:["北斗七星","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼"],source:"第六课七星对应图；《2026-09易理基础知识卡修订版》PPT第16页。",sections:[
+{id:"e1",view:"schools",group:"七星八宅",title:"北斗七星与八宫磁场",summary:"天上星曜与地上八宫磁场对应，整理四吉方、四凶方与五行属性。",tags:["北斗七星","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼"],source:"第六课七星对应图；《2026-09易理基础知识卡修订版》PPT第16页。",sections:[
 ["七星与磁场对应",["天枢—贪狼—生气（吉）—阳木。","天璇—巨门—天医（吉）—阳土。","天玑—禄存—祸害（凶）—阴土。","天权—文曲—六煞（凶）—阴水。","玉衡—廉贞—五鬼（凶）—阴火。","开阳—武曲—延年（吉）—阳金。","摇光—破军—绝命（凶）—阴金。","辅弼—伏位（吉）—阴木。"]],
 ["吉方与凶方",["四吉方：生气、天医、延年、伏位。","四凶方：祸害、六煞、五鬼、绝命。"]],
 ["备注",["辅弼是传统术数中补充的星曜，不属于实际北斗七星。"]]
 ]},
-{id:"e2",view:"eight",group:"八宅磁场",title:"八宫磁场大游年歌",summary:"保存八宫磁场口诀，并与乾卦爻变速记图建立关联。",tags:["大游年歌","一祸二绝","爻变","伏位","延年"],source:"《2026-09易理基础知识卡修订版》PPT第16页；用户提供的乾卦爻变速记图。",sections:[
+{id:"e2",view:"schools",group:"八宅磁场",title:"八宫磁场大游年歌",summary:"保存八宫磁场口诀，并与乾卦爻变速记图建立关联。",tags:["大游年歌","一祸二绝","爻变","伏位","延年"],source:"《2026-09易理基础知识卡修订版》PPT第16页；用户提供的乾卦爻变速记图。",sections:[
 ["PPT记忆卡口诀",["一祸二绝三生气。","上下六煞初二医。","二三爻变成五鬼。","全变之后延年吉。"]],
 ["用户课堂笔记补充版本",["一祸二绝三生气。","上下六煞初二医。","二三爻变为五鬼。","三爻全变延年吉。"]],
 ["乾卦爻变速记",["以乾卦为起点：乾三爻皆阳。","初爻变化：乾变巽，对应祸害。","二爻变化：乾变离，对应绝命。","三爻变化：乾变兑，对应生气。","三爻全部变化：乾变坤，对应延年。","不变：乾仍为乾，对应伏位。"]],
 ["其他爻变组合",["初爻、三爻变化：六煞。","初爻、二爻变化：天医。","二爻、三爻变化：五鬼。"]]
 ],visual:"yaobian",image:"bagongTable"},
-{id:"e3",view:"eight",group:"数字磁场",title:"数字磁场与三元命速查",summary:"基础知识卡包含数字磁场强弱表和男女出生年份三元命速查表。",tags:["数字磁场","三元命","速查表","延年","天医","生气"],source:"《2026-09易理基础知识卡修订版》PPT第17页。",sections:[
+{id:"e3",view:"schools",group:"数字磁场",title:"数字磁场与三元命速查",summary:"基础知识卡包含数字磁场强弱表和男女出生年份三元命速查表。",tags:["数字磁场","三元命","速查表","延年","天医","生气"],source:"《2026-09易理基础知识卡修订版》PPT第17页。",sections:[
 ["数字磁场强弱表",["延年：最强19、91；强78、87；较弱34、43；最弱26、62。","天医：最强13、31；强68、86；较弱49、94；最弱27、72。","生气：最强14、41；强67、76；较弱39、93；最弱28、82。","伏位：最强11、22；强88、99；较弱66、77；最弱33、44。","六煞：最强16、61；强47、74；较弱38、83；最弱29、92。","祸害：最强17、71；强89、98；较弱46、64；最弱23、32。","五鬼：最强18、81；强79、97；较弱36、63；最弱24、42。","绝命：最强12、21；强69、96；较弱84、48；最弱37、73。"]],
 ["三元命速查表",["PPT同时收录男女两行命卦顺序，以及1945—2034年出生年份速查表。","完整年份对应关系保留在原PPT第17页，当前网站先建立索引，避免从缩略图误抄年份。"]]
 ]},
-{id:"e4",view:"eight",group:"学习路线",title:"风水派别学习纲要",summary:"按骨架、肌肉、穴位、气血、法器、外挂六个层次整理课程学习路线。",tags:["七星蕴含","金锁玉关","玄空飞星","形家风水","奇门风水","三吉六秀"],source:"《2026-09易理基础知识卡修订版》PPT第19页。",sections:[
+{id:"e4",view:"schools",group:"学习路线",title:"风水派别学习纲要",summary:"按骨架、肌肉、穴位、气血、法器、外挂六个层次整理课程学习路线。",tags:["七星蕴含","金锁玉关","玄空飞星","形家风水","奇门风水","三吉六秀"],source:"《2026-09易理基础知识卡修订版》PPT第19页。",sections:[
 ["1. 骨架：七星蕴含",["框架性、基础型入门风水学科，用以确定房屋宏观格局，规划内部功能区。","学习后用于判断房屋吉位、凶位，并对房屋缺陷提出调解方案。","课件称其也是数字能量学科（手机号码、门牌号、车牌号等）的理论基础。"]],
 ["2. 肌肉：金锁玉关",["课件又称“过路阴阳”。","侧重判断房屋吉凶能量分布，并进行方向性调整。"]],
 ["3. 穴位：玄空飞星",["课件描述为将风水能量与天运结合的技法，对学习者周易素养有较高要求。"]],
@@ -222,7 +214,7 @@ const notes=[
 ["5. 法器：奇门风水",["以奇门遁甲预测为基础，结合盘面信息讨论风水布局。"]],
 ["6. 外挂：三吉六秀",["课件以杨公风水为代表，提到四十九宫实战技法；课件注明属秘法范畴，不详述。"]]
 ]},
-{id:"y1",view:"yangzhai",group:"阳宅基础",title:"阳宅风水的两种体系",summary:"七星蕴含以门为依据，八宅明镜以住宅坐向为根本。",tags:["七星蕴含","北派","八宅明镜","南派","定门","坐向"],source:"用户提供的专题笔记《阳宅风水｜立极、天心位与磁场判断》。",sections:[
+{id:"y1",view:"schools",group:"阳宅基础",title:"阳宅风水的两种体系",summary:"七星蕴含以门为依据，八宅明镜以住宅坐向为根本。",tags:["七星蕴含","北派","八宅明镜","南派","定门","坐向"],source:"用户提供的专题笔记《阳宅风水｜立极、天心位与磁场判断》。",sections:[
 ["七星蕴含（北派）",["以大门为依据判断磁场，重视纳气方向。"]],
 ["八宅明镜（南派）",["以住宅坐向为根本，判断各宫位磁场。"]],
 ["课堂观点",["常年开窗的住宅，更适合参考八宅理论。"]],
@@ -278,7 +270,7 @@ const notes=[
 ["三个判断原则",["角力大于边力：角指墙角，边指边线。","中力大于侧力：中间位置的力量大于两侧。","明显功能区划分：课堂记录比例为75%，举例提到铺地毯等方式。"]],
 ["补充待核对",["此前笔记中另有“博骨架”一词，具体术语待回看原课件核对。"]]
 ]},
-{id:"y10",view:"yangzhai",group:"口诀与补充",title:"八宫磁场口诀与大紫薇令",summary:"保存用户补充的八宫磁场口诀及大紫薇令原始记录。",tags:["八宫磁场","大紫薇令","口诀","贪巨禄文廉武破"],source:"用户本次补充的文字记录；易理基础知识卡PPT第16页。",sections:[
+{id:"y10",view:"schools",group:"口诀与补充",title:"八宫磁场口诀与大紫薇令",summary:"保存用户补充的八宫磁场口诀及大紫薇令原始记录。",tags:["八宫磁场","大紫薇令","口诀","贪巨禄文廉武破"],source:"用户本次补充的文字记录；易理基础知识卡PPT第16页。",sections:[
 ["八宫磁场口诀",["一祸二绝三生气，上下六煞初二医，二三爻变为五鬼，三爻全变延年吉。","PPT记忆卡另记为：一祸二绝三生气；上下六煞初二医；二三爻变成五鬼；全变之后延年吉。"]],
 ["大紫薇令：原始记录",["东方青雷公，南方赤雷公，西方白雷公，北方黑雷公，中央黄雷公。","天蓬、天猷、翊圣、佑圣；上元天官、中元地官、下元水官。","贪、巨、禄、文、廉、武、破。","鬼*（离、旨、火、天、尊、勝）。","道法本无多，南辰贯北河，全凭一道令，全凭一道令，全凭一道令，降尽世间魔。"]],
 ["整理备注",["保留用户提供的文字，不擅自校改其中不确定的字词；后续如有老师原始版本，可再对照修订。"]]
@@ -318,7 +310,7 @@ const notes=[
 ["五行相克",["金克木 → 木克土 → 土克水 → 水克火 → 火克金。"]],
 ["理解要点",["相生是滋养，相克是约束。","生可以是滋养与促进，也可能发生过度消耗。","克可以是损害，也可以是约束、规范和管理。","生不必然等于吉，克不必然等于凶，重点在关系、制化与平衡。"]]
 ]},
-{id:"f13",view:"foundation",group:"八卦与方位",title:"后天八卦九宫与二十四山",summary:"以后天八卦为内层、天干地支为外层，形成二十四山的方位体系。",tags:["后天八卦","九宫","二十四山","八宫","方位","五行"],source:"第五课《天干地支相位与理法》作业整理。",related:["f1","f4","f5","b9"],sections:[
+{id:"f13",view:"bagua",group:"八卦与方位",title:"后天八卦九宫与二十四山",summary:"以后天八卦为内层、天干地支为外层，形成二十四山的方位体系。",tags:["后天八卦","九宫","二十四山","八宫","方位","五行"],source:"第五课《天干地支相位与理法》作业整理。",related:["f1","f4","f5","b9"],sections:[
 ["九宫方位的基本方向",["传统九宫图采用：上南、下北、左东、右西。","内为后天八卦，外套天干地支，形成二十四山。","戊、己土居中央，不排列在外围二十四山中。"]],
 ["八宫、方位与二十四山",["巽宫：东南，辰、巳，五行属木。","离宫：正南，丙、午、丁，五行属火。","坤宫：西南，未、坤、申，五行属土。","震宫：正东，甲、卯、乙，五行属木。","中宫：中央，戊、己，五行属土。","兑宫：正西，庚、酉、辛，五行属金。","艮宫：东北，丑、艮、寅，五行属土。","坎宫：正北，壬、子、癸，五行属水。","乾宫：西北，戌、乾、亥，五行属金。"]],
 ["八卦的阴阳、五行与象意",["乾：阳卦，属金，西北，象天、刚健；对应父亲、头部。","兑：阴卦，属金，正西，象泽、喜悦；对应少女、口舌。","离：阴卦，属火，正南，象火、光明；对应中女、心与眼睛。","震：阳卦，属木，正东，象雷、行动；对应长男、筋与足。","巽：阴卦，属木，东南，象风、渗透；对应长女、毛发。","坎：阳卦，属水，正北，象水、流动；对应中男、肾与耳。","艮：阳卦，属土，东北，象山、停止；对应少男、手与鼻。","坤：阴卦，属土，西南，象地、包容；对应母亲、腹部。"]],
@@ -366,13 +358,12 @@ const lessons=[
 const glossary=["天干","地支","天干地支","无极","太极","两仪","阴阳","阴阳对应","此消彼长","阴阳互根","三才","天时","地利","人和","四象","少阳","太阳","少阴","太阴","春夏秋冬","八卦","河图","洛书","先天八卦","后天八卦","五行","木曰曲直","火曰炎上","土爰稼穑","金曰从革","水曰润下","水生木","木生火","火生土","土生金","金生水","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","相位","理法","子位","虚宿","虚日鼠","五运经天图","二十四山","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let activeView="home",filters={foundation:"全部",branches:"全部",eight:"全部",yangzhai:"全部"},queries={foundation:"",branches:"",eight:"",yangzhai:"",glossary:""};
+let activeView="home",filters={foundation:"全部",branches:"全部",bagua:"全部",schools:"全部",yangzhai:"全部"},queries={foundation:"",branches:"",bagua:"",schools:"",yangzhai:"",glossary:""};
 function setView(id){activeView=id;document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$("#view-"+id).classList.add("active");document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$("#layout").classList.remove("menu-open");window.scrollTo({top:0,behavior:"smooth"});}
 function cardHtml(n){return '<article class="card" data-note="'+n.id+'"><div class="cardtop"><span>'+esc(n.group)+'</span><b>'+esc(n.source.split("；")[0].split("。")[0].slice(0,25))+'</b></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary)+'</p><div class="tags">'+n.tags.slice(0,4).map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div></article>';}
 function bindNoteCards(){document.querySelectorAll("[data-note]").forEach(el=>el.onclick=()=>openNote(el.dataset.note));}
-function renderNav(){let counts={foundation:notes.filter(n=>n.view==="foundation").length,branches:notes.filter(n=>n.view==="branches").length,eight:notes.filter(n=>n.view==="eight").length,yangzhai:notes.filter(n=>n.view==="yangzhai").length};$("#nav").innerHTML=navItems.map(n=>'<button data-view="'+n.id+'" class="'+(activeView===n.id?"active":"")+'"><span class="navicon">'+n.icon+'</span>'+n.name+(counts[n.id]!==undefined?'<small>'+String(counts[n.id]).padStart(2,"0")+'</small>':'')+'</button>').join("");document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));}
-function renderHome(){let groups=[["foundation","易理基础","从无极、太极、两仪、四象到八卦五行，先搭建基础概念。"],["branches","干支知识","十二地支、生肖时辰、藏干，以及合会冲刑害破。"],["eight","七星与八宅","北斗七星、八宫磁场、大游年歌与数字磁场。"],["yangzhai","阳宅实操","门主灶、立极、天心位、缺角、测方位与定门。"]];$("#homeCards").innerHTML=groups.map(g=>'<article class="card" data-home="'+g[0]+'"><div class="cardtop"><span>KNOWLEDGE SYSTEM</span><b>→</b></div><h3>'+g[1]+'</h3><p>'+g[2]+'</p></article>').join("");document.querySelectorAll("[data-home]").forEach(el=>el.onclick=()=>setView(el.dataset.home));let recent=["f6","f9","b7","b10","e2","y4"].map(id=>notes.find(n=>n.id===id));$("#recentCards").innerHTML=recent.map(cardHtml).join("");bindNoteCards();$("#noteCount").textContent=String(notes.length).padStart(2,"0");}
-function renderSystem(){let ids=["f6","f7","f8","f9","f10","f11","f12","f13","b7","b8","b9","b10"];$("#systemCards").innerHTML=ids.map(id=>notes.find(n=>n.id===id)).filter(Boolean).map(cardHtml).join("");bindNoteCards();}
+function renderNav(){let counts={foundation:notes.filter(n=>n.view==="foundation").length,branches:notes.filter(n=>n.view==="branches").length,bagua:notes.filter(n=>n.view==="bagua").length,schools:notes.filter(n=>n.view==="schools").length,yangzhai:notes.filter(n=>n.view==="yangzhai").length};$("#nav").innerHTML=navItems.map(n=>'<button data-view="'+n.id+'" class="'+(activeView===n.id?"active":"")+'"><span class="navicon">'+n.icon+'</span>'+n.name+(counts[n.id]!==undefined?'<small>'+String(counts[n.id]).padStart(2,"0")+'</small>':'')+'</button>').join("");document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));}
+function renderHome(){let groups=[["foundation","易理根基","阴阳、太极、三才、四象与五行，先建立易理底层框架。"],["branches","干支与历法","十天干、十二地支、藏干、长生十二态及干支关系。"],["bagua","卦象与方位","河图洛书、先后天八卦、九宫、八卦象意与二十四山。"],["schools","风水门派","七星蕴含、八宅、金锁玉关、玄空、形家与奇门等。"],["yangzhai","阳宅实操","立极、天心位、缺角、测方位、定磁场与门主灶。"]];$("#homeCards").innerHTML=groups.map(g=>'<article class="card" data-home="'+g[0]+'"><div class="cardtop"><span>KNOWLEDGE SYSTEM</span><b>→</b></div><h3>'+g[1]+'</h3><p>'+g[2]+'</p></article>').join("");document.querySelectorAll("[data-home]").forEach(el=>el.onclick=()=>setView(el.dataset.home));let recent=["f6","f9","b1","b10","f4","e1","y4"].map(id=>notes.find(n=>n.id===id)).filter(Boolean);$("#recentCards").innerHTML=recent.map(cardHtml).join("");bindNoteCards();$("#noteCount").textContent=String(notes.length).padStart(2,"0");}
 function renderCategory(view){let arr=notes.filter(n=>n.view===view);let groups=["全部",...new Set(arr.map(n=>n.group))];let filterEl=$("#"+view+"Filters");filterEl.innerHTML=groups.map(g=>'<button class="chip '+(filters[view]===g?"active":"")+'" data-filter="'+esc(g)+'">'+esc(g)+'</button>').join("");let q=queries[view].toLowerCase().trim();let shown=arr.filter(n=>(filters[view]==="全部"||n.group===filters[view])&&(!q||[n.title,n.summary,n.group,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q)));$("#"+view+"Cards").innerHTML=shown.map(cardHtml).join("");$("#"+view+"Empty").hidden=shown.length>0;bindNoteCards();document.querySelectorAll("#"+view+"Filters [data-filter]").forEach(b=>b.onclick=()=>{filters[view]=b.dataset.filter;renderCategory(view);});}
 function renderCourses(){$("#courseList").innerHTML=lessons.map(l=>'<article class="lesson" data-course="'+l.n+'" tabindex="0" role="button"><div class="lesson-num">'+l.n+'</div><div><h3>'+esc(l.title)+'</h3><p>'+esc(l.summary)+'</p></div><span class="status '+(l.status==="pending"?"pending":l.status==="partial"?"partial":"")+'">'+(l.status==="ready"?"可阅读":l.status==="partial"?"部分整理":"待补资料")+'</span></article>').join("");document.querySelectorAll("[data-course]").forEach(el=>{el.onclick=()=>openCourse(el.dataset.course);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCourse(el.dataset.course);}};});}
 function renderGlossary(){let q=queries.glossary.toLowerCase().trim();let terms=glossary.filter(t=>!q||t.toLowerCase().includes(q));$("#termCloud").innerHTML=terms.map(t=>'<button data-term="'+esc(t)+'">'+esc(t)+'</button>').join("");let related=notes.filter(n=>!q||[n.title,n.summary,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q));$("#glossaryCards").innerHTML=related.map(cardHtml).join("");bindNoteCards();document.querySelectorAll("[data-term]").forEach(b=>b.onclick=()=>{queries.glossary=b.dataset.term;$("#searchGlossary").value=b.dataset.term;renderGlossary();});}
@@ -400,9 +391,9 @@ function setupSearch(view,input){$(input).addEventListener("input",e=>{queries[v
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setView(b.dataset.go));
 $("#menuBtn").onclick=()=>$("#layout").classList.toggle("menu-open");
 $("#back").onclick=closeNote;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))closeNote();};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeNote();});
-setupSearch("foundation","#searchFoundation");setupSearch("branches","#searchBranches");setupSearch("eight","#searchEight");setupSearch("yangzhai","#searchYangzhai");
+setupSearch("foundation","#searchFoundation");setupSearch("branches","#searchBranches");setupSearch("bagua","#searchBagua");setupSearch("schools","#searchSchools");setupSearch("yangzhai","#searchYangzhai");
 $("#searchGlossary").addEventListener("input",e=>{queries.glossary=e.target.value;renderGlossary();});
-function renderAll(){renderNav();renderHome();renderSystem();renderCategory("foundation");renderCategory("branches");renderCategory("eight");renderCategory("yangzhai");renderCourses();renderGlossary();}
+function renderAll(){renderNav();renderHome();renderCategory("foundation");renderCategory("branches");renderCategory("bagua");renderCategory("schools");renderCategory("yangzhai");renderCourses();renderGlossary();}
 renderAll();
 </script>
 </body>

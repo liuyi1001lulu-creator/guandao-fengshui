@@ -31,6 +31,9 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 .timeline{display:grid;gap:10px}.lesson{display:grid;grid-template-columns:66px minmax(0,1fr) auto;gap:15px;align-items:center;background:#fffdf7c9;border:1px solid var(--line);border-radius:8px;padding:14px 17px;cursor:pointer}.lesson:hover{border-color:#c8b386;background:#fffdf0}.lesson-num{font:24px Georgia;color:#b99b62}.lesson h3{font:600 15px var(--serif);color:#30483a;margin:0 0 5px}.lesson p{font-size:11px;color:#858173;line-height:1.8;margin:0}
 .status{font-size:9px;padding:4px 7px;border-radius:3px;background:#e9eee7;color:#466455}.status.pending{background:#f1e9d9;color:#9b7941}.status.partial{background:#eee9dc;color:#82745a}
 .method{background:#fffdf7c9;border:1px solid var(--line);border-radius:9px;padding:19px}.method h3{font:600 16px var(--serif);color:#30483a;margin:5px 0 8px}.method p{font-size:11px;line-height:1.9;color:#858173;margin:0}.steps{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:14px}.steps span{background:#eee9dc;color:#566052;padding:7px 9px;border-radius:4px;font:11px var(--serif)}.steps i{color:#b99b62;font-style:normal}
+.learning-path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.path-step{background:#fffdf7c9;border:1px solid var(--line);border-radius:8px;padding:16px;min-height:190px;position:relative}.path-step small{font:10px Georgia;color:#ad9564;letter-spacing:1.5px}.path-step h3{font:600 16px var(--serif);color:#315345;margin:11px 0 7px}.path-step p{font-size:11px;line-height:1.9;color:#807c70;margin:0 0 12px}.path-step .chip{padding:6px 9px}.path-step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:48%;z-index:2;color:#b99b62;font-size:17px}.course-related{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.lesson{cursor:pointer}.lesson:focus-visible,.card:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.detail-related{margin-top:12px}.detail-related .card{min-height:120px}
+@media(max-width:980px){.learning-path{grid-template-columns:repeat(2,minmax(0,1fr))}.path-step:nth-child(2):after{display:none}}
+@media(max-width:700px){.learning-path,.course-related{grid-template-columns:1fr}.path-step:after{display:none!important}}
 .term-cloud{display:flex;flex-wrap:wrap;gap:9px}.term-cloud button{border:1px solid #dbd0ba;background:#faf7ef;color:#777365;padding:9px 12px;border-radius:5px;font:12px var(--serif);cursor:pointer}.term-cloud button:hover{border-color:var(--gold);color:var(--jade);background:#fffdf7}
 .data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12px;background:#fffdf7b8}.data-table th,.data-table td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.data-table th{color:#92784b;font-weight:500;background:#f0ebdf}.data-table td{color:#55584f}.diagram{margin:15px 0;padding:15px;background:#fbf8f0;border:1px solid var(--line);border-radius:8px}.diagram-title{font:13px var(--serif);color:#365347;margin:0 0 12px}.trigram-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.trigram{border:1px solid var(--line);border-radius:5px;padding:9px 5px;text-align:center;background:#fffdf7}.trigram b{display:block;font:23px var(--serif);color:var(--jade)}.trigram strong{display:block;font:12px var(--serif);margin-top:4px}.trigram small{font-size:10px;color:#938a76}
 .relation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.relation{border:1px solid var(--line);border-radius:6px;padding:10px;background:#fffdf7}.relation b{font:13px var(--serif);color:#315345}.relation p{font-size:11px;line-height:1.8;color:#777365;margin:5px 0 0}
@@ -61,7 +64,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
   <div class="eyebrow">TRADITIONAL KNOWLEDGE · FENG SHUI</div>
   <h1>观道<i>。</i></h1><div class="sub">以空间为卷，以理路为纲。</div>
   <div class="desc">个人风水学习档案。课程有出处，知识有归属，方法可检索，让零散的课堂内容逐渐形成自己的理解体系。</div>
-  <div class="actions"><button data-go="foundation">进入知识体系　→</button><button class="secondary" data-go="courses">查看课程档案</button></div>
+  <div class="actions"><button data-go="system">进入知识体系　→</button><button class="secondary" data-go="courses">查看课程档案</button></div>
   <div class="hero-art"><b>道</b></div>
  </div>
  <div class="stats">
@@ -74,6 +77,20 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
  <div class="section-head"><div><div class="kicker">RECENTLY ADDED</div><h2>本次新增资料</h2><p>易理基础知识卡、十二地支图解、地支关系图解与阳宅实操专题。</p></div></div>
  <div class="grid2" id="recentCards"></div>
  <div class="callout" style="margin-top:18px">整理原则：课程原始记录、知识体系索引、操作方法分开管理；课堂观点与后续辨析分开标注。资料不完整时明确标记，不用推测内容填空。</div>
+</section>
+
+<section class="view" id="view-system">
+ <div class="section-head"><div><div class="kicker">KNOWLEDGE STRUCTURE · LEARNING PATH</div><h2>知识体系</h2><p>从根本原理到时空关系，再到空间应用；跨课程的同一知识点在这里汇总。</p></div></div>
+ <div class="callout">知识体系不是按课堂顺序简单堆叠，而是把不同课程中反复出现、彼此关联的概念整理到同一条学习脉络中。课程档案保留出处，知识条目负责解释与关联。</div>
+ <div class="learning-path">
+  <article class="path-step"><small>01 · ROOT</small><h3>根本原理</h3><p>先理解阴阳、太极与三才，认识事物的对立统一、相互依存和动态变化。</p><button class="chip" data-note="f6">阴阳之本</button><button class="chip" data-note="f7">太极三特性</button></article>
+  <article class="path-step"><small>02 · CHANGE</small><h3>变化规律</h3><p>从四象、四时与五行，理解生发、升腾、转化、收敛、闭藏的变化过程。</p><button class="chip" data-note="f9">四象与四季</button><button class="chip" data-note="f10">五行象意</button></article>
+  <article class="path-step"><small>03 · TIME & SPACE</small><h3>时空表达</h3><p>以八卦、天干、地支表达方位、时间、属性及其组合关系。</p><button class="chip" data-note="f13">二十四山</button><button class="chip" data-note="b10">地支关系总览</button></article>
+  <article class="path-step"><small>04 · APPLICATION</small><h3>空间应用</h3><p>把基础概念带入七星八宅、阳宅判断与实际户型分析，按课程方法逐步练习。</p><button class="chip" data-note="e1">七星与八宫</button><button class="chip" data-note="y4">立极与几何中心</button></article>
+ </div>
+ <div class="section-head"><div><div class="kicker">CROSS-COURSE CONNECTIONS</div><h2>跨课程关联</h2><p>这些条目把不同课程中的相关知识放在一起理解。</p></div></div>
+ <div class="grid2" id="systemCards"></div>
+ <div class="callout" style="margin-top:16px">整理边界：课堂明确讲过的内容按课堂脉络呈现；为便于学习所作的归纳会标注为“知识关联”或“整理提示”；没有资料支持的内容不自行补齐。</div>
 </section>
 
 <section class="view" id="view-foundation">
@@ -97,9 +114,9 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 </section>
 
 <section class="view" id="view-courses">
- <div class="section-head"><div><div class="kicker">COURSE ARCHIVE</div><h2>课程档案</h2><p>按课程顺序保留学习来源，知识体系则从不同课程中提取关联。</p></div></div>
+ <div class="section-head"><div><div class="kicker">COURSE ARCHIVE</div><h2>课程档案</h2><p>按课程顺序阅读已经转化的课堂笔记；不展示原始思维导图，知识点可继续跳转到知识体系。</p></div></div>
  <div class="timeline" id="courseList"></div>
- <div class="callout" style="margin-top:18px">第一课、第四课目前尚未录入可核实的原始内容；第五课只有部分作业记录。后续补充课件或笔记后再完善。</div>
+ <div class="callout" style="margin-top:18px">课程档案展示的是整理后的可阅读内容，不再保留原始思维导图展示。第一课、第四课目前尚未录入可核实的课堂笔记；其余课程按现有资料逐步补充，资料不足处明确标记。</div>
 </section>
 
 <section class="view" id="view-glossary">
@@ -115,6 +132,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
+ {id:"system",name:"知识体系",icon:"纲"},
  {id:"foundation",name:"易理基础",icon:"易"},
  {id:"branches",name:"干支知识",icon:"支"},
  {id:"eight",name:"七星与八宅",icon:"星"},
@@ -265,18 +283,83 @@ const notes=[
 ["大紫薇令：原始记录",["东方青雷公，南方赤雷公，西方白雷公，北方黑雷公，中央黄雷公。","天蓬、天猷、翊圣、佑圣；上元天官、中元地官、下元水官。","贪、巨、禄、文、廉、武、破。","鬼*（离、旨、火、天、尊、勝）。","道法本无多，南辰贯北河，全凭一道令，全凭一道令，全凭一道令，降尽世间魔。"]],
 ["整理备注",["保留用户提供的文字，不擅自校改其中不确定的字词；后续如有老师原始版本，可再对照修订。"]]
 ]}
+
+{id:"f6",view:"foundation",group:"阴阳与太极",title:"阴阳之本：表现与支撑",summary:"看得见的表现为阳，看不见的支撑为阴；阴阳相互依存、互为根本。",tags:["阴阳","阴阳对应","此消彼长","阴阳互根","阳是表现","阴是支撑"],source:"第二课《阴阳之本》课堂笔记与作业整理。",related:["f7","f8","f9"],sections:[
+["阴阳的总体概念",["阳：看得见的；发散、向上、表现。","阴：看不见的；内敛、沉积、聚合。","万物皆具阴阳之性，阴阳相互依存、相互作用，不是绝对分开的。","阴中有阳，阳中有阴；所谓“孤阴不生，独阳不长”。","核心表述：阳是表现，阴是支撑。"]],
+["用书写理解阴阳",["书写动作属阳，墨水承载属阴。","没有书写动作，墨水不能形成文字；没有墨水承载，书写也无法留下字迹。"]],
+["调香与阴阳取象",["檀香、沉香等木质香，沉稳、厚重、内敛，可取阴象。","樟脑、薄荷等香气，清扬、发散，可取阳象。","只有沉稳木质香，容易显得沉闷；只有辛散轻扬之气，又可能缺少深度和余韵。","取象要点：阴阳配合，才能形成层次。"]]
+]},
+{id:"f7",view:"foundation",group:"阴阳与太极",title:"太极的三个特性与根本含义",summary:"阴阳对应、此消彼长、阴阳互根，共同揭示事物动态变化的规律。",tags:["太极","阴阳对应","此消彼长","阴阳互根","动态平衡"],source:"第二课《阴阳之本》课堂笔记。",related:["f6","f8","f9"],sections:[
+["太极的三个特性",["阴阳对应：对立而统一、同频共振。阴阳性质不同，却处于同一整体中。","此消彼长：动态平衡。阴阳不断变化，在消长中维持动态协调。","阴阳互根：你中有我、我中有你。阴阳相互依存，阴中有阳、阳中有阴。"]],
+["课堂运用举例",["中医举例：课堂提到“动则生阳”，并以肾阳、肾阴的不同调养方向作说明。","风水举例：课堂以白酒取阳象、大件家具取阴象，说明阴阳取象的运用。"]],
+["太极的根本含义",["太极揭示事物对立统一、相互依存、不断变化的规律。","不能用静止、片面的眼光看待事物。"]]
+]},
+{id:"f8",view:"foundation",group:"阴阳与太极",title:"三才：天、地、人",summary:"天有天道，地有地道，人有人道；人处于天地之间，认识并运用规律。",tags:["三才","天","地","人","天时","地利","人和"],source:"第二课《阴阳之本》课堂笔记。",related:["f6","f7","f9"],sections:[
+["三才的基本概念",["三才就是天、地、人，课堂联系宇宙全息律进行讲解。","天有天道，地有地道，人有人道。","天：可理解为时间、变化与自然规律。","地：可理解为空间、环境与承载条件。","人：认识规律、运用规律，并通过行动参与变化的主体。"]],
+["核心理解",["人居于天地之间，应认识天地之理、顺应自然规律，而不是一味凭借主观意愿行事。","天时、地利、人和，缺一不可。","人既不能脱离天地独立存在，也不能完全把自己交给环境和命运。"]]
+]},
+{id:"f9",view:"foundation",group:"四象与五行",title:"四象：自然四时与生命阶段",summary:"少阳、太阳、少阴、太阴对应春夏秋冬，呈现阳气生发、旺盛、收敛与闭藏的过程。",tags:["四象","少阳","太阳","少阴","太阴","春夏秋冬"],source:"第二课《阴阳之本》课堂笔记。",related:["f7","f10","f12"],sections:[
+["四象与季节对应",["少阳对应春，属木，阳气初生，万物生发。","太阳对应夏，属火，阳气旺盛，万物生长、繁盛。","少阴对应秋，属金，阴气渐生，万物收敛。","太阴对应冬，属水，阴气旺盛，万物闭藏。"]],
+["两个“火车头”",["课堂表述：火是阳之眼，水是阴之眼。","木生火：木主生发，为火提供能量，推动阳气由生发走向旺盛。","金生水：金主收敛，水主闭藏；金的收敛肃降，为水的涵养闭藏创造条件。"]],
+["自然意义与人为意义",["自然：春生、夏长、秋收、冬藏，阴阳消长，循环往复。","人为：人的一生经历出生、成长、兴盛、衰老；做事也有萌芽、发展、成熟、收敛的过程。","课堂感悟：四象揭示的不只是四季变化，也是生命的生死循环；生死之间，照见大千。"]]
+]},
+{id:"f10",view:"foundation",group:"四象与五行",title:"五行的概念与五种基本象意",summary:"五行不是五种简单物质，而是归纳天地万物的五类特性与运动变化方式。",tags:["五行","木曰曲直","火曰炎上","土爰稼穑","金曰从革","水曰润下"],source:"第二课《阴阳之本》课堂笔记；《2026-09易理基础知识卡修订版》PPT。",related:["f3","f9","f11","f12"],sections:[
+["五行的概念",["五行不是五种简单的物质元素，而是归纳天地万物的五类特性与运动变化方式。","课堂表述：阴阳是世间能量的本质，五行是能量运行的根本特征。","木、火、土、金、水分别体现生发、升腾、转化、收敛、润下等特性。"]],
+["五行象意",["木曰曲直：生发、舒展、条达、向外发展。","火曰炎上：温暖、升腾、发散、光明、向上。","土爰稼穑：承载、包容、生化、转化。","金曰从革：收敛、肃降、变革、决断、规范。","水曰润下：滋润、下行、闭藏、涵养。"]],
+["土的作用与转化",["土的重要特征是转化，能够承接、协调不同五行之间的变化。","课堂取象：阳土艮，调节冬水生木过寒的问题；阴土坤，使火克金的力量有所缓和。","土是阳之性结束、阴之性开始的过渡。","四季最后一个月属土，四季皆有土。","课堂核心表述：“外生内克，物成其物。”相生是滋养，相克是约束；万物既需要生发，也需要制约，生而有制、制而有生。"]],
+["为什么万物皆具五行之性",["五行不是固定的物质分类，而是根据事物在不同状态、条件和作用下呈现的特征取象。","课堂以水为例：自然流动、滋润身体，可取水性；加热沸腾，可取火象；冻结成冰，可取金象；加入营养液培育植物，可取土象；加入颜色制成颜料，并通过绘画表现线条伸展与枝叶生发，可取木象。"]]
+]},
+{id:"f11",view:"foundation",group:"四象与五行",title:"五行相生：五种感觉与关系理解",summary:"相生不只是滋养和获得，也可能伴随付出、消耗、积累与转化。",tags:["五行相生","水生木","木生火","火生土","土生金","金生水"],source:"第二课《阴阳之本》课堂笔记。",related:["f10","f12","b10"],sections:[
+["五行相生顺序",["水生木 → 木生火 → 火生土 → 土生金 → 金生水。"]],
+["五种感觉",["水生木——通畅之功：水滋养木，使木得以通畅生发。","木生火——奉献与牺牲：木消耗自身，为火提供燃烧条件。","火生土——献祭与转化：燃烧之后形成灰烬归于土；课堂借此说明转化可能需要付出代价，也可能涉及第三方利益让渡。","土生金——压力与漫长积累：金藏于土中，需要长期承载、积累和沉淀才能形成、显现。","金生水——凝炼与时机：课堂以水蒸气遇冷凝结为例，强调收敛、凝聚以及转化所需的条件和时机。"]],
+["五行相克的课堂补充",["火克金：以“真金不怕火炼”理解历练。","金克木：取肃杀、攻击、决断之象。","核心理解：相生不只是获得，也可能意味着付出；相克不只是伤害，也可能意味着约束、磨炼与成就。"]]
+]},
+{id:"f12",view:"foundation",group:"四象与五行",title:"五行生克：滋养、约束与动态平衡",summary:"相生是滋养，相克是约束；生不必然为吉，克也不必然为凶。",tags:["五行相生","五行相克","生而有制","制而有生","动态平衡"],source:"第二课《阴阳之本》课堂笔记；第三课《天干地支与五行运行规律》。",related:["f9","f10","f11","b10"],sections:[
+["五行相生",["木生火 → 火生土 → 土生金 → 金生水 → 水生木。"]],
+["五行相克",["金克木 → 木克土 → 土克水 → 水克火 → 火克金。"]],
+["理解要点",["相生是滋养，相克是约束。","生可以是滋养与促进，也可能发生过度消耗。","克可以是损害，也可以是约束、规范和管理。","生不必然等于吉，克不必然等于凶，重点在关系、制化与平衡。"]]
+]},
+{id:"f13",view:"foundation",group:"八卦与方位",title:"后天八卦九宫与二十四山",summary:"以后天八卦为内层、天干地支为外层，形成二十四山的方位体系。",tags:["后天八卦","九宫","二十四山","八宫","方位","五行"],source:"第五课《天干地支相位与理法》作业整理。",related:["f1","f4","f5","b9"],sections:[
+["九宫方位的基本方向",["传统九宫图采用：上南、下北、左东、右西。","内为后天八卦，外套天干地支，形成二十四山。","戊、己土居中央，不排列在外围二十四山中。"]],
+["八宫、方位与二十四山",["巽宫：东南，辰、巳，五行属木。","离宫：正南，丙、午、丁，五行属火。","坤宫：西南，未、坤、申，五行属土。","震宫：正东，甲、卯、乙，五行属木。","中宫：中央，戊、己，五行属土。","兑宫：正西，庚、酉、辛，五行属金。","艮宫：东北，丑、艮、寅，五行属土。","坎宫：正北，壬、子、癸，五行属水。","乾宫：西北，戌、乾、亥，五行属金。"]],
+["八卦的阴阳、五行与象意",["乾：阳卦，属金，西北，象天、刚健；对应父亲、头部。","兑：阴卦，属金，正西，象泽、喜悦；对应少女、口舌。","离：阴卦，属火，正南，象火、光明；对应中女、心与眼睛。","震：阳卦，属木，正东，象雷、行动；对应长男、筋与足。","巽：阴卦，属木，东南，象风、渗透；对应长女、毛发。","坎：阳卦，属水，正北，象水、流动；对应中男、肾与耳。","艮：阳卦，属土，东北，象山、停止；对应少男、手与鼻。","坤：阴卦，属土，西南，象地、包容；对应母亲、腹部。"]],
+["天干、地支与八卦的整体关系",["八卦：认识事物性质的基本模型。","天干：表达能量的基本属性。","地支：表达能量在时间和空间中的具体运行。","三者相互联系，构成从阴阳五行到方位、时间、自然现象和事物关系的传统知识体系。"]]
+]},
+{id:"b7",view:"branches",group:"天干关系",title:"天干四冲：相位原理与理法原理",summary:"四组天干相冲来自方位相对，并体现同性五行相克。",tags:["天干四冲","甲庚冲","乙辛冲","丙壬冲","丁癸冲","相位","理法"],source:"第五课《天干地支相位与理法》作业整理。",related:["b2","b8","b10"],sections:[
+["天干四冲",["甲庚冲。","乙辛冲。","丙壬冲。","丁癸冲。"]],
+["相位原理",["甲、乙木居东。","丙、丁火居南。","庚、辛金居西。","壬、癸水居北。","戊、己土居中央。","东西相对、南北相对，因此形成四组相冲；戊己土居中央，没有对应的冲位。"]],
+["理法原理",["甲庚冲：阳金克阳木。","乙辛冲：阴金克阴木。","丙壬冲：阳水克阳火。","丁癸冲：阴水克阴火。","四冲都属于同性相冲、五行相克。"]],
+["核心理解",["冲的本质，是两股力量在位置和属性上的对立。","冲不一定是坏事，也可能打破原有状态，带来变化和调整。","相位说明为什么相冲；理法帮助理解相冲的作用。"]]
+]},
+{id:"b8",view:"branches",group:"天干关系",title:"天干五合：数理原理与理法原理",summary:"十天干前五位与后五位相配，五组合化均为一阴一阳相合。",tags:["天干五合","甲己合土","乙庚合金","丙辛合水","丁壬合木","戊癸合火"],source:"第五课《天干地支相位与理法》作业整理。",related:["b2","b7","b10"],sections:[
+["五组天干合化",["甲己合土。","乙庚合金。","丙辛合水。","丁壬合木。","戊癸合火。"]],
+["数理原理",["十天干按顺序排列，前五位与后五位相配，相隔五位形成一合。","五组合化属性分别对应土、金、水、木、火。"]],
+["理法原理",["五合都是一阴一阳相合。","阴阳性质不同，可以相互吸引、相互配合。","合代表联系、合作与相互牵引。","合不等于一定合化成功，还需要相应条件。"]],
+["核心理解",["冲强调对立，合强调联系。","合中可能有克，冲中也可能产生新的平衡。","不能简单把合看作吉、把冲看作凶，应看两股力量之间的具体关系。"]]
+]},
+{id:"b9",view:"branches",group:"地支与星宿",title:"《五运经天图》中的子位与虚日鼠",summary:"子位在正北方，属阳水、冬季，象阳气潜藏、孕育与封藏。",tags:["五运经天图","子位","阳水","冬季","虚宿","虚日鼠","北方玄武"],source:"第五课《天干地支相位与理法》作业整理。",related:["f9","f13","b10"],sections:[
+["子位的基本属性",["方位：正北方。","五行：阳水。","季节：冬季。","象意：阳气潜藏、孕育、封藏。"]],
+["虚日鼠",["虚宿属于北方玄武七宿。","虚日鼠是虚宿的传统名称。","子位对应的宿区包含女、虚、危等星宿。","虚日鼠可以作为认识、记忆子位的代表符号，但不是子区域唯一的星宿。"]],
+["理解",["《五运经天图》将天上的星宿、地上的方位和时间中的地支联系起来。","虚日鼠可作为记忆子位的代表符号，体现古人通过观察天象建立时间与空间对应关系的思路。"]]
+]},
+{id:"b10",view:"branches",group:"干支关系",title:"地支关系：相位与理法的两种分析层面",summary:"相位侧重聚合与联系，理法侧重冲突、牵制与变化；七类关系不能简化为吉凶标签。",tags:["地支关系","相位","理法","三会","三合","六合","六冲","相刑","相害","相破"],source:"第五课《天干地支相位与理法》作业整理；第三课课堂笔记。",related:["b3","b4","b7","b8","f12"],sections:[
+["相位关系：聚合与联系",["三会：同一季节的力量汇聚，重点是同气相聚。","三合：长生、帝旺、墓库形成组合，重点是围绕共同目标合作。","六合：两个地支建立联系，重点是双方牵引。"]],
+["理法关系：冲突、牵制与变化",["六冲：正面碰撞，可能打破原有状态，带来移动、调整和变化。","相刑：关系失调，体现牵制、失衡与矛盾。","相害：相互妨碍、牵制和干扰。","相破：原有结构或联系受到破坏，出现松动与调整。"]],
+["七种关系的记忆重点",["三会：同气相聚。","三合：共同目标。","六合：双方联系。","六冲：正面对立。","相刑：关系失调。","相害：相互妨碍。","相破：结构变化。"]],
+["学习提醒",["这些关系是传统理论中理解不同力量相互作用的模型，不是简单的吉凶标签。","不能单凭相刑、相害或相破，就断定现实中一定发生伤害。"]]
+]}
 ];
 const lessons=[
-{n:"01",title:"第一课｜待补录",status:"pending",summary:"当前资料库尚未录入可核实的第一课原始笔记。"},
-{n:"02",title:"第二课｜阴阳之本",status:"ready",summary:"阴阳、太极三特性、三才、四象与五行。"},
-{n:"03",title:"第三课｜天干地支与五行运行规律",status:"ready",summary:"十天干、十二地支、藏干、五合、三会三合六合及冲刑害破。"},
-{n:"04",title:"第四课｜待补录",status:"pending",summary:"当前资料库尚未录入可核实的第四课原始笔记。"},
-{n:"05",title:"第五课｜干支关系、子位与二十四山",status:"partial",summary:"已找回部分作业记录；二十四山分度和完整课件待补。"},
-{n:"06",title:"第六课｜藏风得气、七星与八宅磁场",status:"ready",summary:"《葬经》、四象形势、北斗七星与八宫磁场对应。"},
-{n:"07",title:"第七课｜七星蕴含、八宅明镜与阳宅三要",status:"ready",summary:"北派与南派、门主灶、立主、天心位和补角。"},
-{n:"08",title:"第八课｜三边论、立主与空间磁场",status:"ready",summary:"太极点、房气地气、拱合论、定门与划定磁场。"}
+{n:"01",title:"第一课｜待补录",status:"pending",summary:"当前资料库尚未录入可核实的第一课课堂笔记。",notes:[]},
+{n:"02",title:"第二课｜阴阳之本",status:"ready",summary:"阴阳、太极三特性、三才、四象、五行象意与相生五种感觉。",notes:["f6","f7","f8","f9","f10","f11","f12"]},
+{n:"03",title:"第三课｜天干地支与五行运行规律",status:"ready",summary:"十天干、十二地支、藏干、五合、三会三合六合及冲刑害破。",notes:["b1","b3","b4","b5","b6","b10"]},
+{n:"04",title:"第四课｜待补录",status:"pending",summary:"当前资料库尚未录入可核实的第四课课堂笔记。",notes:[]},
+{n:"05",title:"第五课｜天干地支相位与理法",status:"ready",summary:"天干四冲、天干五合、子位与虚日鼠、地支相位和理法、后天八卦与二十四山。",notes:["b7","b8","b9","b10","f13"]},
+{n:"06",title:"第六课｜藏风得气、七星与八宅磁场",status:"ready",summary:"《葬经》、四象形势、北斗七星与八宫磁场对应。",notes:["e1","e2","e3","e4"]},
+{n:"07",title:"第七课｜七星蕴含、八宅明镜与阳宅三要",status:"ready",summary:"北派与南派、门主灶、立主、天心位和补角。",notes:["y1","y2","y3","y5","y6"]},
+{n:"08",title:"第八课｜三边论、立主与空间磁场",status:"ready",summary:"太极点、房气地气、拱合论、定门与划定磁场。",notes:["y4","y7","y8","y9","y10"]}
 ];
-const glossary=["无极","太极","两仪","四象","八卦","河图","洛书","先天八卦","后天八卦","五行","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
+const glossary=["无极","太极","两仪","阴阳","阴阳对应","此消彼长","阴阳互根","三才","天时","地利","人和","四象","少阳","太阳","少阴","太阴","春夏秋冬","八卦","河图","洛书","先天八卦","后天八卦","五行","木曰曲直","火曰炎上","土爰稼穑","金曰从革","水曰润下","水生木","木生火","火生土","土生金","金生水","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","相位","理法","子位","虚宿","虚日鼠","五运经天图","二十四山","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let activeView="home",filters={foundation:"全部",branches:"全部",eight:"全部",yangzhai:"全部"},queries={foundation:"",branches:"",eight:"",yangzhai:"",glossary:""};
@@ -284,9 +367,10 @@ function setView(id){activeView=id;document.querySelectorAll(".view").forEach(v=
 function cardHtml(n){return '<article class="card" data-note="'+n.id+'"><div class="cardtop"><span>'+esc(n.group)+'</span><b>'+esc(n.source.split("；")[0].split("。")[0].slice(0,25))+'</b></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary)+'</p><div class="tags">'+n.tags.slice(0,4).map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div></article>';}
 function bindNoteCards(){document.querySelectorAll("[data-note]").forEach(el=>el.onclick=()=>openNote(el.dataset.note));}
 function renderNav(){let counts={foundation:notes.filter(n=>n.view==="foundation").length,branches:notes.filter(n=>n.view==="branches").length,eight:notes.filter(n=>n.view==="eight").length,yangzhai:notes.filter(n=>n.view==="yangzhai").length};$("#nav").innerHTML=navItems.map(n=>'<button data-view="'+n.id+'" class="'+(activeView===n.id?"active":"")+'"><span class="navicon">'+n.icon+'</span>'+n.name+(counts[n.id]!==undefined?'<small>'+String(counts[n.id]).padStart(2,"0")+'</small>':'')+'</button>').join("");document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));}
-function renderHome(){let groups=[["foundation","易理基础","从无极、太极、两仪、四象到八卦五行，先搭建基础概念。"],["branches","干支知识","十二地支、生肖时辰、藏干，以及合会冲刑害破。"],["eight","七星与八宅","北斗七星、八宫磁场、大游年歌与数字磁场。"],["yangzhai","阳宅实操","门主灶、立极、天心位、缺角、测方位与定门。"]];$("#homeCards").innerHTML=groups.map(g=>'<article class="card" data-home="'+g[0]+'"><div class="cardtop"><span>KNOWLEDGE SYSTEM</span><b>→</b></div><h3>'+g[1]+'</h3><p>'+g[2]+'</p></article>').join("");document.querySelectorAll("[data-home]").forEach(el=>el.onclick=()=>setView(el.dataset.home));let recent=["b1","b3","e2","y4","y5","y7"].map(id=>notes.find(n=>n.id===id));$("#recentCards").innerHTML=recent.map(cardHtml).join("");bindNoteCards();$("#noteCount").textContent=String(notes.length).padStart(2,"0");}
+function renderHome(){let groups=[["foundation","易理基础","从无极、太极、两仪、四象到八卦五行，先搭建基础概念。"],["branches","干支知识","十二地支、生肖时辰、藏干，以及合会冲刑害破。"],["eight","七星与八宅","北斗七星、八宫磁场、大游年歌与数字磁场。"],["yangzhai","阳宅实操","门主灶、立极、天心位、缺角、测方位与定门。"]];$("#homeCards").innerHTML=groups.map(g=>'<article class="card" data-home="'+g[0]+'"><div class="cardtop"><span>KNOWLEDGE SYSTEM</span><b>→</b></div><h3>'+g[1]+'</h3><p>'+g[2]+'</p></article>').join("");document.querySelectorAll("[data-home]").forEach(el=>el.onclick=()=>setView(el.dataset.home));let recent=["f6","f9","b7","b10","e2","y4"].map(id=>notes.find(n=>n.id===id));$("#recentCards").innerHTML=recent.map(cardHtml).join("");bindNoteCards();$("#noteCount").textContent=String(notes.length).padStart(2,"0");}
+function renderSystem(){let ids=["f6","f7","f8","f9","f10","f11","f12","f13","b7","b8","b9","b10"];$("#systemCards").innerHTML=ids.map(id=>notes.find(n=>n.id===id)).filter(Boolean).map(cardHtml).join("");bindNoteCards();}
 function renderCategory(view){let arr=notes.filter(n=>n.view===view);let groups=["全部",...new Set(arr.map(n=>n.group))];let filterEl=$("#"+view+"Filters");filterEl.innerHTML=groups.map(g=>'<button class="chip '+(filters[view]===g?"active":"")+'" data-filter="'+esc(g)+'">'+esc(g)+'</button>').join("");let q=queries[view].toLowerCase().trim();let shown=arr.filter(n=>(filters[view]==="全部"||n.group===filters[view])&&(!q||[n.title,n.summary,n.group,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q)));$("#"+view+"Cards").innerHTML=shown.map(cardHtml).join("");$("#"+view+"Empty").hidden=shown.length>0;bindNoteCards();document.querySelectorAll("#"+view+"Filters [data-filter]").forEach(b=>b.onclick=()=>{filters[view]=b.dataset.filter;renderCategory(view);});}
-function renderCourses(){$("#courseList").innerHTML=lessons.map(l=>'<article class="lesson"><div class="lesson-num">'+l.n+'</div><div><h3>'+esc(l.title)+'</h3><p>'+esc(l.summary)+'</p></div><span class="status '+(l.status==="pending"?"pending":l.status==="partial"?"partial":"")+'">'+(l.status==="ready"?"已整理":l.status==="partial"?"部分整理":"待补资料")+'</span></article>').join("");}
+function renderCourses(){$("#courseList").innerHTML=lessons.map(l=>'<article class="lesson" data-course="'+l.n+'" tabindex="0" role="button"><div class="lesson-num">'+l.n+'</div><div><h3>'+esc(l.title)+'</h3><p>'+esc(l.summary)+'</p></div><span class="status '+(l.status==="pending"?"pending":l.status==="partial"?"partial":"")+'">'+(l.status==="ready"?"可阅读":l.status==="partial"?"部分整理":"待补资料")+'</span></article>').join("");document.querySelectorAll("[data-course]").forEach(el=>{el.onclick=()=>openCourse(el.dataset.course);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCourse(el.dataset.course);}};});}
 function renderGlossary(){let q=queries.glossary.toLowerCase().trim();let terms=glossary.filter(t=>!q||t.toLowerCase().includes(q));$("#termCloud").innerHTML=terms.map(t=>'<button data-term="'+esc(t)+'">'+esc(t)+'</button>').join("");let related=notes.filter(n=>!q||[n.title,n.summary,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]])].join(" ").toLowerCase().includes(q));$("#glossaryCards").innerHTML=related.map(cardHtml).join("");bindNoteCards();document.querySelectorAll("[data-term]").forEach(b=>b.onclick=()=>{queries.glossary=b.dataset.term;$("#searchGlossary").value=b.dataset.term;renderGlossary();});}
 function visualHtml(type){if(type==="bagua")return '<div class="diagram"><div class="diagram-title">八卦卦象速记</div><div class="trigram-grid"><div class="trigram"><b>☰</b><strong>乾三连</strong><small>天</small></div><div class="trigram"><b>☷</b><strong>坤六断</strong><small>地</small></div><div class="trigram"><b>☳</b><strong>震仰盂</strong><small>雷</small></div><div class="trigram"><b>☶</b><strong>艮覆碗</strong><small>山</small></div><div class="trigram"><b>☲</b><strong>离中虚</strong><small>火</small></div><div class="trigram"><b>☵</b><strong>坎中满</strong><small>水</small></div><div class="trigram"><b>☱</b><strong>兑上缺</strong><small>泽</small></div><div class="trigram"><b>☴</b><strong>巽下断</strong><small>风</small></div></div><div class="diagram-title" style="margin-top:14px">后天八卦方位图（按课件布局）</div><div class="bagua-map"><div>巽 · 东南</div><div>离 · 南</div><div>坤 · 西南</div><div>震 · 东</div><div class="center">中宫</div><div>兑 · 西</div><div>艮 · 东北</div><div>坎 · 北</div><div>乾 · 西北</div></div></div>';
 if(type==="five")return '<div class="diagram"><div class="diagram-title">五行相生与相克</div><table class="data-table"><tr><th>关系</th><th>顺序</th></tr><tr><td>相生</td><td>水 → 木 → 火 → 土 → 金 → 水</td></tr><tr><td>相克</td><td>金 → 木 → 土 → 水 → 火 → 金</td></tr></table></div>';
@@ -303,7 +387,10 @@ function imageHtml(type){
  const im=images[type];if(!im)return "";
  return `<figure class="reference-figure"><a href="${im.src}" target="_blank" rel="noopener"><img src="${im.src}" alt="${im.alt}" loading="lazy" onerror="this.closest('.reference-figure').classList.add('missing')"></a><figcaption>${im.caption} · 点击图片可单独放大</figcaption><div class="missing-note">图片文件尚未上传到网站仓库，上传后这里会自动显示。</div></figure>`;
 }
-function openNote(id){let n=notes.find(x=>x.id===id);if(!n)return;let sections=n.sections.map(s=>'<section><h2>'+esc(s[0])+'</h2><ul>'+s[1].map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></section>').join("");$("#detailType").textContent=n.view.toUpperCase()+" · "+n.group;$("#detailBody").innerHTML='<div class="detailcat">'+esc(n.group)+'</div><h1>'+esc(n.title)+'</h1><div class="summary">'+esc(n.summary)+'</div><div class="detailtags">'+n.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div>'+visualHtml(n.visual)+imageHtml(n.image)+sections+'<div class="source">资料来源：'+esc(n.source)+'<br>归档说明：按课堂资料和用户提供的笔记整理；课堂观点、图卡索引和待核对内容分开标注，后续可以继续补充。</div>';$("#overlay").hidden=false;document.body.style.overflow="hidden";}
+function showDetail(){ $("#overlay").hidden=false;document.body.style.overflow="hidden";}
+function relatedHtml(n){let related=(n.related||[]).map(id=>notes.find(x=>x.id===id)).filter(Boolean);if(!related.length)return "";return '<section><h2>关联知识</h2><div class="course-related">'+related.map(cardHtml).join("")+'</div></section>';}
+function openNote(id){let n=notes.find(x=>x.id===id);if(!n)return;let sections=n.sections.map(s=>'<section><h2>'+esc(s[0])+'</h2><ul>'+s[1].map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></section>').join("");$("#detailType").textContent=n.view.toUpperCase()+" · "+n.group;$("#detailBody").innerHTML='<div class="detailcat">'+esc(n.group)+'</div><h1>'+esc(n.title)+'</h1><div class="summary">'+esc(n.summary)+'</div><div class="detailtags">'+n.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div>'+visualHtml(n.visual)+imageHtml(n.image)+sections+relatedHtml(n)+'<div class="source">资料来源：'+esc(n.source)+'<br>归档说明：以课堂笔记和课件为依据整理；保留老师的概念与例子，跨课程关联单独呈现，不以推测补齐缺失内容。</div>';bindNoteCards();showDetail();}
+function openCourse(num){let l=lessons.find(x=>x.n===num);if(!l)return;let related=(l.notes||[]).map(id=>notes.find(n=>n.id===id)).filter(Boolean);let content=related.length?'<section><h2>本课知识内容</h2><div class="course-related">'+related.map(cardHtml).join("")+'</div></section>':'<section><h2>资料状态</h2><p>目前尚无可核实的课堂笔记，待补充资料后再整理，不以其他课程内容代替。</p></section>';$("#detailType").textContent="COURSE ARCHIVE · LESSON "+l.n;$("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第'+Number(l.n)+'课</div><h1>'+esc(l.title)+'</h1><div class="summary">'+esc(l.summary)+'</div>'+content+'<div class="source">整理方式：本页展示可直接阅读的文字笔记与知识条目，不展示原始思维导图。每个知识条目保留对应课程来源。</div>';bindNoteCards();showDetail();}
 function closeNote(){$("#overlay").hidden=true;document.body.style.overflow="";}
 function setupSearch(view,input){$(input).addEventListener("input",e=>{queries[view]=e.target.value;renderCategory(view);});}
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setView(b.dataset.go));
@@ -311,7 +398,7 @@ $("#menuBtn").onclick=()=>$("#layout").classList.toggle("menu-open");
 $("#back").onclick=closeNote;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))closeNote();};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeNote();});
 setupSearch("foundation","#searchFoundation");setupSearch("branches","#searchBranches");setupSearch("eight","#searchEight");setupSearch("yangzhai","#searchYangzhai");
 $("#searchGlossary").addEventListener("input",e=>{queries.glossary=e.target.value;renderGlossary();});
-function renderAll(){renderNav();renderHome();renderCategory("foundation");renderCategory("branches");renderCategory("eight");renderCategory("yangzhai");renderCourses();renderGlossary();}
+function renderAll(){renderNav();renderHome();renderSystem();renderCategory("foundation");renderCategory("branches");renderCategory("eight");renderCategory("yangzhai");renderCourses();renderGlossary();}
 renderAll();
 </script>
 </body>

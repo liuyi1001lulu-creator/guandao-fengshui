@@ -53,7 +53,7 @@ function imagery(){
  const cards=Object.entries(values).map(([title,arr],i)=>'<details class="gd-detail"'+(i===4?' open':'')+'><summary>'+e(title)+' <span>课件第6页</span></summary>'+nine(title,arr)+'</details>').join("");
  return '<section class="gd-visuals"><h2>八卦象意 · 九宫速查</h2><p class="gd-note">源于PPT第6页九张小九宫；“身体及系统”中的中宫小字仍待确认。传统象意不是医学判断依据。</p>'+cards+'</section>';
 }
-function mountain(){return '<section class="gd-visuals"><h2>后天八卦 · 二十四山</h2><p class="gd-note">课程用上南下北、左东右西；中宫戊己不计入外围二十四山。图示不等于现场罗盘分度测量。</p>'+nine("八宫与二十四山",mountains)+'</section>';}
+function mountain(){return '<section class="gd-visuals"><h2>后天八卦 · 二十四山</h2><p class="gd-note">课程用上南下北、左东右西；中宫戊己不计入外围二十四山。图示只整理每宫三个名称的成员和方位，不表示沿边线的视觉读字顺序：课件原图正东宫由上到下写乙卯甲，正北宫由左到右写癸子壬。图示不等于现场罗盘分度测量。</p>'+nine("八宫与二十四山",mountains)+'</section>';}
 const byId={b6:life,f2:river,g2:bagua,f4:imagery,f5:mountain};
 return {byId,life,bagua,river,imagery,mountain,stage,groups,values,positions,mountains};
 })();

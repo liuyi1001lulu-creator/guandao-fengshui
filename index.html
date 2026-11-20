@@ -105,7 +105,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <body>
 <header>
  <div class="brand"><div class="mark">觀</div><div><strong>观道</strong><small>风水知识库 · PERSONAL ARCHIVE</small></div></div>
- <div class="topnote">● 个人学习档案　　<button class="menu-mobile" id="menuBtn">知识目录</button></div>
+ <div class="topnote">● 个人学习档案</div><button class="menu-mobile" id="menuBtn" type="button" aria-label="打开知识目录" aria-expanded="false">知识目录</button>
 </header>
 <div class="layout" id="layout">
 <aside>
@@ -413,7 +413,7 @@ const glossary=["天干","地支","天干地支","无极","太极","两仪","阴
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let activeView="home",filters={foundation:"全部",branches:"全部",bagua:"全部",schools:"全部",yangzhai:"全部"},queries={foundation:"",branches:"",bagua:"",schools:"",yangzhai:"",glossary:""};
-function setView(id){activeView=id;document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$("#view-"+id).classList.add("active");document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$("#layout").classList.remove("menu-open");window.scrollTo({top:0,behavior:"smooth"});}
+function setView(id){activeView=id;document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$("#view-"+id).classList.add("active");document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$("#layout").classList.remove("menu-open");$("#menuBtn").setAttribute("aria-expanded","false");window.scrollTo({top:0,behavior:"smooth"});}
 function cardHtml(n){return '<article class="card" data-note="'+n.id+'" tabindex="0" role="button" aria-label="阅读知识：'+esc(n.title)+'"><div class="cardtop"><span>'+esc(n.group)+'</span><b>'+esc(n.source.split("；")[0].split("。")[0].slice(0,25))+'</b></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary)+'</p><div class="tags">'+n.tags.slice(0,4).map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div></article>';}
 function bindNoteCards(){document.querySelectorAll("[data-note]").forEach(el=>{el.onclick=()=>openNote(el.dataset.note);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openNote(el.dataset.note);}};});}
 function renderNav(){let counts={foundation:notes.filter(n=>n.view==="foundation").length,branches:notes.filter(n=>n.view==="branches").length,bagua:notes.filter(n=>n.view==="bagua").length,schools:notes.filter(n=>n.view==="schools").length,yangzhai:notes.filter(n=>n.view==="yangzhai").length};$("#nav").innerHTML=navItems.map(n=>'<button data-view="'+n.id+'" class="'+(activeView===n.id?"active":"")+'"><span class="navicon">'+n.icon+'</span>'+n.name+(counts[n.id]!==undefined?'<small>'+String(counts[n.id]).padStart(2,"0")+'</small>':'')+'</button>').join("");document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));}
@@ -472,7 +472,7 @@ function openCourse(num){let l=lessons.find(x=>x.n===num);if(!l)return;let relat
 function closeNote(){$("#overlay").hidden=true;document.body.style.overflow="";}
 function setupSearch(view,input){$(input).addEventListener("input",e=>{queries[view]=e.target.value;renderCategory(view);});}
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setView(b.dataset.go));
-$("#menuBtn").onclick=()=>$("#layout").classList.toggle("menu-open");
+$("#menuBtn").onclick=()=>{const opened=$("#layout").classList.toggle("menu-open");$("#menuBtn").setAttribute("aria-expanded",opened?"true":"false");};
 $("#back").onclick=closeNote;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))closeNote();};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeNote();});
 setupSearch("foundation","#searchFoundation");setupSearch("branches","#searchBranches");setupSearch("bagua","#searchBagua");setupSearch("schools","#searchSchools");setupSearch("yangzhai","#searchYangzhai");
 $("#searchGlossary").addEventListener("input",e=>{queries.glossary=e.target.value;renderGlossary();});

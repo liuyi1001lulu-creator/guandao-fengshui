@@ -26,7 +26,7 @@ async function check(){
       await page.locator('#homeCards [data-home]').first().waitFor({state:'visible'});
       let sectionChecks=[];
       const clickNav=async id=>{
-        if(device.isMobile){await page.locator('#menuBtn').click();await page.locator('#layout').waitFor({state:'attached'});}
+        if(device.isMobile){await page.locator('#menuBtn').click();await page.locator('#layout').waitFor({state:'attached'});if(id==='foundation')await page.screenshot({path:'artifacts/mobile-navigation.png',fullPage:false});}
         await page.locator('#nav [data-view="'+id+'"]').click();
         await page.locator('#view-'+id).waitFor({state:'visible'});
       };
@@ -34,6 +34,13 @@ async function check(){
         await clickNav(v);
         const count=await page.locator('#'+v+'Cards [data-note]').count();
         assert(count>0,'empty module '+v);sectionChecks.push({module:v,cards:count});
+        const ids=await page.locator('#'+v+'Cards [data-note]').evaluateAll(els=>els.map(e=>e.dataset.note));
+        for(const id of ids){
+          await page.locator('#'+v+'Cards [data-note="'+id+'"]').click();
+          await page.locator('#overlay').waitFor({state:'visible'});
+          assert(await page.locator('#detailBody .reader-text').count()===1,'no full article: '+id);
+          await page.locator('#back').click();
+        }
       }
       await clickNav('branches');
       await page.locator('#searchBranches').fill('虚日鼠');
@@ -65,11 +72,19 @@ async function check(){
       }));
       if(metrics.scrollWidth>metrics.width+2)issues.push(device.name+' horizontal body overflow '+JSON.stringify(metrics));
       await page.locator('#back').click();
+      await clickNav('glossary');
+      await page.locator('#searchGlossary').fill('河图');
+      assert(await page.locator('#glossaryCards [data-note="f2"]').count()===1,'glossary search failed');
+      await clickNav('foundation');
+      const firstCard=page.locator('#foundationCards [data-note]').first();
+      await firstCard.focus();await page.keyboard.press('Enter');
+      assert(await page.locator('#overlay').isVisible(),'keyboard cannot open knowledge card');
+      await page.locator('#back').click();
       await clickNav('courses');
       const lesson5=page.locator('[data-course="05"]');
       await lesson5.click();assert(await page.locator('#detailBody [data-note]').count()===6,'lesson 5 linked cards missing');await page.locator('#back').click();
       if(errors.length)issues.push(device.name+' browser errors: '+errors.join(' | '));
-      const report={device:device.name,sectionChecks,longlifeGroups:8,baguaCharts:9,baguaChapters:10,lesson5Cards:6,metrics,errors};
+      const report={device:device.name,sectionChecks,clickedCards:sectionChecks.reduce((n,x)=>n+x.cards,0),longlifeGroups:8,baguaCharts:9,baguaChapters:10,lesson5Cards:6,glossarySearch:'河图',keyboardCardOpen:true,metrics,errors};
       reports.push(report);
       await page.close();
     }

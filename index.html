@@ -618,7 +618,7 @@ function openCourse(num){
   }).join("");
   const evolution=chapter("一、易理演化主线");
   const appendix=[chapter("九、易理根基的知识关联"),chapter("十、来源与边界")].filter(Boolean);
-  const evolutionHtml=evolution?'<details class="lesson-appendix"><summary>课件补充：易理演化主线与原句</summary><div class="reader-text">'+renderNested(evolution.nodes)+'</div></details>'+pptFigure("03","无极、太极、两仪、四象与八卦"):"";
+  const evolutionHtml=evolution?'<details class="lesson-appendix"><summary>课件补充：易理演化主线与原句</summary><div class="reader-text">'+renderNested(evolution.nodes)+pptFigure("03","无极、太极、两仪、四象与八卦")+'</div></details>':"";
   const appendixHtml=appendix.map(ch=>'<details class="lesson-subtopic"><summary>'+esc(ch.title.replace(/^[一二三四五六七八九十]+、/,""))+'</summary><div class="lesson-subtopic-body reader-text">'+renderNested(ch.nodes)+'</div></details>').join("");
   const relatedFiguresHtml='<details class="lesson-appendix"><summary>课件延伸图示：河图洛书与八卦象意（PPT第4、6页）</summary>'+pptFigure("04","河图洛书与先天、后天八卦")+pptFigure("06","八卦象意九宫图")+"</details>";
   const introHtml=intro?'<div class="lesson-source-intro">'+intro.innerHTML+'</div>':"";

@@ -562,8 +562,7 @@ function renderCategory(view){
   featureIds.forEach(id=>{
    const feature=$("#"+id);
    if(feature){feature.hidden=!showCourse;feature.style.display=showCourse?"":"none";
-    const openButton=feature.querySelector("[data-open-course]");
-    if(openButton)openButton.onclick=()=>openCourse(openButton.dataset.openCourse);
+    // Course buttons are handled by one delegated listener below.
    }
   });
  }else{
@@ -708,6 +707,12 @@ function closeNote(){$("#overlay").hidden=true;document.body.style.overflow="";}
 function setupSearch(view,input){$(input).addEventListener("input",e=>{queries[view]=e.target.value;renderCategory(view);});}
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setView(b.dataset.go));
 $("#menuBtn").onclick=()=>{const opened=$("#layout").classList.toggle("menu-open");$("#menuBtn").setAttribute("aria-expanded",opened?"true":"false");};
+document.addEventListener("click",event=>{
+ const button=event.target.closest("[data-open-course]");
+ if(!button)return;
+ event.preventDefault();
+ openCourse(button.dataset.openCourse);
+});
 $("#back").onclick=closeNote;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))closeNote();};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeNote();});
 setupSearch("foundation","#searchFoundation");setupSearch("branches","#searchBranches");setupSearch("bagua","#searchBagua");setupSearch("schools","#searchSchools");setupSearch("yangzhai","#searchYangzhai");
 $("#searchGlossary").addEventListener("input",e=>{queries.glossary=e.target.value;renderGlossary();});

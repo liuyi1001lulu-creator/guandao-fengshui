@@ -17,7 +17,10 @@ async function renderLesson03(){
     listItems=[];
    }
   };
-  for(const line of lines){
+  const tableCells=(line)=>line.trim().replace(/^\|/,"").replace(/\|$/,"").split("|").map(cell=>cell.trim());
+  const isTableRule=(line)=>/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line);
+  for(let i=0;i<lines.length;i++){
+   const line=lines[i];
    if(line.startsWith("## ")){
     flushList();
     current={title:line.slice(3).trim(),html:""};
@@ -26,6 +29,17 @@ async function renderLesson03(){
     if(line.startsWith("### ")){
      flushList();
      current.html+="<h3>"+formatInline(line.slice(4))+"</h3>";
+    }else if(line.trim().startsWith("|")&&i+1<lines.length&&isTableRule(lines[i+1])){
+     flushList();
+     const headers=tableCells(line);
+     i+=2;
+     const rows=[];
+     while(i<lines.length&&lines[i].trim().startsWith("|")){
+      rows.push(tableCells(lines[i]));
+      i++;
+     }
+     i--;
+     current.html+="<div class='lesson03-table-wrap'><table class='lesson03-table'><thead><tr>"+headers.map(cell=>"<th>"+formatInline(cell)+"</th>").join("")+"</tr></thead><tbody>"+rows.map(row=>"<tr>"+headers.map((_,index)=>"<td>"+formatInline(row[index]||"")+"</td>").join("")+"</tr>").join("")+"</tbody></table></div>";
     }else if(/^\s*[-*]\s+/.test(line)){
      listItems.push(line.replace(/^\s*[-*]\s+/,"").trim());
     }else if(!line.trim()){

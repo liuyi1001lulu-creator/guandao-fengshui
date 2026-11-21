@@ -309,7 +309,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 
 <script src="knowledge-content.js?v=20261121-course2"></script>
 <script src="knowledge-diagrams.js?v=20261121-course2"></script>
-<script src="lesson03-page.js?v=20261121"></script>
+<script src="lesson03-page.js?v=20261121-fix2"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
@@ -562,7 +562,15 @@ function renderCategory(view){
   featureIds.forEach(id=>{
    const feature=$("#"+id);
    if(feature){feature.hidden=!showCourse;feature.style.display=showCourse?"":"none";
-    // Course buttons are handled by one delegated listener below.
+    const openButton=feature.querySelector("[data-open-course]");
+    if(openButton){
+     openButton.onclick=event=>{
+      event.preventDefault();
+      event.stopPropagation();
+      const courseNumber=String(openButton.dataset.openCourse||"").trim();
+      openCourse(courseNumber);
+     };
+    }
    }
   });
  }else{
@@ -627,13 +635,17 @@ function openModule(view){
 }
 document.querySelectorAll("[data-full-module]").forEach(button=>{button.onclick=()=>openModule(button.dataset.fullModule);});
 function openCourse(num){
- let l=lessons.find(x=>x.n===num);if(!l)return;
+ num=String(num||"").trim();
+ // Route lesson 03 before looking up the generic course list, so it can never fall through to another lesson renderer.
  if(num==="03"){
   $("#detailType").textContent="COURSE ARCHIVE · LESSON 03";
+  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第三课</div><h1>第三课｜天干地支与五行运行规律</h1><div class="lesson03-loading">正在载入第三课专属课堂资料……</div>';
   showDetail();
-  renderLesson03();
+  if(typeof renderLesson03==="function")renderLesson03();
+  else $("#detailBody").innerHTML='<h1>第三课｜天干地支与五行运行规律</h1><p>第三课页面脚本尚未加载，请刷新页面。</p>';
   return;
  }
+ let l=lessons.find(x=>x.n===num);if(!l)return;
  if(num==="02"){
   const data=window.GUANDAO_KNOWLEDGE?.modules?.foundation;
   if(!data){$("#detailBody").innerHTML='<h1>第二课《阴阳之本》</h1><p>课程正文暂未加载，请刷新页面后重试。</p>';showDetail();return;}

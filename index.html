@@ -232,6 +232,22 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
   </div>
   <button type="button" data-open-course="02">展开完整课程框架 →</button>
  </div>
+ <div class="module-reading course-feature" id="foundationCourseFeature03">
+  <div class="course-feature-copy">
+   <div class="course-feature-kicker">COURSE ARCHIVE · LESSON 03</div>
+   <strong>第三课 · 天干地支与五行运行规律</strong>
+   <p>从天干地支的本质出发，依次理解五行生克、十天干与十二地支、天文历法、地支藏干、天干五合，以及地支各种关系，在同一份课程框架中建立系统认知。</p>
+   <div class="course-roadmap">
+    <div class="course-roadmap-step"><b>01</b><span>干支本质</span><small>在天成象，在地成形</small></div>
+    <div class="course-roadmap-step"><b>02</b><span>五行生克</span><small>生与克的理解</small></div>
+    <div class="course-roadmap-step"><b>03</b><span>十干十二支</span><small>阴阳、四季与方位</small></div>
+    <div class="course-roadmap-step"><b>04</b><span>天文历法</span><small>北斗与岁星</small></div>
+    <div class="course-roadmap-step"><b>05</b><span>藏干与五合</span><small>地支藏干、天干五合</small></div>
+    <div class="course-roadmap-step"><b>06</b><span>地支关系</span><small>会合冲刑害破</small></div>
+   </div>
+  </div>
+  <button type="button" data-open-course="03">展开完整课程框架 →</button>
+ </div>
  <div class="filters" id="foundationFilters"></div><div class="grid2" id="foundationCards"></div><div class="empty" id="foundationEmpty" hidden>没有找到相关知识。</div>
 </section>
 
@@ -537,15 +553,19 @@ function renderCategory(view){
  let isFoundation=view==="foundation";
  if(isFoundation||view==="branches"){
   filterEl.hidden=isFoundation;
-  const feature=$("#"+(isFoundation?"foundation":"branches")+"CourseFeature");
+  const featureIds=isFoundation?["foundationCourseFeature","foundationCourseFeature03"]:["branchesCourseFeature"];
   const courseText=isFoundation
-   ?(window.GUANDAO_KNOWLEDGE?.modules?.foundation?.html||"")
+   ?(window.GUANDAO_KNOWLEDGE?.modules?.foundation?.html||"")+" 第三课 天干地支 五行运行规律 天干 地支 五行生克 十天干 十二地支 天文历法 北斗七星 岁星纪年 立春 地支藏干 本气 中气 余气 天干五合 三会 三合 六合 六冲 相刑 相害 相破"
    :"第三课 天干地支 五行运行规律 天干 地支 五行生克 十天干 十二地支 天文历法 北斗七星 岁星纪年 立春 地支藏干 本气 中气 余气 天干五合 三会 三合 六合 六冲 相刑 相害 相破";
   const fullText=courseText.replace(/<[^>]*>/g," ").toLowerCase();
   const showCourse=!q||fullText.includes(q);
-  feature.hidden=!showCourse;feature.style.display=showCourse?"":"none";
-  const openButton=feature.querySelector("[data-open-course]");
-  if(openButton)openButton.onclick=()=>openCourse(openButton.dataset.openCourse);
+  featureIds.forEach(id=>{
+   const feature=$("#"+id);
+   if(feature){feature.hidden=!showCourse;feature.style.display=showCourse?"":"none";
+    const openButton=feature.querySelector("[data-open-course]");
+    if(openButton)openButton.onclick=()=>openCourse(openButton.dataset.openCourse);
+   }
+  });
  }else{
   filterEl.hidden=false;
   let groups=["全部",...new Set(arr.map(n=>n.group))];

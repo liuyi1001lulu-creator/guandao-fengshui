@@ -502,7 +502,7 @@ function renderCategory(view){
   const feature=$("#foundationCourseFeature");
   const fullText=(window.GUANDAO_KNOWLEDGE?.modules?.foundation?.html||"").replace(/<[^>]*>/g," ").toLowerCase();
   const showCourse=!q||fullText.includes(q);
-  feature.hidden=!showCourse;
+  feature.hidden=!showCourse;feature.style.display=showCourse?"":"none";
   const openButton=feature.querySelector("[data-open-course]");
   if(openButton)openButton.onclick=()=>openCourse(openButton.dataset.openCourse);
  }else{

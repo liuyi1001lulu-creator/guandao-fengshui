@@ -35,6 +35,12 @@ async function check(){
         if(v==='foundation'){
           assert(await page.locator('#foundationCourseFeature').isVisible(),'lesson 2 framework feature missing');
           assert(await page.locator('#foundationCards [data-note]').count()===0,'lesson 2 should not be split into separate cards');
+          await page.locator('#searchFoundation').fill('火克金');
+          assert(await page.locator('#foundationCourseFeature').isVisible(),'foundation search should find full lesson 2 content');
+          await page.locator('#searchFoundation').fill('绝无此词');
+          assert(await page.locator('#foundationCourseFeature').isHidden(),'foundation search should hide unrelated lesson 2 feature');
+          await page.locator('#searchFoundation').fill('');
+          assert(await page.locator('#foundationCourseFeature').isVisible(),'lesson 2 feature should return after clearing search');
           await page.locator('#foundationCourseFeature [data-open-course="02"]').click();
           assert(await page.locator('#detailBody .lesson-part').count()===5,'lesson 2 should have five top-level parts');
           assert(await page.locator('#detailBody .lesson-subtopic-major').count()===3,'five-elements section should group three major chapters');

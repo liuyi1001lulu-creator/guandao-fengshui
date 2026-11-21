@@ -623,7 +623,7 @@ function openCourse(num){
   $("#detailType").textContent="COURSE ARCHIVE · LESSON 02";
   $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第二课</div><h1>第二课《阴阳之本》</h1><div class="summary">从阴阳本义出发，经太极、三才、四象，进入五行的概念、象意与生克。先看完整框架，再按需展开每个知识点。</div>'+introHtml+'<section class="lesson-framework"><div class="lesson-evolution"><div class="lesson-evolution-label">课件演化主线</div><div class="lesson-flow"><span>无极</span><i>→</i><span>太极</span><i>→</i><span>两仪</span><i>→</i><span>四象</span><i>→</i><span>八卦</span></div>'+evolutionHtml+'</div><h2>本课五个核心部分</h2><nav class="lesson-map" aria-label="第二课知识框架">'+mapHtml+'</nav><div class="lesson-parts">'+parts+'</div><details class="lesson-appendix"><summary>补充资料：知识关联与来源边界</summary>'+appendixHtml+'</details></section><div class="source">整理依据：第二课《阴阳之本》课堂笔记与作业、易理基础知识卡PPT第3—5页。老师课堂内容、课件原句与学员个人感悟按来源区分；第三课补充内容单独标明。原始幕布思维导图不展示，完整文字与表格保留在各展开章节中。</div>';
   document.querySelectorAll("[data-open-part]").forEach(button=>button.onclick=()=>{
-   const target=$("#lesson-part-"+button.dataset.openPart);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start");}
+   const target=$("#lesson-part-"+button.dataset.openPart);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start"});}
   });
   showDetail();return;
  }

@@ -38,7 +38,7 @@ async function check(){
           await page.locator('#foundationCourseFeature [data-open-course="02"]').click();
           assert(await page.locator('#detailBody .lesson-part').count()===5,'lesson 2 should have five top-level parts');
           assert(await page.locator('#detailBody .lesson-subtopic-major').count()===3,'five-elements section should group three major chapters');
-          const lessonText=await page.locator('#detailBody').innerText();
+          const lessonText=await page.locator('#detailBody').evaluate(el=>el.textContent);
           assert(lessonText.includes('克不一定是毁灭，也可以是磨炼和修炼'),'original overcoming explanation missing');
           assert(lessonText.includes('体现制约的力量'),'metal-overcomes-wood explanation missing');
           assert(lessonText.includes('整个太极图的全部构成就是土'),'soil classroom note missing');

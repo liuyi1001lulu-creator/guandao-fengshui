@@ -121,6 +121,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 .lesson-evolution-label{font:11px var(--serif);color:#8e7954;margin-bottom:9px}
 .lesson-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font:600 15px var(--serif);color:#315345}
 .lesson-flow i{font-style:normal;color:#b99b62}
+.lesson-figure{margin:16px auto 18px;padding:12px;background:#fffdf8;border:1px solid #e4d8c5;border-radius:8px;max-width:520px}.lesson-figure a{display:block;text-align:center}.lesson-figure img{display:block;width:auto;max-width:100%;max-height:720px;height:auto;margin:0 auto;border-radius:4px;object-fit:contain;cursor:zoom-in}.lesson-figure figcaption{font:11px/1.8 var(--serif);color:#8d8068;text-align:center;margin-top:9px}.lesson-figure-note{font:10px/1.7 var(--sans);color:#9a907e;text-align:center;margin-top:3px}
 .lesson-map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:14px 0 17px}
 .lesson-map button{border:1px solid #dfd2bb;background:#fffdf7;border-radius:6px;padding:10px 8px;text-align:left;cursor:pointer;color:#385446}
 .lesson-map button:hover{border-color:#b99b62;background:#f7f1e5}
@@ -254,8 +255,8 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 </div>
 <div class="detail-overlay" id="overlay" hidden><article class="detail"><div class="detailtop"><button class="back" id="back">← 返回知识库</button><span id="detailType">KNOWLEDGE NOTE</span></div><div id="detailBody"></div></article></div>
 
-<script src="knowledge-content.js"></script>
-<script src="knowledge-diagrams.js"></script>
+<script src="knowledge-content.js?v=20261121-course2"></script>
+<script src="knowledge-diagrams.js?v=20261121-course2"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
@@ -582,6 +583,7 @@ function openCourse(num){
    chapters.push({title:heading.textContent.trim(),nodes});
   });
   const chapter=prefix=>chapters.find(x=>x.title.startsWith(prefix));
+  const pptFigure=(slide,caption)=>{const src="images/lesson02-slide-"+slide+".webp";return '<figure class="lesson-figure"><a href="'+src+'" target="_blank" rel="noopener"><img src="'+src+'" loading="lazy" decoding="async" alt="第二课原始PPT第'+slide+'页：'+esc(caption)+'"></a><figcaption>原始PPT第'+slide+'页 · '+esc(caption)+'</figcaption><div class="lesson-figure-note">保留课件原图 · 点击图片可单独放大</div></figure>';};
   const renderNested=nodes=>{
    const holder=document.createElement("div");let current=null;
    nodes.forEach(node=>{
@@ -611,17 +613,19 @@ function openCourse(num){
     if(selected.length>1)return '<details class="lesson-subtopic lesson-subtopic-major"><summary>'+esc(title)+'</summary><div class="lesson-subtopic-body reader-text">'+renderNested(ch.nodes)+'</div></details>';
     return renderNested(ch.nodes);
    }).join("");
-   return '<details class="lesson-part" id="lesson-part-'+i+'"><summary><span class="lesson-part-title">'+String(i+1).padStart(2,"0")+' · '+esc(p.title)+'</span><span class="lesson-part-summary">'+esc(p.desc)+'</span></summary><div class="lesson-part-body reader-text">'+body+'</div></details>';
+   const visual=i===4?pptFigure("05","五行生克与八卦太极、先后天八卦与二十四山"):"";
+   return '<details class="lesson-part" id="lesson-part-'+i+'"><summary><span class="lesson-part-title">'+String(i+1).padStart(2,"0")+' · '+esc(p.title)+'</span><span class="lesson-part-summary">'+esc(p.desc)+'</span></summary><div class="lesson-part-body reader-text">'+body+visual+'</div></details>';
   }).join("");
   const evolution=chapter("一、易理演化主线");
   const appendix=[chapter("九、易理根基的知识关联"),chapter("十、来源与边界")].filter(Boolean);
-  const evolutionHtml=evolution?'<details class="lesson-appendix"><summary>课件补充：易理演化主线与原句</summary><div class="reader-text">'+renderNested(evolution.nodes)+'</div></details>':"";
+  const evolutionHtml=evolution?'<details class="lesson-appendix"><summary>课件补充：易理演化主线与原句</summary><div class="reader-text">'+renderNested(evolution.nodes)+'</div></details>'+pptFigure("03","无极、太极、两仪、四象与八卦"):"";
   const appendixHtml=appendix.map(ch=>'<details class="lesson-subtopic"><summary>'+esc(ch.title.replace(/^[一二三四五六七八九十]+、/,""))+'</summary><div class="lesson-subtopic-body reader-text">'+renderNested(ch.nodes)+'</div></details>').join("");
+  const relatedFiguresHtml='<details class="lesson-appendix"><summary>课件延伸图示：河图洛书与八卦象意（PPT第4、6页）</summary>'+pptFigure("04","河图洛书与先天、后天八卦")+pptFigure("06","八卦象意九宫图")+"</details>";
   const introHtml=intro?'<div class="lesson-source-intro">'+intro.innerHTML+'</div>':"";
   const mapLabels=[["阴阳","表现与支撑"],["太极","三个特性"],["三才","天地人"],["四象","四时与生命"],["五行","概念与生克"]];
   const mapHtml=mapLabels.map((x,i)=>'<button type="button" data-open-part="'+i+'"><b>0'+(i+1)+'</b><span>'+x[0]+'</span><small>'+x[1]+'</small></button>').join("");
   $("#detailType").textContent="COURSE ARCHIVE · LESSON 02";
-  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第二课</div><h1>第二课《阴阳之本》</h1><div class="summary">从阴阳本义出发，经太极、三才、四象，进入五行的概念、象意与生克。先看完整框架，再按需展开每个知识点。</div>'+introHtml+'<section class="lesson-framework"><div class="lesson-evolution"><div class="lesson-evolution-label">课件演化主线</div><div class="lesson-flow"><span>无极</span><i>→</i><span>太极</span><i>→</i><span>两仪</span><i>→</i><span>四象</span><i>→</i><span>八卦</span></div>'+evolutionHtml+'</div><h2>本课五个核心部分</h2><nav class="lesson-map" aria-label="第二课知识框架">'+mapHtml+'</nav><div class="lesson-parts">'+parts+'</div><details class="lesson-appendix"><summary>补充资料：知识关联与来源边界</summary>'+appendixHtml+'</details></section><div class="source">整理依据：第二课《阴阳之本》课堂笔记与作业、易理基础知识卡PPT第3—5页。老师课堂内容、课件原句与学员个人感悟按来源区分；第三课补充内容单独标明。原始幕布思维导图不展示，完整文字与表格保留在各展开章节中。</div>';
+  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第二课</div><h1>第二课《阴阳之本》</h1><div class="summary">从阴阳本义出发，经太极、三才、四象，进入五行的概念、象意与生克。先看完整框架，再按需展开每个知识点。</div>'+introHtml+'<section class="lesson-framework"><div class="lesson-evolution"><div class="lesson-evolution-label">课件演化主线</div><div class="lesson-flow"><span>无极</span><i>→</i><span>太极</span><i>→</i><span>两仪</span><i>→</i><span>四象</span><i>→</i><span>八卦</span></div>'+evolutionHtml+'</div><h2>本课五个核心部分</h2><nav class="lesson-map" aria-label="第二课知识框架">'+mapHtml+'</nav><div class="lesson-parts">'+parts+'</div><details class="lesson-appendix"><summary>补充资料：知识关联与来源边界</summary>'+appendixHtml+'</details>'+relatedFiguresHtml+'</section><div class="source">整理依据：第二课《阴阳之本》课堂笔记与作业、易理基础知识卡PPT第3—6页。除“调香与阴阳”外，本课其余知识、案例与解释均按老师课堂内容归档。原始幕布思维导图不展示，保留可阅读文字、表格及对应PPT原图。</div>';
   document.querySelectorAll("[data-open-part]").forEach(button=>button.onclick=()=>{
    const target=$("#lesson-part-"+button.dataset.openPart);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start"});}
   });

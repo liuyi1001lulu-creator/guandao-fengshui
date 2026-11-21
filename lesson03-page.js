@@ -16,7 +16,7 @@ async function renderLesson03(){
     sections.push(current);
    }else if(current&&!line.startsWith("# ")){
     if(line.startsWith("### "))current.html+="<h3>"+formatInline(line.slice(4))+"</h3>";
-    else if(/^\\s*[-*]\\s+/.test(line))current.html+="<p class='lesson03-bullet'>"+formatInline(line.replace(/^\\s*[-*]\\s+/,""))+"</p>";
+    else if(/^\s*[-*]\s+/.test(line))current.html+="<p class='lesson03-bullet'>"+formatInline(line.replace(/^\s*[-*]\s+/,""))+"</p>";
     else if(line.trim())current.html+="<p>"+formatInline(line.trim())+"</p>";
    }
   }

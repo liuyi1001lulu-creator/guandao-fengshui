@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - rebuild/gan-zhi-v1
+      - course2-framework
     paths:
       - index.html
       - knowledge-content.js

@@ -32,6 +32,22 @@ async function check(){
       };
       for(const v of ['foundation','branches','bagua','schools','yangzhai']){
         await clickNav(v);
+        if(v==='foundation'){
+          assert(await page.locator('#foundationCourseFeature').isVisible(),'lesson 2 framework feature missing');
+          assert(await page.locator('#foundationCards [data-note]').count()===0,'lesson 2 should not be split into separate cards');
+          await page.locator('#foundationCourseFeature [data-open-course="02"]').click();
+          assert(await page.locator('#detailBody .lesson-part').count()===5,'lesson 2 should have five top-level parts');
+          assert(await page.locator('#detailBody .lesson-subtopic-major').count()===3,'five-elements section should group three major chapters');
+          const lessonText=await page.locator('#detailBody').evaluate(el=>el.textContent);
+          assert(lessonText.includes('克不一定是毁灭，也可以是磨炼和修炼'),'original overcoming explanation missing');
+          assert(lessonText.includes('体现制约的力量'),'metal-overcomes-wood explanation missing');
+          assert(lessonText.includes('整个太极图的全部构成就是土'),'soil classroom note missing');
+          await page.locator('#lesson-part-4 > summary').click();
+          assert(await page.locator('#lesson-part-4').evaluate(el=>el.open),'five-elements accordion did not expand');
+          await page.locator('#back').click();
+          sectionChecks.push({module:v,cards:1,lessonFramework:true});
+          continue;
+        }
         const count=await page.locator('#'+v+'Cards [data-note]').count();
         assert(count>0,'empty module '+v);sectionChecks.push({module:v,cards:count});
         const ids=await page.locator('#'+v+'Cards [data-note]').evaluateAll(els=>els.map(e=>e.dataset.note));
@@ -75,8 +91,8 @@ async function check(){
       await clickNav('glossary');
       await page.locator('#searchGlossary').fill('河图');
       assert(await page.locator('#glossaryCards [data-note="f2"]').count()===1,'glossary search failed');
-      await clickNav('foundation');
-      const firstCard=page.locator('#foundationCards [data-note]').first();
+      await clickNav('branches');
+      const firstCard=page.locator('#branchesCards [data-note]').first();
       await firstCard.focus();await page.keyboard.press('Enter');
       assert(await page.locator('#overlay').isVisible(),'keyboard cannot open knowledge card');
       await page.locator('#back').click();
@@ -84,7 +100,7 @@ async function check(){
       const lesson5=page.locator('[data-course="05"]');
       await lesson5.click();assert(await page.locator('#detailBody [data-note]').count()===6,'lesson 5 linked cards missing');await page.locator('#back').click();
       if(errors.length)issues.push(device.name+' browser errors: '+errors.join(' | '));
-      const report={device:device.name,sectionChecks,clickedCards:sectionChecks.reduce((n,x)=>n+x.cards,0),longlifeGroups:8,baguaCharts:9,baguaChapters:10,lesson5Cards:6,glossarySearch:'河图',keyboardCardOpen:true,metrics,errors};
+      const report={device:device.name,sectionChecks,clickedCards:sectionChecks.reduce((n,x)=>n+x.cards,0),longlifeGroups:8,baguaCharts:9,baguaChapters:10,lesson5Cards:6,lesson2Framework:true,lesson2TopLevelParts:5,lesson2OvercomingText:true,glossarySearch:'河图',keyboardCardOpen:true,metrics,errors};
       reports.push(report);
       await page.close();
     }

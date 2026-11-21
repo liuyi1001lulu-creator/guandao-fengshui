@@ -108,6 +108,9 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 .course-feature strong{display:block;font:600 20px/1.5 var(--serif);color:#30483a}
 .course-feature p{font:12px/1.9 var(--serif);color:#777365;margin:5px 0 0}
 .course-roadmap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:14px}
+#branchesCourseFeature .course-roadmap{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:900px){#branchesCourseFeature .course-roadmap{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){#branchesCourseFeature .course-roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .course-roadmap-step{display:grid;grid-template-columns:24px 1fr;column-gap:6px;align-items:center;padding:8px 9px;background:#f4efe4;border:1px solid #e5dac6;border-radius:5px;min-width:0}
 .course-roadmap-step b{grid-row:span 2;font:12px Georgia,serif;color:#b09562}
 .course-roadmap-step span{font:600 12px var(--serif);color:#365345}

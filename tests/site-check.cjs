@@ -37,7 +37,7 @@ async function check(){
           assert(await page.locator('#foundationCards [data-note]').count()===0,'lesson 2 should not be split into separate cards');
           await page.locator('#searchFoundation').fill('火克金');
           assert(await page.locator('#foundationCourseFeature').isVisible(),'foundation search should find full lesson 2 content');
-          await page.locator('#searchFoundation').fill('河图');
+          await page.locator('#searchFoundation').fill('绝无此词');
           assert(await page.locator('#foundationCourseFeature').isHidden(),'foundation search should hide unrelated lesson 2 feature');
           await page.locator('#searchFoundation').fill('');
           assert(await page.locator('#foundationCourseFeature').isVisible(),'lesson 2 feature should return after clearing search');

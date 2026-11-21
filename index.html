@@ -187,6 +187,15 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 .reader-text .lesson03-list li{padding:2px 0 2px 4px;font:13px/2 var(--serif);color:#4c5048}
 .reader-text .lesson03-list li::marker{color:#b09562;font-size:11px}
 .reader-text p{margin:10px 0 13px}
+
+.lesson03-table-wrap{width:100%;overflow-x:auto;margin:14px 0 20px;border:1px solid #e5dac8;border-radius:7px;background:#fffefa}
+.lesson03-table{width:100%;border-collapse:collapse;font:13px/1.8 var(--serif);color:#4c5048}
+.lesson03-table th{background:#f2ecdf;color:#315345;font-weight:600;text-align:left;white-space:nowrap}
+.lesson03-table th,.lesson03-table td{padding:9px 12px;border-bottom:1px solid #e9e0d1;vertical-align:top}
+.lesson03-table tbody tr:last-child td{border-bottom:0}
+.lesson03-table tbody tr:nth-child(even){background:#fbf8f1}
+.lesson03-table td:first-child{font-weight:600;color:#385546;white-space:nowrap}
+@media(max-width:640px){.lesson03-table{font-size:12px}.lesson03-table th,.lesson03-table td{padding:8px}}
 </style>
 </head>
 <body>
@@ -316,7 +325,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 
 <script src="knowledge-content.js?v=20261121-course2"></script>
 <script src="knowledge-diagrams.js?v=20261121-course2"></script>
-<script src="lesson03-page.js?v=clean-reading-01"></script>
+<script src="lesson03-page.js?v=table-layout-01"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},

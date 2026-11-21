@@ -1,6 +1,7 @@
 async function renderLesson03(){
  const body=document.querySelector("#detailBody");
  const escText=(value)=>String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+ const formatInline=(value)=>escText(value).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\*(.+?)\*/g,"<em>$1</em>").replace(/`([^`]+)`/g,"<code>$1</code>");
  body.innerHTML="<div class='detailcat'>课程档案 · 第三课</div><h1>第三课｜天干地支与五行运行规律</h1><p>正在读取第三课课堂笔记……</p>";
  try{
   const response=await fetch("./courses/lesson03-notes.md");
@@ -14,9 +15,9 @@ async function renderLesson03(){
     current={title:line.slice(3).trim(),html:""};
     sections.push(current);
    }else if(current&&!line.startsWith("# ")){
-    if(line.startsWith("### "))current.html+="<h3>"+escText(line.slice(4))+"</h3>";
-    else if(line.startsWith("- "))current.html+="<p class='lesson03-bullet'>• "+escText(line.slice(2))+"</p>";
-    else if(line.trim())current.html+="<p>"+escText(line.trim())+"</p>";
+    if(line.startsWith("### "))current.html+="<h3>"+formatInline(line.slice(4))+"</h3>";
+    else if(/^\\s*[-*]\\s+/.test(line))current.html+="<p class='lesson03-bullet'>"+formatInline(line.replace(/^\\s*[-*]\\s+/,""))+"</p>";
+    else if(line.trim())current.html+="<p>"+formatInline(line.trim())+"</p>";
    }
   }
   if(!sections.length)throw new Error("已读取文件，但没有识别到章节标题");

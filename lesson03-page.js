@@ -10,16 +10,33 @@ async function renderLesson03(){
   const lines=markdown.replaceAll("\r","").split("\n");
   const sections=[];
   let current=null;
+  let listItems=[];
+  const flushList=()=>{
+   if(current&&listItems.length){
+    current.html+="<ul class='lesson03-list'>"+listItems.map(item=>"<li>"+formatInline(item)+"</li>").join("")+"</ul>";
+    listItems=[];
+   }
+  };
   for(const line of lines){
    if(line.startsWith("## ")){
+    flushList();
     current={title:line.slice(3).trim(),html:""};
     sections.push(current);
    }else if(current&&!line.startsWith("# ")){
-    if(line.startsWith("### "))current.html+="<h3>"+formatInline(line.slice(4))+"</h3>";
-    else if(/^\s*[-*]\s+/.test(line))current.html+="<p class='lesson03-bullet'>"+formatInline(line.replace(/^\s*[-*]\s+/,""))+"</p>";
-    else if(line.trim())current.html+="<p>"+formatInline(line.trim())+"</p>";
+    if(line.startsWith("### ")){
+     flushList();
+     current.html+="<h3>"+formatInline(line.slice(4))+"</h3>";
+    }else if(/^\s*[-*]\s+/.test(line)){
+     listItems.push(line.replace(/^\s*[-*]\s+/,"").trim());
+    }else if(!line.trim()){
+     flushList();
+    }else{
+     flushList();
+     current.html+="<p>"+formatInline(line.trim())+"</p>";
+    }
    }
   }
+  flushList();
   if(!sections.length)throw new Error("已读取文件，但没有识别到章节标题");
   const nav=sections.map((item,index)=>"<button type='button' data-lesson03-part='"+index+"'><b>"+String(index+1).padStart(2,"0")+"</b><span>"+escText(item.title)+"</span></button>").join("");
   const content=sections.map((item,index)=>"<details class='lesson-part' id='lesson03-part-"+index+"'><summary><span class='lesson-part-title'>"+escText(item.title)+"</span><span class='lesson-part-summary'>第"+(index+1)+"部分</span></summary><div class='lesson-part-body reader-text'>"+item.html+"</div></details>").join("");

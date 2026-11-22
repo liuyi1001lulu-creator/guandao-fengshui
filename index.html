@@ -326,6 +326,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <script src="knowledge-content.js?v=20261121-course2"></script>
 <script src="knowledge-diagrams.js?v=20261121-course2"></script>
 <script src="lesson03-page.js?v=table-layout-03"></script>
+<script src="lesson09-page.js?v=20261122-course09"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
@@ -550,7 +551,8 @@ const lessons=[
 {n:"05",title:"第五课｜天干地支相位与理法",status:"partial",summary:"已整理作业涉及的天干四冲、五合、子位、地支关系与二十四山；不代表完整课堂内容。",notes:["b2","b3","b4","b9","b10","f5"]},
 {n:"06",title:"第六课｜藏风得气、七星与八宅磁场",status:"partial",summary:"依据基础PPT与旧网站条目整理七星、八宫磁场和大游年；尚缺完整原始课堂记录。",notes:["e1","e2","e3","e4"]},
 {n:"07",title:"第七课｜七星蕴含、八宅明镜与阳宅三要",status:"partial",summary:"根据旧网站笔记整理门起伏位、门主灶与天心位等，具体课堂原件仍待核对。",notes:["y1","y2","y3","y5","y6"]},
-{n:"08",title:"第八课｜三边论、立主与空间磁场",status:"partial",summary:"根据旧网站笔记整理立主、拱合论、测方位与定门；完整原始专题文件待补。",notes:["y4","y7","y8","y9"]}
+{n:"08",title:"第八课｜三边论、立主与空间磁场",status:"partial",summary:"根据旧网站笔记整理立主、拱合论、测方位与定门；完整原始专题文件待补。",notes:["y4","y7","y8","y9"]},
+{n:"09",title:"第九课｜易经：先后天八卦、梅花易数与四吉磁场",status:"ready",summary:"易学传承、先后天八卦、河图洛书、梅花易数起卦，以及四吉磁场的数字规律与化解关系。",notes:[]}
 ];
 const glossary=["天干","地支","天干地支","无极","太极","两仪","阴阳","阴阳对应","此消彼长","阴阳互根","三才","天时","地利","人和","四象","少阳","太阳","少阴","太阴","春夏秋冬","八卦","河图","洛书","先天八卦","后天八卦","五行","木曰曲直","火曰炎上","土爰稼穑","金曰从革","水曰润下","水生木","木生火","火生土","土生金","金生水","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","相位","理法","子位","虚宿","虚日鼠","五运经天图","二十四山","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
 const course2NoteIds=new Set(["f1","f3","f6","f7","f8","f9","f10","f11","f12"]);
@@ -659,6 +661,14 @@ function openCourse(num){
   showDetail();
   if(typeof renderLesson03==="function")renderLesson03();
   else $("#detailBody").innerHTML='<h1>第三课｜天干地支与五行运行规律</h1><p>第三课页面脚本尚未加载，请刷新页面。</p>';
+  return;
+ }
+ if(num==="09"){
+  $("#detailType").textContent="COURSE ARCHIVE · LESSON 09";
+  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第九课</div><h1>第九课｜易经：先后天八卦、梅花易数与四吉磁场</h1><div class="lesson03-loading">正在载入第九课专属课堂资料……</div>';
+  showDetail();
+  if(typeof renderLesson09==="function")renderLesson09();
+  else $("#detailBody").innerHTML='<h1>第九课｜易经：先后天八卦、梅花易数与四吉磁场</h1><p>第九课页面脚本尚未加载，请刷新页面。</p>';
   return;
  }
  let l=lessons.find(x=>x.n===num);if(!l)return;

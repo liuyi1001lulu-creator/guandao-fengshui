@@ -6,7 +6,7 @@ async function renderLesson10(){
  const rule=(line)=>/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line);
  body.innerHTML="<div class='detailcat'>课程档案 · 第十课</div><h1>第十课｜天地人、八宅磁场与三元命的应用</h1><p>正在读取第十课课堂资料……</p>";
  try{
-  const res=await fetch("./courses/lesson10-notes.md?v=20261124");
+  const res=await fetch("./courses/lesson10-notes.md?v=20261124-visuals");
   if(!res.ok)throw new Error("课堂笔记读取失败，状态码："+res.status);
   const lines=(await res.text()).replaceAll("\r","").split("\n");
   const parts=[];let current=null,html="",list=[];
@@ -15,6 +15,8 @@ async function renderLesson10(){
    const line=lines[i];
    if(line.startsWith("## ")){flush();if(current)current.html=html;current={title:line.slice(3).trim(),html:""};parts.push(current);html="";continue;}
    if(!current)continue;
+   const figure=line.match(/^!\[([^\]]+)\]\(\.\.\/images\/(lesson10-[a-z-]+\.svg)\)$/);
+   if(figure){flush();const src="images/"+figure[2]+"?v=20261124-visuals";const label=escText(figure[1]);html+="<figure class='lesson10-figure'><a href='"+src+"' target='_blank' rel='noopener'><img src='"+src+"' alt='"+label+"' loading='lazy' decoding='async'></a><figcaption>"+label+" · 点击放大</figcaption></figure>";continue;}
    if(line.startsWith("### ")){flush();html+="<h4>"+inline(line.slice(4).trim())+"</h4>";continue;}
    if(line.trim().startsWith("|")&&i+1<lines.length&&rule(lines[i+1])){
     flush();const heads=cells(line);i+=2;const rows=[];

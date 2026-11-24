@@ -219,7 +219,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
   <div class="hero-art"><b>道</b></div>
  </div>
  <div class="stats">
-  <div class="stat"><small>课程档案 COURSES</small><strong>08</strong></div>
+  <div class="stat"><small>课程档案 COURSES</small><strong id="courseCount">10</strong></div>
   <div class="stat"><small>知识条目 NOTES</small><strong id="noteCount">00</strong></div>
   <div class="stat"><small>知识模块 MODULES</small><strong>05</strong></div>
  </div>
@@ -327,6 +327,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <script src="knowledge-diagrams.js?v=20261121-course2"></script>
 <script src="lesson03-page.js?v=table-layout-03"></script>
 <script src="lesson09-page.js?v=20261122-course09"></script>
+<script src="lesson10-page.js?v=20261124-course10"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
@@ -552,7 +553,8 @@ const lessons=[
 {n:"06",title:"第六课｜藏风得气、七星与八宅磁场",status:"partial",summary:"依据基础PPT与旧网站条目整理七星、八宫磁场和大游年；尚缺完整原始课堂记录。",notes:["e1","e2","e3","e4"]},
 {n:"07",title:"第七课｜七星蕴含、八宅明镜与阳宅三要",status:"partial",summary:"根据旧网站笔记整理门起伏位、门主灶与天心位等，具体课堂原件仍待核对。",notes:["y1","y2","y3","y5","y6"]},
 {n:"08",title:"第八课｜三边论、立主与空间磁场",status:"partial",summary:"根据旧网站笔记整理立主、拱合论、测方位与定门；完整原始专题文件待补。",notes:["y4","y7","y8","y9"]},
-{n:"09",title:"第九课｜易经：先后天八卦、梅花易数与四吉磁场",status:"ready",summary:"易学传承、先后天八卦、河图洛书、梅花易数起卦，以及四吉磁场的数字规律与化解关系。",notes:[]}
+{n:"09",title:"第九课｜易经：先后天八卦、梅花易数与四吉磁场",status:"ready",summary:"易学传承、先后天八卦、河图洛书、梅花易数起卦，以及四吉磁场的数字规律与化解关系。",notes:[]},
+{"n":"10","title":"第十课｜天地人、八宅磁场与三元命的应用","status":"ready","summary":"齐物论与般若、天地人认知框架、延年生气天医绝命、三元命计算及人与地、人与天、人与人的三大应用。","notes":[]}
 ];
 const glossary=["天干","地支","天干地支","无极","太极","两仪","阴阳","阴阳对应","此消彼长","阴阳互根","三才","天时","地利","人和","四象","少阳","太阳","少阴","太阴","春夏秋冬","八卦","河图","洛书","先天八卦","后天八卦","五行","木曰曲直","火曰炎上","土爰稼穑","金曰从革","水曰润下","水生木","木生火","火生土","土生金","金生水","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","相位","理法","子位","虚宿","虚日鼠","五运经天图","二十四山","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
 const course2NoteIds=new Set(["f1","f3","f6","f7","f8","f9","f10","f11","f12"]);
@@ -603,7 +605,7 @@ function renderCategory(view){
  bindNoteCards();
  document.querySelectorAll("#"+view+"Filters [data-filter]").forEach(b=>b.onclick=()=>{filters[view]=b.dataset.filter;renderCategory(view);});
 }
-function renderCourses(){$("#courseList").innerHTML=lessons.map(l=>'<article class="lesson" data-course="'+l.n+'" tabindex="0" role="button"><div class="lesson-num">'+l.n+'</div><div><h3>'+esc(l.title)+'</h3><p>'+esc(l.summary)+'</p></div><span class="status '+(l.status==="pending"?"pending":l.status==="partial"?"partial":"")+'">'+(l.status==="ready"?"可阅读":l.status==="partial"?"部分整理":"待补资料")+'</span></article>').join("");document.querySelectorAll("[data-course]").forEach(el=>{el.onclick=()=>openCourse(el.dataset.course);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCourse(el.dataset.course);}};});}
+function renderCourses(){$("#courseCount").textContent=String(lessons.length).padStart(2,"0");$("#courseList").innerHTML=lessons.map(l=>'<article class="lesson" data-course="'+l.n+'" tabindex="0" role="button"><div class="lesson-num">'+l.n+'</div><div><h3>'+esc(l.title)+'</h3><p>'+esc(l.summary)+'</p></div><span class="status '+(l.status==="pending"?"pending":l.status==="partial"?"partial":"")+'">'+(l.status==="ready"?"可阅读":l.status==="partial"?"部分整理":"待补资料")+'</span></article>').join("");document.querySelectorAll("[data-course]").forEach(el=>{el.onclick=()=>openCourse(el.dataset.course);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCourse(el.dataset.course);}};});}
 function renderGlossary(){let q=queries.glossary.toLowerCase().trim();let terms=glossary.filter(t=>!q||t.toLowerCase().includes(q));$("#termCloud").innerHTML=terms.map(t=>'<button data-term="'+esc(t)+'">'+esc(t)+'</button>').join("");let related=notes.filter(n=>!q||[n.title,n.summary,...n.tags,...n.sections.flatMap(s=>[s[0],...s[1]]),window.GUANDAO_KNOWLEDGE?.cards?.[n.id]?.search||""].join(" ").toLowerCase().includes(q));$("#glossaryCards").innerHTML=related.map(cardHtml).join("");bindNoteCards();document.querySelectorAll("[data-term]").forEach(b=>b.onclick=()=>{queries.glossary=b.dataset.term;$("#searchGlossary").value=b.dataset.term;renderGlossary();});}
 function visualHtml(type){if(type==="bagua")return '<div class="diagram"><div class="diagram-title">八卦卦象速记</div><div class="trigram-grid"><div class="trigram"><b>☰</b><strong>乾三连</strong><small>天</small></div><div class="trigram"><b>☷</b><strong>坤六断</strong><small>地</small></div><div class="trigram"><b>☳</b><strong>震仰盂</strong><small>雷</small></div><div class="trigram"><b>☶</b><strong>艮覆碗</strong><small>山</small></div><div class="trigram"><b>☲</b><strong>离中虚</strong><small>火</small></div><div class="trigram"><b>☵</b><strong>坎中满</strong><small>水</small></div><div class="trigram"><b>☱</b><strong>兑上缺</strong><small>泽</small></div><div class="trigram"><b>☴</b><strong>巽下断</strong><small>风</small></div></div><div class="diagram-title" style="margin-top:14px">后天八卦方位图（按课件布局）</div><div class="bagua-map"><div>巽 · 东南</div><div>离 · 南</div><div>坤 · 西南</div><div>震 · 东</div><div class="center">中宫</div><div>兑 · 西</div><div>艮 · 东北</div><div>坎 · 北</div><div>乾 · 西北</div></div></div>';
 if(type==="five")return '<div class="diagram"><div class="diagram-title">五行相生与相克</div><table class="data-table"><tr><th>关系</th><th>顺序</th></tr><tr><td>相生</td><td>水 → 木 → 火 → 土 → 金 → 水</td></tr><tr><td>相克</td><td>金 → 木 → 土 → 水 → 火 → 金</td></tr></table></div>';
@@ -669,6 +671,14 @@ function openCourse(num){
   showDetail();
   if(typeof renderLesson09==="function")renderLesson09();
   else $("#detailBody").innerHTML='<h1>第九课｜易经：先后天八卦、梅花易数与四吉磁场</h1><p>第九课页面脚本尚未加载，请刷新页面。</p>';
+  return;
+ }
+ if(num==="10"){
+  $("#detailType").textContent="COURSE ARCHIVE · LESSON 10";
+  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第十课</div><h1>第十课｜天地人、八宅磁场与三元命的应用</h1><div class="lesson03-loading">正在载入第十课专属课堂资料……</div>';
+  showDetail();
+  if(typeof renderLesson10==="function")renderLesson10();
+  else $("#detailBody").innerHTML='<h1>第十课｜天地人、八宅磁场与三元命的应用</h1><p>第十课页面脚本尚未加载，请刷新页面。</p>';
   return;
  }
  let l=lessons.find(x=>x.n===num);if(!l)return;

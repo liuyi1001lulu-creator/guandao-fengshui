@@ -105,6 +105,15 @@ async function check(){
       await clickNav('courses');
       const lesson5=page.locator('[data-course="05"]');
       await lesson5.click();assert(await page.locator('#detailBody [data-note]').count()===6,'lesson 5 linked cards missing');await page.locator('#back').click();
+      for(const n of ['02','03','05','06','07','08','09','10']){
+        await page.locator('[data-course="'+n+'"]').click();
+        await page.locator('#detailBody .lesson-part').first().waitFor({state:'attached'});
+        const figs=page.locator('#detailBody .lesson10-figure img');
+        assert(await figs.count()>0,'illustrations missing for lesson '+n);
+        const sources=await figs.evaluateAll(imgs=>imgs.map(img=>img.getAttribute('src')));
+        for(const source of sources){const res=await page.request.get(new URL(source,page.url()).href);assert(res.ok(),'broken diagram: '+source);assert((await res.text()).includes('<svg'),'non-SVG diagram: '+source);}
+        await page.locator('#back').click();
+      }
       if(errors.length)issues.push(device.name+' browser errors: '+errors.join(' | '));
       const report={device:device.name,sectionChecks,clickedCards:sectionChecks.reduce((n,x)=>n+x.cards,0),longlifeGroups:8,baguaCharts:9,baguaChapters:10,lesson5Cards:6,lesson2Framework:true,lesson2TopLevelParts:5,lesson2OvercomingText:true,glossarySearch:'河图',keyboardCardOpen:true,metrics,errors};
       reports.push(report);

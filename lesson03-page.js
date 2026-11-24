@@ -4,7 +4,7 @@ async function renderLesson03(){
  const formatInline=(value)=>escText(value).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\*(.+?)\*/g,"<em>$1</em>").replace(/`([^`]+)`/g,"<code>$1</code>");
  body.innerHTML="<div class='detailcat'>课程档案 · 第三课</div><h1>第三课｜天干地支与五行运行规律</h1><p>正在读取第三课课堂笔记……</p>";
  try{
-  const response=await fetch("./courses/lesson03-notes.md");
+  const response=await fetch("./courses/lesson03-notes.md?v=20261124-course-visuals");
   if(!response.ok)throw new Error("课堂笔记读取失败，状态码："+response.status);
   const markdown=await response.text();
   const lines=markdown.replaceAll("\r","").split("\n");
@@ -26,6 +26,8 @@ async function renderLesson03(){
     current={title:line.slice(3).trim(),html:""};
     sections.push(current);
    }else if(current&&!line.startsWith("# ")){
+    const figure=line.match(/^!\[([^\]]+)\]\(\.\.\/images\/(lesson03-[a-z-]+)\.svg\)$/);
+    if(figure){flushList();current.html+=guandaoCourseFigure(figure[2]);continue;}
     if(line.startsWith("### ")){
      flushList();
      current.html+="<h3>"+formatInline(line.slice(4))+"</h3>";

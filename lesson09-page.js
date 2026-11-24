@@ -6,7 +6,7 @@ async function renderLesson09(){
  const rule=(line)=>/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line);
  body.innerHTML="<div class='detailcat'>课程档案 · 第九课</div><h1>第九课｜易经：先后天八卦、梅花易数与四吉磁场</h1><p>正在读取第九课课堂资料……</p>";
  try{
-  const res=await fetch("./courses/lesson09-notes.md?v=20261122");
+  const res=await fetch("./courses/lesson09-notes.md?v=20261124-course-visuals");
   if(!res.ok)throw new Error("课堂笔记读取失败，状态码："+res.status);
   const lines=(await res.text()).replaceAll("\r","").split("\n");
   const parts=[];let current=null,html="",list=[];
@@ -15,6 +15,8 @@ async function renderLesson09(){
    const line=lines[i];
    if(line.startsWith("## ")){flush();if(current)current.html=html;current={title:line.slice(3).trim(),html:""};parts.push(current);html="";continue;}
    if(!current)continue;
+   const figure=line.match(/^!\[([^\]]+)\]\(\.\.\/images\/(lesson09-[a-z-]+)\.svg\)$/);
+   if(figure){flush();html+=guandaoCourseFigure(figure[2]);continue;}
    if(line.startsWith("### ")){flush();html+="<h4>"+inline(line.slice(4).trim())+"</h4>";continue;}
    if(line.trim().startsWith("|")&&i+1<lines.length&&rule(lines[i+1])){
     flush();const heads=cells(line);i+=2;const rows=[];

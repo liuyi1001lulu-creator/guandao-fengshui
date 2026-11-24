@@ -326,8 +326,9 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 
 <script src="knowledge-content.js?v=20261121-course2"></script>
 <script src="knowledge-diagrams.js?v=20261121-course2"></script>
-<script src="lesson03-page.js?v=table-layout-03"></script>
-<script src="lesson09-page.js?v=20261122-course09"></script>
+<script src="course-study-diagrams.js?v=20261124-course-visuals"></script>
+<script src="lesson03-page.js?v=20261124-course-visuals"></script>
+<script src="lesson09-page.js?v=20261124-course-visuals"></script>
 <script src="lesson10-page.js?v=20261124-visuals"></script>
 <script>
 const navItems=[
@@ -727,7 +728,7 @@ function openCourse(num){
     if(selected.length>1)return '<details class="lesson-subtopic lesson-subtopic-major"><summary>'+esc(title)+'</summary><div class="lesson-subtopic-body reader-text">'+renderNested(ch.nodes)+'</div></details>';
     return renderNested(ch.nodes);
    }).join("");
-   const visual=i===4?pptFigure("05","五行生克与八卦太极、先后天八卦与二十四山"):"";
+   const visual=guandaoCourseFigures(GUANDAO_LESSON02_FIGURES[i])+(i===4?pptFigure("05","五行生克与八卦太极、先后天八卦与二十四山"):"");
    return '<details class="lesson-part" id="lesson-part-'+i+'"><summary><span class="lesson-part-title">'+String(i+1).padStart(2,"0")+' · '+esc(p.title)+'</span><span class="lesson-part-summary">'+esc(p.desc)+'</span></summary><div class="lesson-part-body reader-text">'+body+visual+'</div></details>';
   }).join("");
   const evolution=chapter("一、易理演化主线");
@@ -740,13 +741,14 @@ function openCourse(num){
   const mapLabels=[["阴阳","表现与支撑"],["太极","三个特性"],["三才","天地人"],["四象","四时与生命"],["五行","概念与生克"]];
   const mapHtml=mapLabels.map((x,i)=>'<button type="button" data-open-part="'+i+'"><b>0'+(i+1)+'</b><span>'+x[0]+'</span><small>'+x[1]+'</small></button>').join("");
   $("#detailType").textContent="COURSE ARCHIVE · LESSON 02";
-  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第二课</div><h1>第二课《阴阳之本》</h1><div class="summary">从阴阳本义出发，经太极、三才、四象，进入五行的概念、象意与生克。先看完整框架，再按需展开每个知识点。</div>'+introHtml+originalMindmap+'<section class="lesson-framework"><div class="lesson-evolution"><div class="lesson-evolution-label">课件演化主线</div><div class="lesson-flow"><span>无极</span><i>→</i><span>太极</span><i>→</i><span>两仪</span><i>→</i><span>四象</span><i>→</i><span>八卦</span></div>'+evolutionHtml+'</div><h2>本课五个核心部分</h2><nav class="lesson-map" aria-label="第二课知识框架">'+mapHtml+'</nav><div class="lesson-parts">'+parts+'</div><details class="lesson-appendix"><summary>补充资料：知识关联与来源边界</summary>'+appendixHtml+'</details>'+relatedFiguresHtml+'</section><div class="source">整理依据：第二课《阴阳之本》课堂笔记与作业、易理基础知识卡PPT第3—6页。除“调香与阴阳”外，本课其余知识、案例与解释均按老师课堂内容归档。原始幕布导图作为原版资料单独展示，文字章节用于阅读、搜索与知识关联；对应PPT原图继续保留。</div>';
+  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第二课</div><h1>第二课《阴阳之本》</h1><div class="summary">从阴阳本义出发，经太极、三才、四象，进入五行的概念、象意与生克。先看完整框架，再按需展开每个知识点。</div>'+introHtml+originalMindmap+'<section class="lesson-framework"><div class="lesson-evolution"><div class="lesson-evolution-label">课件演化主线</div><div class="lesson-flow"><span>无极</span><i>→</i><span>太极</span><i>→</i><span>两仪</span><i>→</i><span>四象</span><i>→</i><span>八卦</span></div>'+evolutionHtml+'</div><h2>本课五个核心部分</h2><nav class="lesson-map" aria-label="第二课知识框架">'+mapHtml+'</nav><div class="lesson-parts">'+parts+'</div><h2>本课核心知识结构</h2>'+guandaoCourseFigure(GUANDAO_LESSON02_OVERVIEW)+'<details class="lesson-appendix"><summary>补充资料：知识关联与来源边界</summary>'+appendixHtml+'</details>'+relatedFiguresHtml+'</section><div class="source">整理依据：第二课《阴阳之本》课堂笔记与作业、易理基础知识卡PPT第3—6页。除“调香与阴阳”外，本课其余知识、案例与解释均按老师课堂内容归档。原始幕布导图作为原版资料单独展示，文字章节用于阅读、搜索与知识关联；对应PPT原图继续保留。</div>';
   document.querySelectorAll("[data-open-part]").forEach(button=>button.onclick=()=>{
    const target=$("#lesson-part-"+button.dataset.openPart);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start"});}
   });
   showDetail();return;
  }
  let related=(l.notes||[]).map(id=>notes.find(n=>n.id===id)).filter(Boolean);
+ if(typeof renderPartialCourse==="function"&&renderPartialCourse(l,related))return;
  let content=related.length?'<section><h2>本课知识内容</h2><div class="course-related">'+related.map(cardHtml).join("")+'</div></section>':'<section><h2>资料状态</h2><p>目前尚无可核实的课堂笔记，待补充资料后再整理，不以其他课程内容代替。</p></section>';
  $("#detailType").textContent="COURSE ARCHIVE · LESSON "+l.n;
  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第'+Number(l.n)+'课</div><h1>'+esc(l.title)+'</h1><div class="summary">'+esc(l.summary)+'</div>'+content+'<div class="source">整理方式：本页展示可直接阅读的文字笔记与知识条目，不展示原始思维导图。每个知识条目保留对应课程来源。</div>';

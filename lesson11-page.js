@@ -6,7 +6,7 @@ async function renderLesson11(){
  const rule=(line)=>/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line);
  body.innerHTML="<div class='detailcat'>课程档案 · 第十一课</div><h1>第十一课｜五鬼、祸害、六煞磁场与应期调和</h1><p>正在读取第十一课课堂资料……</p>";
  try{
-  const res=await fetch("./courses/lesson11-notes.md?v=20261126-homework");
+  const res=await fetch("./courses/lesson11-notes.md?v=20261126-confirmed");
   if(!res.ok)throw new Error("课堂笔记读取失败，状态码："+res.status);
   const lines=(await res.text()).replaceAll("\r","").split("\n");
   const parts=[];let current=null,html="",list=[];
@@ -16,7 +16,7 @@ async function renderLesson11(){
    if(line.startsWith("## ")){flush();if(current)current.html=html;current={title:line.slice(3).trim(),html:""};parts.push(current);html="";continue;}
    if(!current)continue;
    const figure=line.match(/^!\[([^\]]+)\]\(\.\.\/images\/(lesson11-[a-z-]+\.svg)\)$/);
-   if(figure){flush();const src="images/"+figure[2]+"?v=20261126-homework";const label=escText(figure[1]);html+="<figure class='lesson10-figure'><a href='"+src+"' target='_blank' rel='noopener'><img src='"+src+"' alt='"+label+"' loading='lazy' decoding='async'></a><figcaption>"+label+" · 点击放大</figcaption></figure>";continue;}
+   if(figure){flush();const src="images/"+figure[2]+"?v=20261126-confirmed";const label=escText(figure[1]);html+="<figure class='lesson10-figure'><a href='"+src+"' target='_blank' rel='noopener'><img src='"+src+"' alt='"+label+"' loading='lazy' decoding='async'></a><figcaption>"+label+" · 点击放大</figcaption></figure>";continue;}
    if(line.startsWith("### ")){flush();html+="<h4>"+inline(line.slice(4).trim())+"</h4>";continue;}
    if(line.trim().startsWith("|")&&i+1<lines.length&&rule(lines[i+1])){
     flush();const heads=cells(line);i+=2;const rows=[];

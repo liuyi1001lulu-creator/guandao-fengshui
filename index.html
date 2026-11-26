@@ -330,6 +330,7 @@ h1{font:800 52px/1.15 var(--serif);letter-spacing:9px;margin:19px 0 7px}.hero h1
 <script src="lesson03-page.js?v=20261124-course-visuals"></script>
 <script src="lesson09-page.js?v=20261124-course-visuals"></script>
 <script src="lesson10-page.js?v=20261124-visuals"></script>
+<script src="lesson11-page.js?v=20261126-visuals"></script>
 <script>
 const navItems=[
  {id:"home",name:"总览",icon:"觀"},
@@ -556,7 +557,8 @@ const lessons=[
 {n:"07",title:"第七课｜七星蕴含、八宅明镜与阳宅三要",status:"partial",summary:"根据旧网站笔记整理门起伏位、门主灶与天心位等，具体课堂原件仍待核对。",notes:["y1","y2","y3","y5","y6"]},
 {n:"08",title:"第八课｜三边论、立主与空间磁场",status:"partial",summary:"根据旧网站笔记整理立主、拱合论、测方位与定门；完整原始专题文件待补。",notes:["y4","y7","y8","y9"]},
 {n:"09",title:"第九课｜易经：先后天八卦、梅花易数与四吉磁场",status:"ready",summary:"易学传承、先后天八卦、河图洛书、梅花易数起卦，以及四吉磁场的数字规律与化解关系。",notes:[]},
-{"n":"10","title":"第十课｜天地人、八宅磁场与三元命的应用","status":"ready","summary":"齐物论与般若、天地人认知框架、延年生气天医绝命、三元命计算及人与地、人与天、人与人的三大应用。","notes":[]}
+{"n":"10","title":"第十课｜天地人、八宅磁场与三元命的应用","status":"ready","summary":"齐物论与般若、天地人认知框架、延年生气天医绝命、三元命计算及人与地、人与天、人与人的三大应用。","notes":[]},
+{"n":"11","title":"第十一课｜五鬼、祸害、六煞磁场与应期调和","status":"ready","summary":"五鬼、祸害、六煞的天地人取象，相位与理法应期，磁场主动运用及大场、小场、人场的处理。","notes":[]}
 ];
 const glossary=["天干","地支","天干地支","无极","太极","两仪","阴阳","阴阳对应","此消彼长","阴阳互根","三才","天时","地利","人和","四象","少阳","太阳","少阴","太阴","春夏秋冬","八卦","河图","洛书","先天八卦","后天八卦","五行","木曰曲直","火曰炎上","土爰稼穑","金曰从革","水曰润下","水生木","木生火","火生土","土生金","金生水","十二地支","十二生肖","时辰","地支三合","地支三会","地支六合","六冲","六害","相刑","相破","地支藏干","长生十二态","天干五合","天干四冲","相位","理法","子位","虚宿","虚日鼠","五运经天图","二十四山","贪狼","巨门","禄存","文曲","廉贞","武曲","破军","辅弼","八宫磁场","大游年歌","数字磁场","三元命","七星蕴含","八宅明镜","阳宅三要","门主灶","立主","几何中心","CAD面积形心","天心位","缺角","缺宫","多退少补","大四方","四正位","四隅位","定磁场","定门","拱合论","大紫薇令"];
 const course2NoteIds=new Set(["f1","f3","f6","f7","f8","f9","f10","f11","f12"]);
@@ -681,6 +683,14 @@ function openCourse(num){
   showDetail();
   if(typeof renderLesson10==="function")renderLesson10();
   else $("#detailBody").innerHTML='<h1>第十课｜天地人、八宅磁场与三元命的应用</h1><p>第十课页面脚本尚未加载，请刷新页面。</p>';
+  return;
+ }
+ if(num==="11"){
+  $("#detailType").textContent="COURSE ARCHIVE · LESSON 11";
+  $("#detailBody").innerHTML='<div class="detailcat">课程档案 · 第十一课</div><h1>第十一课｜五鬼、祸害、六煞磁场与应期调和</h1><div class="lesson03-loading">正在载入第十一课专属课堂资料……</div>';
+  showDetail();
+  if(typeof renderLesson11==="function")renderLesson11();
+  else $("#detailBody").innerHTML='<h1>第十一课｜五鬼、祸害、六煞磁场与应期调和</h1><p>第十一课页面脚本尚未加载，请刷新页面。</p>';
   return;
  }
  let l=lessons.find(x=>x.n===num);if(!l)return;

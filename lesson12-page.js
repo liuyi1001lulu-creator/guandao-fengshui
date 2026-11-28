@@ -1,0 +1,72 @@
+
+function lesson12Diagram(key){
+ const jade="#356955",gold="#ae9056",red="#b55f50",blue="#527c9f",ink="#293b34",muted="#817b6b",paper="#faf7ef";
+ const t=(x,y,s,z=16,c=ink,w=400)=>'<text x="'+x+'" y="'+y+'" text-anchor="middle" fill="'+c+'" font-size="'+z+'" font-weight="'+w+'">'+s+'</text>';
+ const r=(x,y,w,h,c=jade,op=.10)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="6" fill="'+c+'" fill-opacity="'+op+'" stroke="'+c+'" stroke-width="1.2"/>';
+ const a=(x,y,X,Y,c=gold)=>{const d=Math.atan2(Y-y,X-x),p=8;return '<path d="M'+x+' '+y+' L'+X+' '+Y+' M'+(X-p*Math.cos(d-.55))+' '+(Y-p*Math.sin(d-.55))+' L'+X+' '+Y+' L'+(X-p*Math.cos(d+.55))+' '+(Y-p*Math.sin(d+.55))+'" fill="none" stroke="'+c+'" stroke-width="1.8" stroke-linecap="round"/>';};
+ const label=(x,y,w,h,s,sub,c=jade)=>r(x,y,w,h,c)+t(x+w/2,y+h/2+(sub?-3:5),s,17,c,700)+(sub?t(x+w/2,y+h/2+17,sub,11,muted):"");
+ const svg=(h,body)=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 '+h+'" width="100%" role="img" style="display:block;max-width:660px;margin:auto;font-family:Microsoft YaHei,PingFang SC,sans-serif"><rect x="0" y="0" width="360" height="'+h+'" rx="9" fill="'+paper+'"/>'+body+'</svg>';
+ const flow=(rows)=>svg(rows.length*62+18,rows.map((q,i)=>label(34,10+i*62,292,49,q[0],q[1],i%2?gold:jade)+(i<rows.length-1?a(180,60+i*62,180,71+i*62):"")).join(""));
+ const grid=(arr,x,y,size)=>arr.map((s,i)=>{const X=x+i%3*size,Y=y+Math.floor(i/3)*size,c=/祸害|绝命|五鬼|六煞/.test(s)?red:jade;return '<rect x="'+X+'" y="'+Y+'" width="'+size+'" height="'+size+'" fill="'+c+'" fill-opacity="'+(s?.09:0)+'" stroke="'+gold+'" stroke-dasharray="4 3"/>'+t(X+size/2,Y+size/2+5,s,16,c,600)}).join("");
+ switch(key){
+ case "overview":return flow([["理论基础","五行生克 · 五行通关"],["化解理法","七星化解口诀"],["判断体系","大场 · 小场 · 人场"],["布置原理","同频共振 · 天地人"],["气场调合","巧 · 力"],["增强力量","高 · 重 · 热"],["实际运用","二八定律 · 四两拨千斤"],["最终目标","五行平衡 · 整体调和"]]);
+ case "passage":return svg(205,t(180,24,"金木交战",15,ink,700)+label(24,40,86,43,"金","",gold)+label(250,40,86,43,"木","",jade)+a(116,62,244,62,red)+t(180,52,"相克",11,red)+a(180,84,180,112)+t(180,130,"以水通关",14,ink,700)+label(12,145,89,45,"金","",gold)+label(136,145,89,45,"水","",blue)+label(259,145,89,45,"木","",jade)+a(105,167,131,167,jade)+a(229,167,254,167,jade));
+ case "organs":return svg(94,label(10,18,98,58,"肺金","",gold)+a(112,47,128,47)+label(131,18,98,58,"肾水","",blue)+a(233,47,248,47)+label(252,18,98,58,"肝木","",jade));
+ case "seven":return svg(338,[["天医","阳土","绝命","阴金","土生金","天医欺绝命"],["生气","阳木","五鬼","阴火","木生火","生气降五鬼"],["延年","阳金","六煞","阴水","金生水","延年压六煞"],["伏位","阴木","祸害","阴土","木克土","伏位补祸害"]].map((q,i)=>{const y=10+i*81;return label(12,y,105,49,q[0],q[1],i===0?gold:jade)+label(243,y,105,49,q[2],q[3],i===2?blue:red)+a(121,y+28,239,y+28)+t(180,y+20,q[4],11,muted)+t(180,y+69,q[5],13,ink,700)}).join(""));
+ case "fields":return svg(258,r(10,10,340,232,jade,.035)+t(180,32,"大场 · 大太极",17,jade,700)+t(180,49,"整个住宅",11,muted)+r(24,62,132,151,gold,.04)+t(90,140,"客厅",15)+r(166,62,169,151,gold,.09)+t(250,80,"小场 · 小太极",14,gold,700)+grid(["","","","","","","","",""],205,90,30)+'<circle cx="250" cy="124" r="7" fill="'+blue+'"/><path d="M250 131 V151 M238 138 H262 M250 151 L240 164 M250 151 L260 164" stroke="'+blue+'" stroke-width="3" fill="none" stroke-linecap="round"/>'+t(250,192,"人场 · 三元命",12,blue)+r(228,207,44,8,gold,.8)+t(250,229,"小门",11)+r(61,236,58,8,jade,.8)+t(90,253,"大门",11));
+ case "nine":return svg(274,grid(["祸害","绝命","延年","五鬼","","生气","天医","六煞","伏位"],57,9,82)+t(180,267,"课堂九宫案例 · 非通用分布",12,muted));
+ case "weights":return svg(235,[["大场 · 本气","大环境 · 大太极","80%",jade,.8],["小场 · 活气","自我环境 · 小太极","20%",gold,.2]].map((q,i)=>{let y=14+i*78;return t(88,y+17,q[0],18,q[3],700)+t(96,y+36,q[1],11,muted)+t(313,y+24,q[2],25,q[3],700)+r(20,y+48,320,12,q[3],.08)+'<rect x="20" y="'+(y+48)+'" width="'+(320*q[4])+'" height="12" rx="6" fill="'+q[3]+'"/>'}).join("")+label(20,173,320,48,"人场 · 余气","自修、调合 · 未标注占比",blue));
+ case "relations":return svg(221,label(12,15,108,45,"大场","",jade)+label(240,15,108,45,"大场","",jade)+a(125,38,235,38,jade)+t(180,29,"化解",11,jade)+label(12,95,108,45,"小场","",gold)+label(240,95,108,45,"小场","",gold)+a(125,117,235,117,gold)+t(180,108,"化解",11,gold)+a(120,96,240,61,red)+t(170,72,"小场化大场",11,red)+label(12,165,108,42,"人场","",blue)+label(240,165,108,42,"自修","",blue)+a(125,186,235,186,blue)+t(180,177,"调合",11,blue));
+ case "resonance":return svg(260,'<path d="M180 57 L65 211 H295 Z" fill="'+gold+'" fill-opacity=".05" stroke="'+gold+'" stroke-width="1.6"/>'+[[180,48,"天","磁场",jade],[65,210,"地","卦位",gold],[295,210,"人","诉求",blue]].map(q=>'<circle cx="'+q[0]+'" cy="'+q[1]+'" r="39" fill="'+paper+'" stroke="'+q[4]+'" stroke-width="1.6"/>'+t(q[0],q[1]-2,q[2],24,q[4],700)+t(q[0],q[1]+19,q[3],14)).join("")+t(180,148,"同频共振",21,ink,700)+t(180,168,"天地人相互配合",12,muted));
+ case "cabinet":return svg(242,'<rect x="132" y="73" width="96" height="150" rx="3" fill="#795b44"/>'+Array.from({length:5},(_,i)=>'<rect x="140" y="'+(80+i*27)+'" width="80" height="24" rx="2" fill="#a17b5b" stroke="#614733"/><path d="M174 '+(91+i*27)+' q6 5 12 0" stroke="#e1c49a" stroke-width="2" fill="none"/>').join("")+'<ellipse cx="180" cy="47" rx="27" ry="8" fill="#b99b62" stroke="#8d713a"/><path d="M153 47 Q155 69 180 69 Q205 69 207 47" fill="#b99b62" stroke="#8d713a"/><ellipse cx="180" cy="47" rx="23" ry="5" fill="#6d542f"/>'+t(53,35,"巧",24,gold,700)+t(53,53,"物品取象",11)+t(53,68,"天地人相合",11)+a(93,52,148,52)+t(294,104,"力",24,jade,700)+t(294,124,"体量",11)+t(294,139,"存在感",11)+t(294,154,"力量配合",11)+a(260,150,232,150,jade));
+ case "strength":return svg(194,'<path d="M14 12 H108" stroke="'+muted+'"/><rect x="42" y="32" width="43" height="92" rx="2" fill="'+gold+'" fill-opacity=".15" stroke="'+gold+'" stroke-width="2"/><path d="M42 61 H85 M42 90 H85" stroke="'+gold+'"/>'+a(25,121,25,34,jade)+t(62,25,"不接顶",10,muted)+'<rect x="137" y="23" width="86" height="102" rx="3" fill="'+gold+'" fill-opacity=".05" stroke="'+gold+'"/><ellipse cx="180" cy="93" rx="18" ry="22" fill="'+jade+'" fill-opacity=".45" stroke="'+jade+'"/><ellipse cx="180" cy="60" rx="11" ry="14" fill="'+jade+'" fill-opacity=".45" stroke="'+jade+'"/><path d="M180 46 V38" stroke="'+jade+'" stroke-width="2"/><path d="M270 20 H330 L319 37 H281 Z" fill="'+gold+'"/><path d="M281 37 L252 124 H348 L319 37 Z" fill="'+gold+'" fill-opacity=".14"/><rect x="281" y="74" width="38" height="49" fill="'+gold+'" fill-opacity=".25" stroke="'+gold+'"/>'+[["高","空间存在感",60,jade],["重","心理重要性",180,gold],["热","注意力集中",300,red]].map(q=>t(q[2],151,q[0],26,q[3],700)+t(q[2],174,q[1],12)).join(""));
+ case "trigrams":return svg(218,[["☰","乾 · 西北","天行健，君子以自强不息"],["☶","艮 · 东北","艮为止，君子慎独"],["☲","离 · 正南","漂亮、绚烂、美感"]].map((q,i)=>{const y=12+i*69;return r(14,y,63,58,i===2?red:gold)+t(45,y+40,q[0],34)+t(215,y+21,q[1],14,jade,700)+t(215,y+43,q[2],13)}).join(""));
+ case "largecase":return svg(280,r(15,10,330,235,jade,.025)+r(15,10,120,105,blue)+t(75,33,"主卧 · 六煞",14,blue,700)+a(75,49,75,90,blue)+t(75,104,"降低力量",11)+r(15,115,94,39,gold,.02)+t(62,140,"卫生间",11)+r(15,154,120,91,gold)+t(63,174,"次卧 · 延年",13,gold,700)+r(88,202,43,40,gold,.22)+t(110,219,"小延年",10)+t(110,234,"☰",13)+a(110,201,110,159,gold)+r(135,189,94,56,gold,.02)+t(182,222,"厨房",12)+r(229,164,116,81,gold,.02)+t(287,208,"书房",12)+t(240,66,"客厅",16)+r(339,105,7,42,gold,.7)+t(311,124,"兑☱",13)+t(311,141,"大门",11)+t(180,266,"增强次卧延年，制约主卧六煞",13,ink,700));
+ case "rooms":return svg(180,r(10,10,164,160,blue,.05)+r(186,10,164,160,gold,.09)+t(92,32,"主卧 · 六煞",15,blue,700)+t(268,32,"次卧 · 延年",15,gold,700)+'<rect x="45" y="49" width="94" height="67" rx="4" fill="#c5bcaa"/><rect x="50" y="54" width="38" height="19" rx="3" fill="#f1ece3"/><rect x="96" y="54" width="38" height="19" rx="3" fill="#f1ece3"/><rect x="50" y="80" width="84" height="28" fill="#a9b1ab"/><rect x="198" y="48" width="23" height="75" fill="#76543d"/><rect x="315" y="48" width="23" height="75" fill="#76543d"/><rect x="245" y="45" width="46" height="40" fill="#b99b62" stroke="#76543d"/><circle cx="268" cy="58" r="6" fill="#76543d"/><path d="M258 78 L262 66 H274 L278 78Z" fill="#76543d"/><path d="M230 96 H306 M236 96 V124 M300 96 V124" stroke="#76543d" stroke-width="7"/>'+t(92,142,"降低力量",14,blue,700)+t(92,158,"低调、朴素、简约",10)+t(268,142,"增强力量",14,gold,700)+t(268,158,"富丽堂皇、庄重",10));
+ case "smallcase":return svg(253,r(10,10,340,229,jade,.025)+r(22,24,135,198,red,.04)+r(212,24,126,198,jade,.04)+t(90,46,"小五鬼",15,red,700)+t(90,64,"多、乱、杂",11)+t(275,46,"小生气",15,jade,700)+t(275,64,"增强力量、心静",11)+'<rect x="36" y="91" width="107" height="67" rx="4" fill="#c6bdaa" stroke="#ae9056"/><rect x="43" y="98" width="29" height="52" rx="4" fill="#f1ece3"/><rect x="77" y="98" width="59" height="52" fill="#a9b1ab"/><rect x="235" y="91" width="81" height="50" rx="2" fill="#46504d"/><path d="M275 141 V149 M260 149 H290" stroke="#46504d" stroke-width="2"/><rect x="221" y="151" width="107" height="31" rx="2" fill="#b99b62" fill-opacity=".5" stroke="#ae9056"/><path d="M256 151 V182 M292 151 V182" stroke="#ae9056"/><rect x="221" y="83" width="12" height="25" fill="#e3dcc8" stroke="#ae9056"/>'+t(105,133,"床",14)+a(207,125,161,125,jade)+t(275,198,"电视墙、柜、心经",11)+t(275,214,"安神香、绿植",11)+r(265,234,44,7,gold,.8)+t(287,251,"小门",10));
+ case "crosscase":return svg(240,r(12,10,336,218,red,.04)+t(180,32,"大场 · 绝命",17,red,700)+grid(["","","","","","","","","小天医"],105,47,50)+r(205,147,50,50,jade,.18)+t(230,182,"高重热",10,jade)+a(204,171,45,125,jade)+t(180,219,"集中增强关键小场的力量",13,ink,700));
+ case "leverage":return svg(196,'<rect x="20" y="15" width="320" height="45" rx="5" fill="'+jade+'" fill-opacity=".16" stroke="'+jade+'"/><rect x="276" y="15" width="64" height="45" rx="5" fill="'+gold+'" fill-opacity=".45" stroke="'+gold+'"/>'+t(148,33,"大场 · 本气",12)+t(148,50,"80%",17,jade,700)+t(308,33,"小场",10)+t(308,50,"20%",15,gold,700)+'<path d="M34 117 L325 148" stroke="'+gold+'" stroke-width="5" stroke-linecap="round"/><path d="M181 133 L157 179 H205 Z" fill="#d5cdb9" stroke="'+muted+'"/>'+r(49,70,85,53,jade,.2)+t(91,100,"大场",15,jade,700)+r(278,120,36,24,gold,.5)+t(296,137,"小场",10)+a(307,63,294,115,gold)+t(180,191,"二八定律 · 四两拨千斤",14,ink,700));
+ case "process":return flow([["01 判断大场","以住宅大门为核心，划分八大磁场"],["02 判断小场","以房间小门为核心，重新划分八大磁场"],["03 分析人场","人与门、人与卦、人与流年、人与人"],["04 明确调合目标","依据七星化解口诀寻找相应磁场"],["05 同频共振","天为磁场、地为卦位、人为诉求"],["06 选择物品","讲究巧，符合天地人的象意"],["07 增强力量","通过高、重、热发挥关键磁场力量"],["08 整体气场调合","协调大场、小场之间的力量"],["09 人场自修","调合自身心性与行为"],["10 五行平衡","使整体形成配合"]]);
+ default:return "";
+ }
+}
+
+async function renderLesson12(){
+ const body=document.querySelector("#detailBody");
+ const escText=(v)=>String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+ const inline=(v)=>escText(v).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\*(.+?)\*/g,"<em>$1</em>");
+ const cells=(line)=>line.trim().replace(/^\|/,"").replace(/\|$/,"").split("|").map(x=>x.trim());
+ const rule=(line)=>/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line);
+ body.innerHTML="<div class='detailcat'>课程档案 · 第十二课</div><h1>第十二课｜七星化解、三场论与天地人同频共振</h1><p>正在读取第十二课课堂资料……</p>";
+ try{
+  const res=await fetch("./courses/lesson12-notes.md?v=20261128-v1");
+  if(!res.ok)throw new Error("课堂笔记读取失败，状态码："+res.status);
+  const lines=(await res.text()).replaceAll("\r","").split("\n");
+  const parts=[];let current=null,html="",list=[];
+  const flush=()=>{if(list.length){html+="<ul>"+list.map(x=>"<li>"+inline(x)+"</li>").join("")+"</ul>";list=[];}};
+  for(let i=0;i<lines.length;i++){
+   const line=lines[i];
+   if(line.startsWith("## ")){flush();if(current)current.html=html;current={title:line.slice(3).trim(),html:""};parts.push(current);html="";continue;}
+   if(!current)continue;
+   const figure=line.match(/^@图 ([a-z]+) \| (.+)$/);
+   if(figure){flush();const graphic=lesson12Diagram(figure[1]);if(!graphic)throw new Error("图解缺失："+figure[1]);html+="<figure class='lesson10-figure' style='margin:18px auto'><div style='max-width:660px;margin:auto'>"+graphic+"</div><figcaption>"+escText(figure[2])+"</figcaption></figure>";continue;}
+   if(line.startsWith("### ")){flush();html+="<h4>"+inline(line.slice(4).trim())+"</h4>";continue;}
+   if(line.trim().startsWith("|")&&i+1<lines.length&&rule(lines[i+1])){
+    flush();const heads=cells(line);i+=2;const rows=[];
+    while(i<lines.length&&lines[i].trim().startsWith("|")){rows.push(cells(lines[i]));i++;}
+    i--;html+="<div class='lesson03-table-wrap'><table class='lesson03-table'><thead><tr>"+heads.map(x=>"<th>"+inline(x)+"</th>").join("")+"</tr></thead><tbody>"+rows.map(row=>"<tr>"+heads.map((_,j)=>"<td>"+inline(row[j]||"")+"</td>").join("")+"</tr>").join("")+"</tbody></table></div>";continue;
+   }
+   if(/^\s*[-*]\s+/.test(line)){list.push(line.replace(/^\s*[-*]\s+/,"").trim());continue;}
+   if(!line.trim()){flush();continue;}
+   flush();if(line.startsWith("> "))html+="<blockquote><p>"+inline(line.slice(2))+"</p></blockquote>";else if(!line.startsWith("# "))html+="<p>"+inline(line.trim())+"</p>";
+  }
+  flush();if(current)current.html=html;
+  if(!parts.length)throw new Error("没有识别到章节标题");
+  const nav=parts.map((p,i)=>"<button type='button' data-lesson12-part='"+i+"'><b>"+String(i+1).padStart(2,"0")+"</b><span>"+escText(p.title)+"</span></button>").join("");
+  const content=parts.map((p,i)=>"<details class='lesson-part' id='lesson12-part-"+i+"'><summary><span class='lesson-part-title'>"+escText(p.title)+"</span><span class='lesson-part-summary'>第"+(i+1)+"部分</span></summary><div class='lesson-part-body reader-text'>"+p.html+"</div></details>").join("");
+  body.innerHTML="<div class='detailcat'>课程档案 · 第十二课 · 2026-11-28</div><h1>第十二课｜七星化解、三场论与天地人同频共振</h1><div class='summary'>五行通关、七星化解、三场论、同频共振、高重热与二八定律。完整文字笔记与原创图解，按章节展开。</div><section class='lesson-framework'><h2>本课知识章节（"+parts.length+"部分）</h2><nav class='lesson03-map-grid'>"+nav+"</nav><div class='lesson-parts'>"+content+"</div></section><div class='source'>资料来源：2026-11-28当天听课文字及10张课堂截图。图解为重新绘制的学习辅助，未上传原始课件；课堂理论与整理归纳明确区分。</div>";
+
+  body.querySelector('.lesson-part')?.setAttribute('open','');
+  body.querySelectorAll("[data-lesson12-part]").forEach(button=>button.addEventListener("click",()=>{const target=document.getElementById("lesson12-part-"+button.dataset.lesson12Part);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start"});}}));
+ }catch(e){body.innerHTML="<div class='detailcat'>课程档案 · 第十二课</div><h1>第十二课｜七星化解、三场论与天地人同频共振</h1><p>课程资料加载失败："+escText(e.message)+"</p>";}
+}
